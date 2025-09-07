@@ -358,3 +358,4 @@ C:\Users\yassin\source\repos\ShippingSystemWebsite\ShipingSystem\obj\Debug\net8.
 C:\Users\yassin\source\repos\ShippingSystemWebsite\ShipingSystem\obj\Debug\net8.0\ShipingSystem.pdb
 C:\Users\yassin\source\repos\ShippingSystemWebsite\ShipingSystem\obj\Debug\net8.0\ShipingSystem.genruntimeconfig.cache
 C:\Users\yassin\source\repos\ShippingSystemWebsite\ShipingSystem\obj\Debug\net8.0\ref\ShipingSystem.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\ShipingSystem\obj\Debug\net8.0\ShipingSystem.sourcelink.json

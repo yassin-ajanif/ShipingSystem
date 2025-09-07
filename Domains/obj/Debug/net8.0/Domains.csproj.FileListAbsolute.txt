@@ -20,3 +20,4 @@ C:\Users\yassin\source\repos\ShippingSystemWebsite\Domains\obj\Debug\net8.0\Doma
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Domains\obj\Debug\net8.0\refint\Domains.dll
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Domains\obj\Debug\net8.0\Domains.pdb
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Domains\obj\Debug\net8.0\ref\Domains.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\Domains\obj\Debug\net8.0\Domains.sourcelink.json

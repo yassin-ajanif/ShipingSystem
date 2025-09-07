@@ -9,3 +9,15 @@ C:\Users\yassin\source\repos\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccess
 C:\Users\yassin\source\repos\BusinessAccessLayer\obj\Debug\net8.0\refint\BusinessAccessLayer.dll
 C:\Users\yassin\source\repos\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.pdb
 C:\Users\yassin\source\repos\BusinessAccessLayer\obj\Debug\net8.0\ref\BusinessAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.deps.json
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.pdb
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.AssemblyInfoInputs.cache
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.AssemblyInfo.cs
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.sourcelink.json
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\refint\BusinessAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.pdb
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\ref\BusinessAccessLayer.dll
