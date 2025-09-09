@@ -1,0 +1,129 @@
+﻿using AutoMapper;
+using Domains;
+using Domains.DTOs;
+using Domains.DTOs.Requests;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessAccessLayer.Mapping
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            // TbCountry mappings
+            CreateMap<TbCountry, TbCountryDto>().ReverseMap();
+            CreateMap<CreateCountryRequest, TbCountry>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid()))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.CurrentState, opt => opt.MapFrom(src => 1))
+                .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedBy, opt => opt.Ignore());
+            
+            CreateMap<UpdateCountryRequest, TbCountry>()
+                .ForMember(dest => dest.UpdatedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+                .ForMember(dest => dest.CurrentState, opt => opt.Ignore());
+
+            // TbCarrier mappings
+            CreateMap<TbCarrier, TbCarrierDto>().ReverseMap();
+            CreateMap<CreateCarrierRequest, TbCarrier>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid()))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.CurrentState, opt => opt.MapFrom(src => 1))
+                .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedBy, opt => opt.Ignore());
+            
+            CreateMap<UpdateCarrierRequest, TbCarrier>()
+                .ForMember(dest => dest.UpdatedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+                .ForMember(dest => dest.CurrentState, opt => opt.Ignore());
+
+            // TbCity mappings
+            CreateMap<TbCity, TbCityDto>()
+                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country != null ? src.Country.CountryEname : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.Country, opt => opt.Ignore())
+                .ForMember(dest => dest.TbUserReceivers, opt => opt.Ignore())
+                .ForMember(dest => dest.TbUserSebders, opt => opt.Ignore());
+
+            // TbPaymentMethod mappings
+            CreateMap<TbPaymentMethod, TbPaymentMethodDto>()
+                .ForMember(dest => dest.MethodAName, opt => opt.MapFrom(src => src.MethdAname))
+                .ReverseMap()
+                .ForMember(dest => dest.MethdAname, opt => opt.MapFrom(src => src.MethodAName))
+                .ForMember(dest => dest.TbShippments, opt => opt.Ignore());
+
+            // TbShippingType mappings
+            CreateMap<TbShippingType, TbShippingTypeDto>().ReverseMap()
+                .ForMember(dest => dest.TbShippments, opt => opt.Ignore());
+
+            // TbUserReceiver mappings
+            CreateMap<TbUserReceiver, TbUserReceiverDto>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.CityEname : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.City, opt => opt.Ignore())
+                .ForMember(dest => dest.TbShippments, opt => opt.Ignore());
+
+            // TbUserSebder mappings
+            CreateMap<TbUserSebder, TbUserSenderDto>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.CityEname : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.City, opt => opt.Ignore())
+                .ForMember(dest => dest.TbShippments, opt => opt.Ignore());
+
+            // TbShippment mappings
+            CreateMap<TbShippment, TbShippmentDto>()
+                .ForMember(dest => dest.SenderName, opt => opt.MapFrom(src => src.Sender != null ? src.Sender.SenderName : ""))
+                .ForMember(dest => dest.ReceiverName, opt => opt.MapFrom(src => src.Receiver != null ? src.Receiver.ReceiverName : ""))
+                .ForMember(dest => dest.ShippingTypeName, opt => opt.MapFrom(src => src.ShippingType != null ? src.ShippingType.ShippingTypeEname : ""))
+                .ForMember(dest => dest.PaymentMethodName, opt => opt.MapFrom(src => src.PaymentMethod != null ? src.PaymentMethod.MethodEname : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.Sender, opt => opt.Ignore())
+                .ForMember(dest => dest.Receiver, opt => opt.Ignore())
+                .ForMember(dest => dest.ShippingType, opt => opt.Ignore())
+                .ForMember(dest => dest.PaymentMethod, opt => opt.Ignore())
+                .ForMember(dest => dest.TbShippmentStatuses, opt => opt.Ignore());
+
+            // TbShippmentStatus mappings
+            CreateMap<TbShippmentStatus, TbShippmentStatusDto>()
+                .ForMember(dest => dest.CarrierName, opt => opt.MapFrom(src => src.Carrier != null ? src.Carrier.CarrierName : ""))
+                .ForMember(dest => dest.ShippmentInfo, opt => opt.MapFrom(src => src.Shippment != null ? $"Shipment #{src.Shippment.Id}" : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.Carrier, opt => opt.Ignore())
+                .ForMember(dest => dest.Shippment, opt => opt.Ignore());
+
+            // TbSubscriptionPackage mappings
+            CreateMap<TbSubscriptionPackage, TbSubscriptionPackageDto>().ReverseMap()
+                .ForMember(dest => dest.TbUserSubscriptions, opt => opt.Ignore());
+
+            // TbUserSubscription mappings
+            CreateMap<TbUserSubscription, TbUserSubscriptionDto>()
+                .ForMember(dest => dest.PackageName, opt => opt.MapFrom(src => src.Package != null ? src.Package.PackageName : ""))
+                .ReverseMap()
+                .ForMember(dest => dest.Package, opt => opt.Ignore());
+
+            // TbSetting mappings
+            CreateMap<TbSetting, TbSettingDto>().ReverseMap();
+
+            // Additional mappings for lists
+            CreateMap<List<TbCountry>, List<TbCountryDto>>().ReverseMap();
+            CreateMap<List<TbCarrier>, List<TbCarrierDto>>().ReverseMap();
+            CreateMap<List<TbCity>, List<TbCityDto>>().ReverseMap();
+            CreateMap<List<TbPaymentMethod>, List<TbPaymentMethodDto>>().ReverseMap();
+            CreateMap<List<TbShippingType>, List<TbShippingTypeDto>>().ReverseMap();
+            CreateMap<List<TbUserReceiver>, List<TbUserReceiverDto>>().ReverseMap();
+            CreateMap<List<TbUserSebder>, List<TbUserSenderDto>>().ReverseMap();
+            CreateMap<List<TbShippment>, List<TbShippmentDto>>().ReverseMap();
+            CreateMap<List<TbShippmentStatus>, List<TbShippmentStatusDto>>().ReverseMap();
+            CreateMap<List<TbSubscriptionPackage>, List<TbSubscriptionPackageDto>>().ReverseMap();
+            CreateMap<List<TbUserSubscription>, List<TbUserSubscriptionDto>>().ReverseMap();
+            CreateMap<List<TbSetting>, List<TbSettingDto>>().ReverseMap();
+        }
+    }
+}

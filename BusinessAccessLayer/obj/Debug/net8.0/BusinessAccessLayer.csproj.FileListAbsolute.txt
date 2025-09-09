@@ -21,3 +21,9 @@ C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug
 C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\refint\BusinessAccessLayer.dll
 C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.pdb
 C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\ref\BusinessAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\Domains.dll
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\bin\Debug\net8.0\Domains.pdb
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.csproj.AssemblyReference.cache
+C:\Users\yassin\source\repos\ShippingSystemWebsite\BusinessAccessLayer\obj\Debug\net8.0\Business.395A7FC9.Up2Date

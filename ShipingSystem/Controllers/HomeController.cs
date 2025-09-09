@@ -4,6 +4,9 @@ using ShipingSystem.Models;
 using Domains;
 using DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
+using DataAccessLayer.Interfaces;
+using BusinessAccessLayer.Interfaces;
+using Domains.DTOs;
 
 namespace ShipingSystem.Controllers
 {
@@ -11,19 +14,20 @@ namespace ShipingSystem.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ShipingContext _context;
-      
+        private readonly IGenericService<TbCountry,TbCountryDto> _countryService;
 
-        public HomeController(ILogger<HomeController> logger, ShipingContext context)
+        public HomeController(ILogger<HomeController> logger, ShipingContext context,
+            IGenericService<TbCountry, TbCountryDto> countryService)
         {
             _logger = logger;
             _context = context;
-
-            
+            _countryService = countryService;
         }
-        public IActionResult Index()
+        
+        public async Task<IActionResult> Index()
         {
-            var test = _context.TbCountries.ToList();
-            return View();
+            var countries = await _countryService.GetAllAsync();
+            return View(countries.ToList());
         }
 
         public IActionResult Privacy()
@@ -31,8 +35,6 @@ namespace ShipingSystem.Controllers
             var test = _context.TbCountries.ToList();
             return View();
         }
-
-      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

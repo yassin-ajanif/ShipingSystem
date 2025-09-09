@@ -1,14 +1,43 @@
 using DataAccessLayer;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Interfaces;
+using BusinessAccessLayer.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using System.Configuration;
+using Domains;
+using BusinessAccessLayer.Services;
+using BusinessAccessLayer.Mapping;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//
+Serilog.Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console().
+    WriteTo.MSSqlServer(
+       connectionString: builder.Configuration.GetConnectionString("DefaultConnection"),
+        tableName: "Logs",
+        autoCreateSqlTable: true
+    )
+    .CreateLogger();
+
 // Configure Entity Framework
 builder.Services.AddDbContext<ShipingContext>();
+
+// Add Scoped service for TbCountry with GenericRepository
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+// Add Scoped service for Generic Service
+builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
+
+//builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
+
+//
 
 var app = builder.Build();
 

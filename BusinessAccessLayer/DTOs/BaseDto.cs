@@ -1,0 +1,10 @@
+using System;
+
+namespace Domains.DTOs
+{
+    public abstract class BaseDto
+    {
+        public Guid Id { get; set; }
+        
+    }
+}
