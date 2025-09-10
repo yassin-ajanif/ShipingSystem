@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 
 namespace Domains;
-public partial class TbUserSebder
+public partial class TbUserSebder : Base
 {
-    public Guid Id { get; set; }
 
     public Guid UserId { get; set; }
 
@@ -17,16 +16,6 @@ public partial class TbUserSebder
     public Guid CityId { get; set; }
 
     public string Address { get; set; } = null!;
-
-    public Guid? UpdatedBy { get; set; }
-
-    public int CurrentState { get; set; }
-
-    public DateTime CreatedDate { get; set; }
-
-    public Guid CreatedBy { get; set; }
-
-    public DateTime? UpdatedDate { get; set; }
 
     public virtual TbCity City { get; set; } = null!;
 

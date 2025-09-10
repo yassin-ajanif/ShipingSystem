@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 
 namespace Domains;
-public partial class TbSetting
+public partial class TbSetting : Base
 {
-    public Guid Id { get; set; }
 
     public double? KiloMeterRate { get; set; }
 

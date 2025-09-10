@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Exceptions;
@@ -16,7 +17,7 @@ namespace DataAccessLayer.Repositories
         private readonly DbSet<T> _dbSet;
         private readonly ILogger<GenericRepository<T>> _logger;
 
-        public GenericRepository(ShipingContext context,ILogger<GenericRepository<T>> logger)
+        public GenericRepository(ShipingContext context, ILogger<GenericRepository<T>> logger)
         {
             _context = context;
             _dbSet = _context.Set<T>();
@@ -47,12 +48,13 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
             try
             {
                 await _dbSet.AddAsync(entity);
                 await _context.SaveChangesAsync();
+                return entity;
             }
             catch (Exception ex)
             {
@@ -60,12 +62,13 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             try
             {
                 _dbSet.Update(entity);
                 await _context.SaveChangesAsync();
+                return entity;
             }
             catch (Exception ex)
             {
@@ -73,7 +76,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             try
             {
@@ -82,7 +85,10 @@ namespace DataAccessLayer.Repositories
                 {
                     _dbSet.Remove(entity);
                     await _context.SaveChangesAsync();
+                    return true;
                 }
+
+                return false;
             }
             catch (Exception ex)
             {
@@ -90,14 +96,47 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        Task<T> IGenericRepository<T>.AddAsync(T entity)
+        public async Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _dbSet.FirstOrDefaultAsync(filter);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving first {typeof(T).Name} with specified filter", _logger);
+            }
         }
 
-        Task<T> IGenericRepository<T>.UpdateAsync(T entity)
+        public async Task<IEnumerable<T>> GetList(Expression<Func<T, bool>> filter)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _dbSet.Where(filter).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving entities of type {typeof(T).Name} with specified filter", _logger);
+            }
+        }
+
+        public async Task<bool> ChangeStatus(Guid id, int status = 1)
+        {
+            try
+            {
+                var entity = GetByIdAsync(id);
+                if (entity != null)
+                {
+                    _context.Entry(entity).State = EntityState.Modified;
+                    _context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error changing status for entity of type {typeof(T).Name} with ID {id}", _logger);
+            }
         }
     }
 }

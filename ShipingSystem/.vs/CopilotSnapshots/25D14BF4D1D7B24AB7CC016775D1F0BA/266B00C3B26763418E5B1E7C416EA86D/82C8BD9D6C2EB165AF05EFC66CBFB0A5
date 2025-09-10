@@ -1,0 +1,165 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using DataAccessLayer.Exceptions;
+using DataAccessLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
+namespace DataAccessLayer.Repositories
+{
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        private readonly ShipingContext _context;
+        private readonly DbSet<T> _dbSet;
+        private readonly ILogger<GenericRepository<T>> _logger;
+
+        public GenericRepository(ShipingContext context, ILogger<GenericRepository<T>> logger)
+        {
+            _context = context;
+            _dbSet = _context.Set<T>();
+            _logger = logger;
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            try
+            {
+                return await _dbSet.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving all entities of type {typeof(T).Name}", _logger);
+            }
+        }
+
+        public async Task<T> GetByIdAsync(Guid id)
+        {
+            try
+            {
+                return await _dbSet.FindAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving entity of type {typeof(T).Name} with ID {id}", _logger);
+            }
+        }
+
+        public async Task<T> AddAsync(T entity)
+        {
+            try
+            {
+                await _dbSet.AddAsync(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error adding entity of type {typeof(T).Name}", _logger);
+            }
+        }
+
+        public async Task<T> UpdateAsync(T entity)
+        {
+            try
+            {
+                _dbSet.Update(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error updating entity of type {typeof(T).Name}", _logger);
+            }
+        }
+
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            try
+            {
+                var entity = await _dbSet.FindAsync(id);
+                if (entity != null)
+                {
+                    _dbSet.Remove(entity);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error deleting entity of type {typeof(T).Name} with ID {id}", _logger);
+            }
+        }
+
+        public async Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter)
+        {
+            try
+            {
+                return await _dbSet.FirstOrDefaultAsync(filter);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving first {typeof(T).Name} with specified filter", _logger);
+            }
+        }
+
+        public async Task<IEnumerable<T>> GetList(Expression<Func<T, bool>> filter)
+        {
+            try
+            {
+                return await _dbSet.Where(filter).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error retrieving entities of type {typeof(T).Name} with specified filter", _logger);
+            }
+        }
+
+        public async Task<bool> ChangeStatus(Guid id, int status = 1)
+        {
+            try
+            {
+                var entity = await _dbSet.FindAsync(id);
+                if (entity != null)
+                {
+                    // Use reflection to set properties since T is generic
+                    var currentStateProperty = typeof(T).GetProperty("CurrentState");
+                    var updatedDateProperty = typeof(T).GetProperty("UpdatedDate");
+                    var updatedByProperty = typeof(T).GetProperty("UpdatedBy");
+
+                    if (currentStateProperty != null)
+                    {
+                        currentStateProperty.SetValue(entity, status);
+                    }
+
+                    if (updatedDateProperty != null)
+                    {
+                        updatedDateProperty.SetValue(entity, DateTime.UtcNow);
+                    }
+
+                    // Note: UpdatedBy would need to be passed as parameter or retrieved from context
+                    // For now, setting it to a default value or you can add it as a parameter
+                    if (updatedByProperty != null)
+                    {
+                        // You might want to add userId as a parameter to this method
+                        updatedByProperty.SetValue(entity, Guid.Empty); // Or pass userId as parameter
+                    }
+
+                    _dbSet.Update(entity);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex, $"Error changing status for entity of type {typeof(T).Name} with ID {id}", _logger);
+            }
+        }
+    }
+}

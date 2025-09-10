@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "Apis.Controllers.HomeController",
+    "Method": "GetDemoData",
+    "RelativePath": "api/Home/demo-data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Apis.Controllers.HomeController",
+    "Method": "GetSampleShipment",
+    "RelativePath": "api/Home/sample-shipment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessAccessLayer.DTOs;
 using Domains;
 using Domains.DTOs;
 using System;
@@ -16,6 +17,7 @@ namespace BusinessAccessLayer.Mapping
             // TbCountry mappings
             CreateMap<TbCountry, TbCountryDto>().ReverseMap();
             CreateMap<TbCarrier, TbCarrierDto>().ReverseMap();
+            CreateMap<TbRefreshToken, TbRefreshTokenDto>().ReverseMap();
             CreateMap<TbCity, TbCityDto>().ReverseMap();
             CreateMap<TbPaymentMethod, TbPaymentMethodDto>().ReverseMap();
             CreateMap<TbShippingType, TbShippingTypeDto>().ReverseMap();

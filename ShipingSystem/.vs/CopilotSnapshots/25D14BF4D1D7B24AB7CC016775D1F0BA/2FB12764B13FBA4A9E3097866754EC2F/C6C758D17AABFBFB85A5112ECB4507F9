@@ -1,0 +1,135 @@
+﻿using AutoMapper;
+using BusinessAccessLayer.DTOs;
+using BusinessAccessLayer.Interfaces;
+using DataAccessLayer.Interfaces;
+using Domains;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessAccessLayer.Services
+{
+    public class RefreshTokenService : GenericService<TbRefreshToken, TbRefreshTokenDto> , IRefreshTokenService
+    {   
+        private readonly IMapper _mapper;
+        private readonly IGenericRepository<TbRefreshToken> _repository;
+        public RefreshTokenService(IGenericRepository<TbRefreshToken> repository, IMapper mapper) : base(repository, mapper)
+        {
+            _mapper = mapper;
+            _repository = repository;
+        }
+
+        public async Task<TbRefreshTokenDto> GetByToken(string token)
+        {
+            try
+            {
+                var refreshToken = await _repository.GetFirstOrDefault(x => x.Token == token);
+                return refreshToken != null ? _mapper.Map<TbRefreshTokenDto>(refreshToken) : null;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                throw new Exception($"Error retrieving refresh token: {token}", ex);
+            }
+        }
+
+        public async Task<bool> RefreshToken(TbRefreshTokenDto tokenDto)
+        {
+            try
+            {
+                // Check if token exists and is not expired
+                var existingToken = await _repository.GetFirstOrDefault(x => x.Token == tokenDto.Token);
+                
+                if (existingToken == null)
+                {
+                    return false; // Token not found
+                }
+
+                if (existingToken.Expires <= DateTime.UtcNow)
+                {
+                    return false; // Token expired
+                }
+
+                // Update the token properties
+                existingToken.Expires = tokenDto.Expires;
+                existingToken.UpdatedDate = DateTime.UtcNow;
+                existingToken.CurrentState = tokenDto.CurrentState;
+
+                // Update in database
+                await _repository.UpdateAsync(existingToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                throw new Exception($"Error refreshing token for user: {tokenDto.UserId}", ex);
+            }
+        }
+
+        public async Task<bool> RevokeToken(string token)
+        {
+            try
+            {
+                var refreshToken = await _repository.GetFirstOrDefault(x => x.Token == token);
+                
+                if (refreshToken == null)
+                {
+                    return false; // Token not found
+                }
+
+                // Mark token as revoked by setting CurrentState to 0 or expired
+                refreshToken.CurrentState = 0; // 0 = Revoked
+                refreshToken.UpdatedDate = DateTime.UtcNow;
+
+                await _repository.UpdateAsync(refreshToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                throw new Exception($"Error revoking token: {token}", ex);
+            }
+        }
+
+        public async Task<bool> RevokeAllUserTokens(string userId)
+        {
+            try
+            {
+                var userTokens = await _repository.GetList(x => x.UserId == userId && x.CurrentState == 1);
+                
+                foreach (var token in userTokens)
+                {
+                    token.CurrentState = 0; // Revoke
+                    token.UpdatedDate = DateTime.UtcNow;
+                    await _repository.UpdateAsync(token);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                throw new Exception($"Error revoking all tokens for user: {userId}", ex);
+            }
+        }
+
+        public async Task<bool> IsTokenValid(string token)
+        {
+            try
+            {
+                var refreshToken = await _repository.GetFirstOrDefault(x => x.Token == token);
+                
+                return refreshToken != null && 
+                       refreshToken.Expires > DateTime.UtcNow && 
+                       refreshToken.CurrentState == 1; // 1 = Active
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed
+                throw new Exception($"Error validating token: {token}", ex);
+            }
+        }
+    }
+}
