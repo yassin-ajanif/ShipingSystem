@@ -14,10 +14,10 @@ namespace ShipingSystem.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ShipingContext _context;
-        private readonly IGenericService<TbCountry,TbCountryDto> _countryService;
+        private readonly IGenericService<TbCountry,CountryDto> _countryService;
 
         public HomeController(ILogger<HomeController> logger, ShipingContext context,
-            IGenericService<TbCountry, TbCountryDto> countryService)
+            IGenericService<TbCountry, CountryDto> countryService)
         {
             _logger = logger;
             _context = context;

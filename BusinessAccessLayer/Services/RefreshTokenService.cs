@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class RefreshTokenService : GenericService<TbRefreshToken, TbRefreshTokenDto>, IRefreshTokenService
+    public class RefreshTokenService : GenericService<TbRefreshToken, RefreshTokenDto>, IRefreshTokenService
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<TbRefreshToken> _repository;
@@ -21,12 +21,12 @@ namespace BusinessAccessLayer.Services
             _repository = repository;
         }
 
-        public async Task<TbRefreshTokenDto> GetByToken(string token)
+        public async Task<RefreshTokenDto> GetByToken(string token)
         {
             try
             {
                 var refreshToken = await _repository.GetFirstOrDefault(x => x.Token == token);
-                return _mapper.Map<TbRefreshTokenDto>(refreshToken);
+                return _mapper.Map<RefreshTokenDto>(refreshToken);
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        public async Task<bool> RefreshToken(TbRefreshTokenDto tokenDto)
+        public async Task<bool> RefreshToken(RefreshTokenDto tokenDto)
         {
             try
             {

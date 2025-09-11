@@ -24,4 +24,8 @@
     <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="8.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Apis\" />
+  </ItemGroup>
+
 </Project>

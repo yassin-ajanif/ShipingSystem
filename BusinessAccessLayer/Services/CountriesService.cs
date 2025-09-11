@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class CountriesService : GenericService<TbCountry, TbCountryDto>, ICountriesService
+    public class CountriesService : GenericService<TbCountry, CountryDto>, ICountriesService
     {
         //IGenericRepository<T> repository, IMapper mapper
         public CountriesService(IGenericRepository<TbCountry> repository, IMapper mapper) 

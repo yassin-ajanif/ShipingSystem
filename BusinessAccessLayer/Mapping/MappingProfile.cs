@@ -15,19 +15,19 @@ namespace BusinessAccessLayer.Mapping
         public MappingProfile()
         {
             // TbCountry mappings
-            CreateMap<TbCountry, TbCountryDto>().ReverseMap();
-            CreateMap<TbCarrier, TbCarrierDto>().ReverseMap();
-            CreateMap<TbRefreshToken, TbRefreshTokenDto>().ReverseMap();
-            CreateMap<TbCity, TbCityDto>().ReverseMap();
-            CreateMap<TbPaymentMethod, TbPaymentMethodDto>().ReverseMap();
-            CreateMap<TbShippingType, TbShippingTypeDto>().ReverseMap();
-            CreateMap<TbUserReceiver, TbUserReceiverDto>().ReverseMap();
-            CreateMap<TbUserSebder, TbUserSenderDto>().ReverseMap();
-            CreateMap<TbShippment, TbShippmentDto>().ReverseMap();
-            CreateMap<TbShippmentStatus, TbShippmentStatusDto>().ReverseMap();
-            CreateMap<TbSubscriptionPackage, TbSubscriptionPackageDto>().ReverseMap();
-            CreateMap<TbUserSubscription, TbUserSubscriptionDto>().ReverseMap();
-            CreateMap<TbSetting, TbSettingDto>().ReverseMap();
+            CreateMap<TbCountry, CountryDto>().ReverseMap();
+            CreateMap<TbCarrier, CarrierDto>().ReverseMap();
+            CreateMap<TbRefreshToken, RefreshTokenDto>().ReverseMap();
+            CreateMap<TbCity, CityDto>().ReverseMap();
+            CreateMap<TbPaymentMethod, PaymentMethodDto>().ReverseMap();
+            CreateMap<TbShippingType, ShippingTypeDto>().ReverseMap();
+            CreateMap<TbUserReceiver, UserReceiverDto>().ReverseMap();
+            CreateMap<TbUserSebder, UserSenderDto>().ReverseMap();
+            CreateMap<TbShippment, ShippmentDto>().ReverseMap();
+            CreateMap<TbShippmentStatus, ShippmentStatusDto>().ReverseMap();
+            CreateMap<TbSubscriptionPackage, SubscriptionPackageDto>().ReverseMap();
+            CreateMap<TbUserSubscription, UserSubscriptionDto>().ReverseMap();
+            CreateMap<TbSetting, SettingDto>().ReverseMap();
     
         }
     }

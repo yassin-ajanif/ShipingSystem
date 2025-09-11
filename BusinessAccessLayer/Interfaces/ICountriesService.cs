@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Interfaces
 {
-    public interface ICountriesService : IGenericService<TbCountry,TbCountryDto>
+    public interface ICountriesService : IGenericService<TbCountry,CountryDto>
     {
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Interfaces
 {
-    public interface IRefreshTokenService : IGenericService<TbRefreshToken,TbRefreshTokenDto>
+    public interface IRefreshTokenService : IGenericService<TbRefreshToken,RefreshTokenDto>
     {
-        Task<TbRefreshTokenDto> GetByToken(string token);
-        Task<bool> RefreshToken(TbRefreshTokenDto tokenDto);
+        Task<RefreshTokenDto> GetByToken(string token);
+        Task<bool> RefreshToken(RefreshTokenDto tokenDto);
     }
 }

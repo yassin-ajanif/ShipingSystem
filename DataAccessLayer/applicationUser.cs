@@ -10,5 +10,11 @@ namespace DataAccessLayer
 {
     public class applicationUser : IdentityUser
     {
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Phone { get; set; }
     }
 }
