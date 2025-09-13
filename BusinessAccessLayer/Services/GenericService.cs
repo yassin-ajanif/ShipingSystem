@@ -1,6 +1,7 @@
 using AutoMapper;
 using BusinessAccessLayer.Interfaces;
 using DataAccessLayer.Interfaces;
+using Domains;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,14 +11,16 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class GenericService<T,DTO> : IGenericService<T,DTO> where T : class
+    public class GenericService<T,DTO> : IGenericService<T,DTO> where T : Base
     {
         private readonly IGenericRepository<T> _repository;
         private readonly IMapper _mapper;
-        public GenericService(IGenericRepository<T> repository, IMapper mapper)
+        private readonly IUserService _userService;
+        public GenericService(IGenericRepository<T> repository, IMapper mapper, IUserService userService)
         {
             _repository = repository;   
             _mapper = mapper;
+            _userService = userService;
         }
 
         public async Task<IEnumerable<DTO>> GetAllAsync()
@@ -37,13 +40,15 @@ namespace BusinessAccessLayer.Services
 
         public async Task<DTO> AddAsync(DTO entity)
         {
+            
             // Map DTO to Entity for repository
             var entityToAdd = _mapper.Map<DTO,T>(entity);
-
+            entityToAdd.CreatedDate = DateTime.Now;
+            entityToAdd.CreatedBy = _userService.GetLoggedInUser();
             // Add to repository (returns Task, not Task<T>)
             var entityAdded =  await _repository.AddAsync(entityToAdd);
-           
-            return await _mapper.Map<T, Task<DTO>>(entityAdded);
+
+            return entity;
         }
 
         public async Task<DTO> UpdateAsync(DTO entity)

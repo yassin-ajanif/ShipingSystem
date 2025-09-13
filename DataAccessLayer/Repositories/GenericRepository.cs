@@ -8,6 +8,8 @@ using DataAccessLayer.Exceptions;
 using DataAccessLayer.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Domains;
+
 
 namespace DataAccessLayer.Repositories
 {
@@ -16,6 +18,7 @@ namespace DataAccessLayer.Repositories
         private readonly ShipingContext _context;
         private readonly DbSet<T> _dbSet;
         private readonly ILogger<GenericRepository<T>> _logger;
+       
 
         public GenericRepository(ShipingContext context, ILogger<GenericRepository<T>> logger)
         {
@@ -52,6 +55,7 @@ namespace DataAccessLayer.Repositories
         {
             try
             {
+                
                 await _dbSet.AddAsync(entity);
                 await _context.SaveChangesAsync();
                 return entity;

@@ -4,14 +4,15 @@ using BusinessAccessLayer.Services;
 using DataAccessLayer;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,8 +42,12 @@ builder.Services.AddIdentity<applicationUser, IdentityRole>().AddEntityFramework
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    //options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    //options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+   // options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+   // options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+  //  options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
 })
 .AddJwtBearer(options =>
 {
@@ -57,12 +62,17 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecretKey"]!)) // from appsettings.json
     };
-});
+}).AddCookie(options =>
+{
+    options.Cookie.Name = "RefreshToken";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Use Always in production
+}); ;
 
 builder.Services.AddAuthorization();
 
 
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 // Add Scoped service for TbCountry with GenericRepository
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 // Add Scoped service for Generic Service

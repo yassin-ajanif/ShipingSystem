@@ -14,8 +14,9 @@ namespace BusinessAccessLayer.Services
     public class CountriesService : GenericService<TbCountry, CountryDto>, ICountriesService
     {
         //IGenericRepository<T> repository, IMapper mapper
-        public CountriesService(IGenericRepository<TbCountry> repository, IMapper mapper) 
-            : base(repository, mapper)
+        public CountriesService(IGenericRepository<TbCountry> repository, IMapper mapper,
+            IUserService userService) 
+            : base(repository, mapper, userService)
         {
         }
     }

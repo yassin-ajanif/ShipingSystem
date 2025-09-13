@@ -1,0 +1,38 @@
+﻿using BusinessAccessLayer.DTOs;
+using BusinessAccessLayer.Interfaces;
+using DataAccessLayer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessAccessLayer.Services
+{
+    public class UserService : IUserService
+    {
+        //... other code ...
+
+        public Guid GetLoggedInUser()
+        {
+            var userId = _httpContextAcessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new UnauthorizedAccessException("No user is currently logged in.");
+            }
+
+            if (!Guid.TryParse(userId, out var userGuid))
+            {
+                throw new InvalidOperationException("Invalid user ID format.");
+            }
+
+            return userGuid;
+        }
+
+        //... other code ...
+    }
+}

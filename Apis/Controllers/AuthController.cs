@@ -1,4 +1,6 @@
+using Apis.Models;
 using Azure;
+using Azure.Core;
 using BusinessAccessLayer.DTOs;
 using BusinessAccessLayer.Interfaces;
 using BusinessAccessLayer.Services;
@@ -9,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using Apis.Models;
 
 namespace Apis.Controllers
 {
@@ -44,12 +45,14 @@ namespace Apis.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto request)
         {
+
             var userResult = await _userService.LoginAsync(request);
             if (!userResult.Success)
             {
                 return Unauthorized("Invalid credentials");
             }
 
+           
 
             var userData = await GetClims(request.Email);
             var claims = userData.Item1;
@@ -74,18 +77,22 @@ namespace Apis.Controllers
                 Expires = storedToken.Expires
             });
 
-            return Ok(new { AccessToken = accessToken, RefreshToken = refreshToken });
+            return Ok(ApiResponse<object>.SuccessResponse(
+                new { AccessToken = accessToken, RefreshToken = refreshToken },
+                "Tokens retrieved successfully"
+            ));
         }
 
 
         [HttpPost("refresh-access-token")]
         public async Task<IActionResult> RefreshAccessToken()
         {
+
             if (!Request.Cookies.TryGetValue("RefreshToken", out var refreshToken))
             {
                 return Unauthorized("No refresh token found");
             }
-
+            var test = _userService.GetLoggedInUser();
             // Retrieve the refresh token from the database
             var storedToken = await _RefreshTokenService.GetByToken(refreshToken);
             if (storedToken == null || storedToken.CurrentState == 2 || storedToken.Expires < DateTime.UtcNow)
@@ -98,17 +105,19 @@ namespace Apis.Controllers
 
             var newAccessToken = _tokenService.GenerateAccessToken(claims);
 
-            return Ok(new { AccessToken = newAccessToken });
+            return Ok(ApiResponse<string>.SuccessResponse
+                (newAccessToken,"Access Token retrieved successfully"));
         }
 
         [HttpPost("refresh")]
+        [Authorize]
         public async Task<IActionResult> Refresh()
         {
             if (!Request.Cookies.TryGetValue("RefreshToken", out var refreshToken))
             {
                 return Unauthorized("No refresh token found");
             }
-
+       
             // Retrieve the refresh token from the database
             var storedToken = await _RefreshTokenService.GetByToken(refreshToken);
             if (storedToken == null || storedToken.CurrentState == 2 || storedToken.Expires < DateTime.UtcNow)
@@ -134,8 +143,9 @@ namespace Apis.Controllers
                 Secure = true,
                 Expires = DateTime.UtcNow.AddDays(7)
             });
-
-            return Ok(new { RefreshToken = newRefreshToken });
+ 
+            return Ok(ApiResponse<string>.SuccessResponse
+                (newRefreshToken, "Access Token refreshed successfully"));
         }
 
 

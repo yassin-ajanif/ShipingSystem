@@ -15,9 +15,16 @@ namespace BusinessAccessLayer.Services
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<TbRefreshToken> _repository;
-        public RefreshTokenService(IGenericRepository<TbRefreshToken> repository, IMapper mapper) : base(repository, mapper)
+        private readonly IUserService _userService;
+        public RefreshTokenService
+            ( 
+              IGenericRepository<TbRefreshToken> repository,
+              IMapper mapper,
+              IUserService userService
+            ) : base(repository,mapper,userService)
         {
             _mapper = mapper;
+            _userService = userService;
             _repository = repository;
         }
 
@@ -37,35 +44,17 @@ namespace BusinessAccessLayer.Services
 
         public async Task<bool> RefreshToken(RefreshTokenDto tokenDto)
         {
-            try
+            var tokenList = await _repository.GetList(a => a.UserId == tokenDto.UserId && a.CurrentState == 1);
+          
+            foreach (var dbToken in tokenList)
             {
-                // Check if token exists and is not expired
-                var existingToken = await _repository.GetFirstOrDefault(x => x.Token == tokenDto.Token);
-
-                if (existingToken == null)
-                {
-                    return false; // Token not found
-                }
-
-                if (existingToken.Expires <= DateTime.UtcNow)
-                {
-                    return false; // Token expired
-                }
-
-                // Update the token properties
-                existingToken.Expires = tokenDto.Expires;
-                existingToken.UpdatedDate = DateTime.UtcNow;
-                existingToken.CurrentState = tokenDto.CurrentState;
-
-                // Update in database
-                await _repository.UpdateAsync(existingToken);
-                return true;
+                _repository.ChangeStatus( Guid.Parse(dbToken.UserId), 2);
             }
-            catch (Exception ex)
-            {
-                // Log the exception if needed
-                throw new Exception($"Error refreshing token for user: {tokenDto.UserId}", ex);
-            }
+
+           // var newRefreshTokenDb = _mapper.Map<RefreshTokenDto,TbRefreshToken>(tokenDto);
+            //await _repository.AddAsync(newRefreshTokenDb);
+            await AddAsync(tokenDto);
+            return true;
         }
 
 

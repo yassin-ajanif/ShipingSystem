@@ -1,10 +1,12 @@
 ﻿using BusinessAccessLayer.DTOs;
 using BusinessAccessLayer.Interfaces;
 using DataAccessLayer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,31 +16,60 @@ namespace BusinessAccessLayer.Services
     {
         private readonly UserManager<applicationUser> _userManager;
         private readonly SignInManager<applicationUser> _signInManager;
+        private readonly IHttpContextAccessor _httpContextAcessor;
 
-
-        public UserService(UserManager<applicationUser> userManager, SignInManager<applicationUser> signInManager)
+        public UserService(UserManager<applicationUser> userManager, 
+            SignInManager<applicationUser> signInManager, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _httpContextAcessor = httpContextAccessor;
         }
         public Task<IEnumerable<UserDto>> GetAllUsersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Guid GetLoggedInUser()
+        public  Guid GetLoggedInUser()
         {
-            throw new NotImplementedException();
+            var userId =  _httpContextAcessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            return   Guid.Parse(userId);
         }
 
-        public Task<UserDto> GetUserByEmailAsync(string email)
+        public async Task<UserDto> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return null;
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return new UserDto
+            {
+                Id = Guid.Parse(user.Id),
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Phone = user.Phone,
+                Role = roles.FirstOrDefault()
+            };
         }
 
-        public Task<UserDto> GetUserByIdAsync(string userId)
+        public async Task<UserDto> GetUserByIdAsync(string userId)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return null;
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return new UserDto
+            {
+                Id = Guid.Parse(user.Id),
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Phone = user.Phone,
+                Role = roles.FirstOrDefault()
+            };
         }
 
         public async Task<UserResultDto> LoginAsync(LoginDto loginDto)
