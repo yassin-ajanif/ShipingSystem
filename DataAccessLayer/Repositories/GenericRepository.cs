@@ -20,7 +20,8 @@ namespace DataAccessLayer.Repositories
         private readonly ILogger<GenericRepository<T>> _logger;
        
 
-        public GenericRepository(ShipingContext context, ILogger<GenericRepository<T>> logger)
+        public GenericRepository(ShipingContext context, 
+            ILogger<GenericRepository<T>> logger)
         {
             _context = context;
             _dbSet = _context.Set<T>();

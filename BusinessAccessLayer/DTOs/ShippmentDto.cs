@@ -18,6 +18,12 @@ namespace Domains.DTOs
         public Guid ShippingTypeId { get; set; }
         public string? ShippingTypeName { get; set; } // For display
         
+        public UserSenderDto? Sender { get; set; }
+        public UserReceiverDto? Receiver { get; set; }
+        public ShippingTypeDto? ShippingType { get; set; }
+        public SubscriptionPackageDto? SubscriptionPackage { get; set; }
+        public PaymentMethodDto? PaymentMethod { get; set; }
+
         public Guid? PaymentMethodId { get; set; }
         public string? PaymentMethodName { get; set; } // For display
         
