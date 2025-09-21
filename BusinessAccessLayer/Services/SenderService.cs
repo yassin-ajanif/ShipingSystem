@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class SenderService : GenericService<TbUserSebder, UserSenderDto>
+    public class SenderService : GenericService<TbUserSebder, UserSenderDto>, ISenderService
     {
         public SenderService(IGenericRepository<TbUserSebder> repository, 
-            IMapper mapper, IUserService userService) : base(repository, mapper, userService)
+            IMapper mapper, IUserService userService,IGenericUnitOfWork genericUnitOfWork) 
+            : base(genericUnitOfWork, mapper, userService )
         {
         }
     }

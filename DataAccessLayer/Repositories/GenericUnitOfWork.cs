@@ -30,14 +30,16 @@ namespace DataAccessLayer.Repositories
         }
         public async Task RollbackAsync() => await _tx?.RollbackAsync()!;
 
-        public Task CommitTransactionAsync()
+        public async Task CommitTransactionAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
+            if (_tx is not null) await _tx.CommitAsync();
         }
 
-        public ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
-            throw new NotImplementedException();
+            if (_tx is not null) await _tx.DisposeAsync();
+            await _context.DisposeAsync();
         }
 
         public IGenericRepository<T> Repository<T>() where T : Base

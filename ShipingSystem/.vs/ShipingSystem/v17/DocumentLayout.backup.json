@@ -3,16 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\ShipingSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\repositories\\genericunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\shippingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\interfaces\\igenericunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\senderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\receiverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32A8EBBB-544A-4D37-997B-205356BE8940}|..\\Apis\\Apis.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32A8EBBB-544A-4D37-997B-205356BE8940}|..\\Apis\\Apis.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\apis\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\packagetypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\dtos\\usersenderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0A4E891-0985-427C-8E22-B73DE0EDE251}|..\\Domains\\Domains.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\domains\\tbusersebder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +37,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,59 +56,125 @@
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Interfaces\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "..\\DataAccessLayer\\Interfaces\\IGenericRepository.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Interfaces\\IGenericRepository.cs",
-              "RelativeToolTip": "..\\DataAccessLayer\\Interfaces\\IGenericRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "TbUserSebder.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\TbUserSebder.cs",
+              "RelativeDocumentMoniker": "..\\Domains\\TbUserSebder.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\TbUserSebder.cs",
+              "RelativeToolTip": "..\\Domains\\TbUserSebder.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T13:30:33.719Z",
+              "WhenOpened": "2025-09-21T15:44:02.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserSenderDto.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\UserSenderDto.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\DTOs\\UserSenderDto.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\UserSenderDto.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\DTOs\\UserSenderDto.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T15:43:26.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PackageTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\PackageTypeService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\PackageTypeService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\PackageTypeService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\PackageTypeService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAMwBQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T14:18:03.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\UserService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\UserService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T12:51:52.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "..\\Apis\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "..\\Apis\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwBMAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T12:39:20.747Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Apis\\Program.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Program.cs",
-              "RelativeToolTip": "..\\Apis\\Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "GenericService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\GenericService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\GenericService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\GenericService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\GenericService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T12:20:27.595Z"
+              "WhenOpened": "2025-09-21T11:43:22.644Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GenericUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\GenericUnitOfWork.cs",
-              "RelativeDocumentMoniker": "..\\DataAccessLayer\\Repositories\\GenericUnitOfWork.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\GenericUnitOfWork.cs*",
-              "RelativeToolTip": "..\\DataAccessLayer\\Repositories\\GenericUnitOfWork.cs*",
-              "ViewState": "AgIAABQAAAAAAAAAAAAgwCUAAABJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ReceiverService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ReceiverService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\ReceiverService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ReceiverService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\ReceiverService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAApwBEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T12:17:01.997Z",
+              "WhenOpened": "2025-09-21T11:24:59.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IGenericUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Interfaces\\IGenericUnitOfWork.cs",
-              "RelativeDocumentMoniker": "..\\DataAccessLayer\\Interfaces\\IGenericUnitOfWork.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Interfaces\\IGenericUnitOfWork.cs",
-              "RelativeToolTip": "..\\DataAccessLayer\\Interfaces\\IGenericUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
+              "Title": "SenderService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\SenderService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\SenderService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\SenderService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\SenderService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAApwBEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T12:15:08.177Z",
+              "WhenOpened": "2025-09-21T11:21:36.885Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShippingService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T09:28:44.046Z",
+              "EditorCaption": ""
             }
           ]
         }

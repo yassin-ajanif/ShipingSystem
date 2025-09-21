@@ -13,7 +13,10 @@ namespace BusinessAccessLayer.Services
 {
     public class ShippingTypeService : GenericService<TbShippingType, ShippingTypeDto>
     {
-        public ShippingTypeService(IGenericRepository<TbShippingType> repository, IMapper mapper, IUserService userService) : base(repository, mapper, userService)
+        public ShippingTypeService(IGenericRepository<TbShippingType> repository, 
+            IMapper mapper, IUserService userService
+            ,IGenericUnitOfWork genericUnitOfWork) : 
+            base(genericUnitOfWork, mapper, userService )
         {
         }
     }

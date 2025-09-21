@@ -7,15 +7,15 @@ namespace Domains.DTOs
     {
         
         [Required]
-        public Guid SenderId { get; set; }
+        public Guid? SenderId { get; set; }
         public string? SenderName { get; set; } // For display
         
         [Required]
-        public Guid ReceiverId { get; set; }
+        public Guid? ReceiverId { get; set; }
         public string? ReceiverName { get; set; } // For display
         
         [Required]
-        public Guid ShippingTypeId { get; set; }
+        public Guid? ShippingTypeId { get; set; }
         public string? ShippingTypeName { get; set; } // For display
         
         public UserSenderDto? Sender { get; set; }

@@ -16,11 +16,22 @@ namespace BusinessAccessLayer.Services
         private readonly IGenericRepository<T> _repository;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public GenericService(IGenericRepository<T> repository, IMapper mapper, IUserService userService)
+        private readonly IGenericUnitOfWork _genericUnitOfWork;
+        public GenericService(IGenericRepository<T> repository,
+            IMapper mapper, IUserService userService)
         {
             _repository = repository;   
             _mapper = mapper;
             _userService = userService;
+        }
+
+        public GenericService(IGenericUnitOfWork genericUnitOfWork,
+            IMapper mapper, IUserService userService)
+        {
+            _repository = genericUnitOfWork.Repository<T>();
+            _mapper = mapper;
+            _userService = userService;
+            _genericUnitOfWork = genericUnitOfWork;
         }
 
         public async Task<IEnumerable<DTO>> GetAllAsync()

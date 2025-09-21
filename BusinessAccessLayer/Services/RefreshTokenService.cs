@@ -20,7 +20,8 @@ namespace BusinessAccessLayer.Services
             ( 
               IGenericRepository<TbRefreshToken> repository,
               IMapper mapper,
-              IUserService userService
+              IUserService userService,
+              IGenericUnitOfWork genericUnitOfWork
             ) : base(repository,mapper,userService)
         {
             _mapper = mapper;

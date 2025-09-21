@@ -13,7 +13,9 @@ namespace BusinessAccessLayer.Services
 {
     public class PaymentPackageService : GenericService<TbPaymentMethod, PaymentMethodDto>
     {
-        public PaymentPackageService(IGenericRepository<TbPaymentMethod> repository, IMapper mapper, IUserService userService) : base(repository, mapper, userService)
+        public PaymentPackageService(IGenericRepository<TbPaymentMethod> repository, IMapper mapper, 
+            IUserService userService, IGenericUnitOfWork genericUnitOfWork) :
+            base(genericUnitOfWork, mapper, userService)
         {
         }
     }

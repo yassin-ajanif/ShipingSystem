@@ -18,8 +18,10 @@ namespace BusinessAccessLayer.Services
         private readonly SignInManager<applicationUser> _signInManager;
         private readonly IHttpContextAccessor _httpContextAcessor;
 
-        public UserService(UserManager<applicationUser> userManager, 
-            SignInManager<applicationUser> signInManager, IHttpContextAccessor httpContextAccessor)
+        public UserService(
+            UserManager<applicationUser> userManager, 
+            SignInManager<applicationUser> signInManager,
+            IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;

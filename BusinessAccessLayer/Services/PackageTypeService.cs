@@ -14,7 +14,8 @@ namespace BusinessAccessLayer.Services
     public class PackageTypeService : GenericService<TbSubscriptionPackage, SubscriptionPackageDto>
     {
         public PackageTypeService(IGenericRepository<TbSubscriptionPackage> repository, 
-            IMapper mapper, IUserService userService) : base(repository, mapper, userService)
+            IMapper mapper, IUserService userService,IGenericUnitOfWork genericUnitOfWork)
+            : base(genericUnitOfWork, mapper, userService )
         {
         }
     }

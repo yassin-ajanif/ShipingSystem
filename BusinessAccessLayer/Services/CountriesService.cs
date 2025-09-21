@@ -15,8 +15,8 @@ namespace BusinessAccessLayer.Services
     {
         //IGenericRepository<T> repository, IMapper mapper
         public CountriesService(IGenericRepository<TbCountry> repository, IMapper mapper,
-            IUserService userService) 
-            : base(repository, mapper, userService)
+            IUserService userService,IGenericUnitOfWork genericUnitOfWork) 
+            : base(genericUnitOfWork, mapper, userService)
         {
         }
     }

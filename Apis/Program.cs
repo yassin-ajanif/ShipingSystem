@@ -83,6 +83,10 @@ builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<IRefreshTokenService,RefreshTokenService>();
+builder.Services.AddScoped<IGenericUnitOfWork,GenericUnitOfWork>();
+builder.Services.AddScoped<IShippingService,ShippingService>();
+builder.Services.AddScoped<IRecieverService,ReceiverService>();
+builder.Services.AddScoped<ISenderService,SenderService>();
 
 // Learn more about configuring Swagger/OpenAPI 
 builder.Services.AddEndpointsApiExplorer();

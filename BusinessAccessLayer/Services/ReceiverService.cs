@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class ReceiverService : GenericService<TbUserReceiver, UserDto>
+    public class ReceiverService : GenericService<TbUserReceiver, UserDto>,IRecieverService
     {
         public ReceiverService(IGenericRepository<TbUserReceiver> repository, 
-            IMapper mapper, IUserService userService) : base(repository, mapper, userService)
+            IMapper mapper, IUserService userService,IGenericUnitOfWork genericUnitOfWork) :
+            base(genericUnitOfWork, mapper, userService)
         {
         }
     }

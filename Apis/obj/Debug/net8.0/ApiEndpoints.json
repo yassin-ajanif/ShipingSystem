@@ -53,22 +53,28 @@
   },
   {
     "ContainingType": "Apis.Controllers.HomeController",
-    "Method": "GetDemoData",
-    "RelativePath": "api/Home/demo-data",
-    "HttpMethod": "GET",
+    "Method": "CreateShipment",
+    "RelativePath": "api/Home",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Apis.Controllers.HomeController",
-    "Method": "GetSampleShipment",
-    "RelativePath": "api/Home/sample-shipment",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
+    "Parameters": [
+      {
+        "Name": "shippmentDto",
+        "Type": "Domains.DTOs.ShippmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Apis.Models.ApiResponse\u00601[[Domains.DTOs.ShippmentDto, BusinessAccessLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
