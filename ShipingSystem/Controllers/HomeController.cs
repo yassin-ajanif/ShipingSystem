@@ -6,7 +6,7 @@ using DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Interfaces;
 using BusinessAccessLayer.Interfaces;
-using Domains.DTOs;
+using BusinessAccessLayer.DTOs;
 
 namespace ShipingSystem.Controllers
 {

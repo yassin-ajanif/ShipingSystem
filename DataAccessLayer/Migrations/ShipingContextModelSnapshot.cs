@@ -386,15 +386,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CurrentState")
                         .HasColumnType("int");
 
-                    b.Property<double>("Height")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Length")
-                        .HasColumnType("float");
-
-                    b.Property<decimal>("PackageValue")
-                        .HasColumnType("decimal(8, 4)");
-
                     b.Property<Guid?>("PaymentMethodId")
                         .HasColumnType("uniqueidentifier");
 
@@ -410,10 +401,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("ShippingDate")
                         .HasColumnType("datetime");
 
-                    b.Property<decimal>("ShippingRate")
-                        .HasColumnType("decimal(8, 4)");
-
                     b.Property<Guid>("ShippingTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SubscriptionPackageID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double?>("TrackingNumber")
@@ -425,15 +416,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime");
 
-                    b.Property<Guid?>("UserSubscriptionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Width")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PaymentMethodId");
@@ -443,6 +425,8 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("SenderId");
 
                     b.HasIndex("ShippingTypeId");
+
+                    b.HasIndex("SubscriptionPackageID");
 
                     b.ToTable("TbShippments");
                 });
@@ -845,6 +829,12 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_TbShippments_TbShippingTypes");
 
+                    b.HasOne("Domains.TbSubscriptionPackage", "SubscriptionPackage")
+                        .WithMany()
+                        .HasForeignKey("SubscriptionPackageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("PaymentMethod");
 
                     b.Navigation("Receiver");
@@ -852,6 +842,8 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Sender");
 
                     b.Navigation("ShippingType");
+
+                    b.Navigation("SubscriptionPackage");
                 });
 
             modelBuilder.Entity("Domains.TbShippmentStatus", b =>

@@ -2,7 +2,7 @@
 using BusinessAccessLayer.Interfaces;
 using DataAccessLayer.Interfaces;
 using Domains;
-using Domains.DTOs;
+using BusinessAccessLayer.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

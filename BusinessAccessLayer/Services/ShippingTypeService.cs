@@ -2,7 +2,7 @@
 using BusinessAccessLayer.Interfaces;
 using DataAccessLayer.Interfaces;
 using Domains;
-using Domains.DTOs;
+using BusinessAccessLayer.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class ShippingTypeService : GenericService<TbShippingType, ShippingTypeDto>
+    public class ShippingTypeService : GenericService<TbShippingType, ShippingTypeDto>,IShippingTypeService
     {
         public ShippingTypeService(IGenericRepository<TbShippingType> repository, 
             IMapper mapper, IUserService userService

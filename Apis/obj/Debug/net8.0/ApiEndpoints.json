@@ -60,14 +60,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "shippmentDto",
-        "Type": "Domains.DTOs.ShippmentDto",
+        "Name": "createShippingRequest",
+        "Type": "BusinessAccessLayer.DTOs.Shipment.CreateShippingRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Apis.Models.ApiResponse\u00601[[Domains.DTOs.ShippmentDto, BusinessAccessLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Apis.Models.ApiResponse\u00601[[BusinessAccessLayer.DTOs.Shipment.CreateShippingRequest, BusinessAccessLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

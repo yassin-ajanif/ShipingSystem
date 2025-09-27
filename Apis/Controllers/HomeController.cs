@@ -1,8 +1,10 @@
 ﻿using Apis.Models;
+using BusinessAccessLayer.DTOs.Shipment;
 using BusinessAccessLayer.Interfaces;
-using Domains.DTOs;
+using DataAccessLayer.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.ConstrainedExecution;
 
 namespace Apis.Controllers
 {
@@ -17,17 +19,32 @@ namespace Apis.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<ShippmentDto>>> CreateShipment(ShippmentDto shippmentDto)
+        public async Task<ActionResult<ApiResponse<CreateShippingRequest>>> CreateShipment(CreateShippingRequest createShippingRequest)
         {
-            var createdShipment = await _shippingService.CreateShippment(shippmentDto);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var response = new ApiResponse<ShippmentDto>
+            try {
+
+
+            var createdShipment = await _shippingService.CreateShippment(createShippingRequest);
+
+             var response = ApiResponse<CreateShippingRequest>.SuccessResponse(createdShipment, "Shipment created successfully");
+                return Ok(response);
+            }
+
+            catch (CustomException cex)
             {
-                Success = true,
-                Message = "Shipment created successfully",
-                Data = shippmentDto // In a real scenario, this would be the created shipment with its ID and other details
-            };
-            return Ok(response);
+                return StatusCode(500, ApiResponse<CreateShippingRequest>.
+                    FailResponse("Data AccessExcetpion",new List<string>() {cex.Message }));
+            }
+            catch (Exception ex) {
+
+                return StatusCode(500, ApiResponse<CreateShippingRequest>.
+                        FailResponse("GeneralException", new List<string>() { ex.Message }));
+            }
+
+            
+            
         }
 
     }

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domains.DTOs
+namespace BusinessAccessLayer.DTOs
 {
     public class SettingDto : BaseDto
     {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hTqmGIxPreE=",
+  "dgSpecHash": "f37KAXgrMjs=",
   "success": true,
   "projectFilePath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj",
   "expectedPackageFiles": [
@@ -57,9 +57,13 @@
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.35.0\\microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.0.1\\microsoft.identitymodel.tokens.8.0.1.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.net.http.headers\\2.3.0\\microsoft.net.http.headers.2.3.0.nupkg.sha512",
+    "C:\\Users\\yassin\\.nuget\\packages\\microsoft.openapi\\1.6.25\\microsoft.openapi.1.6.25.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\yassin\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\9.0.4\\swashbuckle.aspnetcore.annotations.9.0.4.nupkg.sha512",
+    "C:\\Users\\yassin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.4\\swashbuckle.aspnetcore.swagger.9.0.4.nupkg.sha512",
+    "C:\\Users\\yassin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.4\\swashbuckle.aspnetcore.swaggergen.9.0.4.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",

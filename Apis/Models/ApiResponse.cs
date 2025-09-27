@@ -7,6 +7,7 @@
         public T? Data { get; set; }
         public List<string>? Errors { get; set; }
 
+        private ApiResponse() { }
         public static ApiResponse<T> SuccessResponse(T data, string message = "")
         {
             return new ApiResponse<T>

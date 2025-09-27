@@ -144,9 +144,9 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
         {
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.PackageValue).HasColumnType("decimal(8, 4)");
+            
             entity.Property(e => e.ShippingDate).HasColumnType("datetime");
-            entity.Property(e => e.ShippingRate).HasColumnType("decimal(8, 4)");
+          
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.PaymentMethod).WithMany(p => p.TbShippments)

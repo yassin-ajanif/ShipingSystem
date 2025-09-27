@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Exceptions
 {
-    internal class CustomException : Exception
+    public class CustomException : Exception
     {
 
         public CustomException(Exception ex,string customMessage,ILogger logger) : base(customMessage)

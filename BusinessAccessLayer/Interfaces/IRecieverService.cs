@@ -1,5 +1,6 @@
 ﻿using BusinessAccessLayer.DTOs;
 using Domains;
+using BusinessAccessLayer.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Interfaces
 {
-    public interface IRecieverService : IGenericService<TbUserReceiver, UserDto>
+    public interface IRecieverService : IGenericService<TbUserReceiver, UserReceiverDto>
     {
+       
     }
 }

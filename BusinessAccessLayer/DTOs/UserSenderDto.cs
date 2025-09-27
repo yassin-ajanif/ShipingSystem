@@ -1,28 +1,35 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domains.DTOs
+namespace BusinessAccessLayer.DTOs
 {
     public class UserSenderDto : BaseDto
     {
         
         [Required]
         [StringLength(200)]
+        [DefaultValue("")]
         public string SenderName { get; set; } = string.Empty;
         
         [StringLength(200)]
         [EmailAddress]
+        [DefaultValue("")]
         public string? Email { get; set; }
         
         [StringLength(200)]
+        [DefaultValue("")]
         public string? Phone { get; set; }
         
         [StringLength(500)]
+        [DefaultValue("")]
         public string? Address { get; set; }
         
         [Required]
+        [DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")]
         public Guid CityId { get; set; }
-        
+
+        [DefaultValue("")]
         public string? CityName { get; set; } // For display purposes
       
     }

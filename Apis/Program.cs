@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using System.Text;
@@ -85,8 +86,12 @@ builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<IRefreshTokenService,RefreshTokenService>();
 builder.Services.AddScoped<IGenericUnitOfWork,GenericUnitOfWork>();
 builder.Services.AddScoped<IShippingService,ShippingService>();
+builder.Services.AddScoped<IShippingTypeService,ShippingTypeService>();
 builder.Services.AddScoped<IRecieverService,ReceiverService>();
 builder.Services.AddScoped<ISenderService,SenderService>();
+
+builder.Services.AddScoped<ISubscriptionPackageService,SubscriptionPackageService>();
+builder.Services.AddScoped<IPaymentMethodService,PaymentPackageService>();
 
 // Learn more about configuring Swagger/OpenAPI 
 builder.Services.AddEndpointsApiExplorer();
@@ -109,18 +114,19 @@ using (var scope = app.Services.CreateScope())
     await ContextConfig.SeedDataAsync(dbContext, userManager, roleManager);
 }
 
-app.UseAuthentication(); // must be before UseAuthorization
-app.UseAuthorization();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    app.UseSwagger(c=> c.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0);
+   
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication(); // must be before UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers();

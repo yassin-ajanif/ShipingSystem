@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "Apis",
     "version": "1.0"
@@ -100,17 +100,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ShippmentDto"
+                "$ref": "#/components/schemas/CreateShippingRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ShippmentDto"
+                "$ref": "#/components/schemas/CreateShippingRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ShippmentDto"
+                "$ref": "#/components/schemas/CreateShippingRequest"
               }
             }
           }
@@ -121,17 +121,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShippmentDtoApiResponse"
+                  "$ref": "#/components/schemas/CreateShippingRequestApiResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShippmentDtoApiResponse"
+                  "$ref": "#/components/schemas/CreateShippingRequestApiResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShippmentDtoApiResponse"
+                  "$ref": "#/components/schemas/CreateShippingRequestApiResponse"
                 }
               }
             }
@@ -142,6 +142,80 @@
   },
   "components": {
     "schemas": {
+      "CreateShippingRequest": {
+        "type": "object",
+        "properties": {
+          "senderId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000",
+            "nullable": true
+          },
+          "sender": {
+            "$ref": "#/components/schemas/UserSenderDto"
+          },
+          "receiverId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000",
+            "nullable": true
+          },
+          "receiver": {
+            "$ref": "#/components/schemas/UserReceiverDto"
+          },
+          "shippingTypeId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000",
+            "nullable": true
+          },
+          "shippingType": {
+            "$ref": "#/components/schemas/ShippingTypeDto"
+          },
+          "paymentMethodId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000",
+            "nullable": true
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/PaymentMethodDto"
+          },
+          "subscriptionPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000",
+            "nullable": true
+          },
+          "subscriptionPackage": {
+            "$ref": "#/components/schemas/SubscriptionPackageDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateShippingRequestApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CreateShippingRequest"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginDto": {
         "type": "object",
         "properties": {
@@ -161,18 +235,21 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "paymentMethodAName": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "paymentMethodEName": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           }
         },
@@ -183,121 +260,21 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "shippingTypeAName": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "shippingTypeEName": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShippmentDto": {
-        "required": [
-          "receiverId",
-          "senderId",
-          "shippingTypeId"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "senderId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "senderName": {
-            "type": "string",
-            "nullable": true
-          },
-          "receiverId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "receiverName": {
-            "type": "string",
-            "nullable": true
-          },
-          "shippingTypeId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "shippingTypeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "sender": {
-            "$ref": "#/components/schemas/UserSenderDto"
-          },
-          "receiver": {
-            "$ref": "#/components/schemas/UserReceiverDto"
-          },
-          "shippingType": {
-            "$ref": "#/components/schemas/ShippingTypeDto"
-          },
-          "subscriptionPackage": {
-            "$ref": "#/components/schemas/SubscriptionPackageDto"
-          },
-          "paymentMethod": {
-            "$ref": "#/components/schemas/PaymentMethodDto"
-          },
-          "paymentMethodId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "paymentMethodName": {
-            "type": "string",
-            "nullable": true
-          },
-          "packageValue": {
-            "minimum": 0,
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "shippingRate": {
-            "minimum": 0,
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "shippingDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShippmentDtoApiResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "data": {
-            "$ref": "#/components/schemas/ShippmentDto"
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "default": "",
             "nullable": true
           }
         },
@@ -311,17 +288,20 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "packageName": {
             "maxLength": 200,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "price": {
             "minimum": 0,
             "type": "number",
             "format": "double",
+            "default": 0,
             "nullable": true
           },
           "durationInDays": {
@@ -329,12 +309,14 @@
             "minimum": 1,
             "type": "integer",
             "format": "int32",
+            "default": 0,
             "nullable": true
           },
           "description": {
             "maxLength": 1000,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           }
         },
@@ -345,7 +327,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "email": {
             "type": "string",
@@ -391,38 +374,45 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "receiverName": {
             "maxLength": 200,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "email": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
             "format": "email",
+            "default": "",
             "nullable": true
           },
           "phone": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "address": {
             "maxLength": 500,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "cityId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "cityName": {
             "type": "string",
+            "default": "",
             "nullable": true
           }
         },
@@ -437,38 +427,45 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "senderName": {
             "maxLength": 200,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "email": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
             "format": "email",
+            "default": "",
             "nullable": true
           },
           "phone": {
             "maxLength": 200,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "address": {
             "maxLength": 500,
             "minLength": 0,
             "type": "string",
+            "default": "",
             "nullable": true
           },
           "cityId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "cityName": {
             "type": "string",
+            "default": "",
             "nullable": true
           }
         },

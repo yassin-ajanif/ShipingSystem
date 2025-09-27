@@ -1,4 +1,4 @@
-﻿using Domains.DTOs;
+﻿using BusinessAccessLayer.DTOs.Shipment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Interfaces
 {
-    public interface IShippingService
+    public interface IShippingService 
     {
-        public Task<ShippmentDto> CreateShippment(ShippmentDto shippmentDto);
+        public Task<CreateShippingRequest> CreateShippment(CreateShippingRequest shippmentDto);
     }
 }

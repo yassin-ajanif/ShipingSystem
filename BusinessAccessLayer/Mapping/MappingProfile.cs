@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using BusinessAccessLayer.DTOs;
 using Domains;
-using Domains.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessAccessLayer.DTOs.Shipment;
 
 namespace BusinessAccessLayer.Mapping
 {
@@ -28,7 +28,8 @@ namespace BusinessAccessLayer.Mapping
             CreateMap<TbSubscriptionPackage, SubscriptionPackageDto>().ReverseMap();
             CreateMap<TbUserSubscription, UserSubscriptionDto>().ReverseMap();
             CreateMap<TbSetting, SettingDto>().ReverseMap();
-    
+            CreateMap<CreateShippingRequest, ShippmentDto>().ReverseMap();
+
         }
     }
 }
