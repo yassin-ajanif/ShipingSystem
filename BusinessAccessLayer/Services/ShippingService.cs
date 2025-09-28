@@ -9,7 +9,7 @@ using BusinessAccessLayer.DTOs.Shipment;
 
 namespace BusinessAccessLayer.Services
 {
-    public class ShippingService : GenericService<TbShippment, ShippmentDto>, IShippingService
+    public class ShippingService : GenericService<TbShippment, ShipmentDataToSendToDbDTO>, IShippingService
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<TbShippment> _repository;
@@ -49,23 +49,38 @@ namespace BusinessAccessLayer.Services
             _paymentMethodService = paymentMethodService;
         }
 
-        public async Task<CreateShippingRequest> CreateShippment(CreateShippingRequest shippmentDto)
+        public async Task<ShippingResponse> CreateShippment(CreateShippingRequest shippmentDto)
         {
             var mappedShipmenDto = _mapper.Map<ShippmentDto>(shippmentDto);
             await _genericUnitOfWork.BeginTransactionAsync();
 
             try
             {
-             mappedShipmenDto.SenderId = await AddOrGetSenderIdAsync(mappedShipmenDto.SenderId, mappedShipmenDto.Sender);
-             mappedShipmenDto.ReceiverId = await AddOrGetReceiverIdAsync(mappedShipmenDto.ReceiverId, mappedShipmenDto.Receiver);
-             mappedShipmenDto.ShippingTypeId = await AddOrGetShippingTypeIdAsync(mappedShipmenDto.ShippingTypeId, mappedShipmenDto.ShippingType);
-             mappedShipmenDto.SubscriptionPackageID = await AddOrGetSubscriptionPackageIdAsync(mappedShipmenDto.SubscriptionPackageID, shippmentDto.SubscriptionPackage);
-             mappedShipmenDto.PaymentMethodId = await AddOrGetPaymentMethodIdAsync(mappedShipmenDto.PaymentMethodId, mappedShipmenDto.PaymentMethod);
+             mappedShipmenDto.Sender.Id = 
+                    await AddOrGetSenderIdAsync(mappedShipmenDto.SenderId, mappedShipmenDto.Sender);
 
-            await AddAsync(mappedShipmenDto); 
-            await _genericUnitOfWork.CommitTransactionAsync();
+             mappedShipmenDto.Receiver.Id =
+                    await AddOrGetReceiverIdAsync(mappedShipmenDto.ReceiverId, mappedShipmenDto.Receiver);
 
-            return shippmentDto;
+             mappedShipmenDto.ShippingType.Id =
+                    await AddOrGetShippingTypeIdAsync(mappedShipmenDto.ShippingTypeId, mappedShipmenDto.ShippingType);
+
+             mappedShipmenDto.SubscriptionPackage.Id = 
+                    await AddOrGetSubscriptionPackageIdAsync(mappedShipmenDto.SubscriptionPackageID, shippmentDto.SubscriptionPackage);
+
+             mappedShipmenDto.PaymentMethod.Id = 
+                    await AddOrGetPaymentMethodIdAsync(mappedShipmenDto.PaymentMethodId, mappedShipmenDto.PaymentMethod);
+
+             var shipmentDataToSendToDb = _mapper.Map<ShipmentDataToSendToDbDTO>(mappedShipmenDto);
+
+             var shipment = await AddAsync(shipmentDataToSendToDb); 
+                mappedShipmenDto.Id = shipment.Id;
+
+             var successShipmentDataToReturn = _mapper.Map<ShippingResponse>(mappedShipmenDto);
+
+                await _genericUnitOfWork.CommitTransactionAsync();
+
+                return successShipmentDataToReturn;
 
             }
             catch (Exception ex)

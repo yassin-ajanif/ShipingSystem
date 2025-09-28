@@ -51,15 +51,17 @@ namespace BusinessAccessLayer.Services
 
         public async Task<DTO> AddAsync(DTO entity)
         {
-            
-            // Map DTO to Entity for repository
+
+            //var tType = typeof(T);
+
             var entityToAdd = _mapper.Map<DTO,T>(entity);
             entityToAdd.CreatedDate = DateTime.Now;
             entityToAdd.CreatedBy = _userService.GetLoggedInUser();
             // Add to repository (returns Task, not Task<T>)
             var entityAdded =  await _repository.AddAsync(entityToAdd);
+            var entityAddedMappedToDto =  _mapper.Map<T, DTO>(entityAdded);
 
-            return entity;
+            return entityAddedMappedToDto;
         }
 
         public async Task<DTO> UpdateAsync(DTO entity)

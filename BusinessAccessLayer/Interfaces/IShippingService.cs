@@ -9,6 +9,6 @@ namespace BusinessAccessLayer.Interfaces
 {
     public interface IShippingService 
     {
-        public Task<CreateShippingRequest> CreateShippment(CreateShippingRequest shippmentDto);
+        public Task<ShippingResponse> CreateShippment(CreateShippingRequest shippmentDto);
     }
 }

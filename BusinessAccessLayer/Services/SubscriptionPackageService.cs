@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class SubscriptionPackageService : GenericService<TbShippingType, SubscriptionPackageDto>, ISubscriptionPackageService
+    public class SubscriptionPackageService : GenericService<TbSubscriptionPackage, SubscriptionPackageDto>, ISubscriptionPackageService
     {
-        public SubscriptionPackageService(IGenericRepository<TbShippingType> repository, IMapper mapper,
-            IUserService userService) : 
-            base(repository, mapper, userService)
+       
+        public SubscriptionPackageService(IGenericUnitOfWork genericUnitOfWork , IMapper mapper,
+            IUserService userService) :
+            base(genericUnitOfWork, mapper, userService)
         {
         }
     }

@@ -15,12 +15,13 @@ namespace BusinessAccessLayer.Services
     public class ReceiverService : GenericService<TbUserReceiver, UserReceiverDto>,
         IRecieverService
     {
-        public ReceiverService(IGenericRepository<TbUserReceiver> repository, 
-            IMapper mapper, IUserService userService,IGenericUnitOfWork genericUnitOfWork) :
+        
+        public ReceiverService(IGenericUnitOfWork genericUnitOfWork,
+            IMapper mapper, IUserService userService) :
             base(genericUnitOfWork, mapper, userService)
         {
         }
 
-        
+
     }
 }

@@ -145,7 +145,6 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             
-            entity.Property(e => e.ShippingDate).HasColumnType("datetime");
           
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 

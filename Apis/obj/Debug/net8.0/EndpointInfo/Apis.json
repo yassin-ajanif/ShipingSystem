@@ -281,9 +281,6 @@
         "additionalProperties": false
       },
       "SubscriptionPackageDto": {
-        "required": [
-          "packageName"
-        ],
         "type": "object",
         "properties": {
           "id": {
@@ -292,32 +289,32 @@
             "default": "00000000-0000-0000-0000-000000000000"
           },
           "packageName": {
-            "maxLength": 200,
-            "minLength": 0,
-            "type": "string",
-            "default": ""
-          },
-          "price": {
-            "minimum": 0,
-            "type": "number",
-            "format": "double",
-            "default": 0,
-            "nullable": true
-          },
-          "durationInDays": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
-            "nullable": true
-          },
-          "description": {
             "maxLength": 1000,
             "minLength": 0,
             "type": "string",
             "default": "",
             "nullable": true
+          },
+          "shippimentCount": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          "numberOfKiloMeters": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "number",
+            "format": "double",
+            "default": 1
+          },
+          "totalWeight": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "number",
+            "format": "double",
+            "default": 1
           }
         },
         "additionalProperties": false

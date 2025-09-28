@@ -28,7 +28,7 @@ namespace Apis.Controllers
 
             var createdShipment = await _shippingService.CreateShippment(createShippingRequest);
 
-             var response = ApiResponse<CreateShippingRequest>.SuccessResponse(createdShipment, "Shipment created successfully");
+             var response = ApiResponse<ShippingResponse>.SuccessResponse(createdShipment, "Shipment created successfully");
                 return Ok(response);
             }
 

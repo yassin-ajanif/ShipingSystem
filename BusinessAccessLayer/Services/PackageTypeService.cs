@@ -18,5 +18,11 @@ namespace BusinessAccessLayer.Services
             : base(genericUnitOfWork, mapper, userService )
         {
         }
+
+        public PackageTypeService(IGenericUnitOfWork genericUnitOfWork,
+            IMapper mapper, IUserService userService )
+            : base(genericUnitOfWork, mapper, userService)
+        {
+        }
     }
 }

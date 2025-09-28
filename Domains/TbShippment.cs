@@ -6,9 +6,6 @@ public partial class TbShippment : Base
 {
     public Guid Id { get; set; }
 
-    public DateTime ShippingDate { get; set; }
-
-
     public Guid SenderId { get; set; }
     public virtual TbUserSebder Sender { get; set; } = null!;
 

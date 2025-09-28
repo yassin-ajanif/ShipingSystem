@@ -13,9 +13,11 @@ namespace BusinessAccessLayer.Services
 {
     public class SenderService : GenericService<TbUserSebder, UserSenderDto>, ISenderService
     {
-        public SenderService(IGenericRepository<TbUserSebder> repository, 
-            IMapper mapper, IUserService userService,IGenericUnitOfWork genericUnitOfWork) 
-            : base(genericUnitOfWork, mapper, userService )
+      
+
+        public SenderService(IGenericUnitOfWork genericUnitOfWork,
+            IMapper mapper, IUserService userService)
+            : base(genericUnitOfWork, mapper, userService)
         {
         }
 
