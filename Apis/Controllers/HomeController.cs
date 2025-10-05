@@ -1,6 +1,7 @@
 ﻿using Apis.Models;
 using BusinessAccessLayer.DTOs.Shipment;
 using BusinessAccessLayer.Interfaces;
+using BusinessAccessLayer.Services;
 using DataAccessLayer.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,5 +48,10 @@ namespace Apis.Controllers
             
         }
 
+        [HttpGet]
+        public async Task<IActionResult> getAllShipment()
+        {
+            return StatusCode(200, await _shippingService.GetAllShipmentSummaries());
+        }
     }
 }

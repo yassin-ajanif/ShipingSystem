@@ -76,5 +76,15 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Apis.Controllers.HomeController",
+    "Method": "getAllShipment",
+    "RelativePath": "api/Home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

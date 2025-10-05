@@ -2,6 +2,7 @@
 using BusinessAccessLayer.DTOs;
 using BusinessAccessLayer.DTOs.Shipment;
 using Domains;
+using Domains.Views;
 using System;
 
 namespace BusinessAccessLayer.Mapping
@@ -31,6 +32,7 @@ namespace BusinessAccessLayer.Mapping
 
             // If you really need this mapping (entity <-> flat DB DTO), keep it:
             CreateMap<TbShippment, ShipmentDataToSendToDbDTO>().ReverseMap();
+            CreateMap<VwShipmentSummary, VwShipmentSummaryDTO>().ReverseMap();
         }
 
         private void RegisterShipmentMaps()

@@ -3,28 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\ShipingSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\shippingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32A8EBBB-544A-4D37-997B-205356BE8940}|..\\Apis\\Apis.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\apis\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\dtos\\shipment\\shippingresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\repositories\\viewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\interfaces\\ishippingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\shippingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\dtos\\shipment\\vwshipmentsummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\services\\genericservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A0A4E891-0985-427C-8E22-B73DE0EDE251}|..\\Domains\\Domains.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\domains\\views\\vwshipmentsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\dtos\\shipment\\shipmentdatatosendtodbdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32A8EBBB-544A-4D37-997B-205356BE8940}|..\\Apis\\Apis.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\apis\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B19760F-B70D-4C4A-A516-999FA7B5BA83}|..\\BusinessAccessLayer\\BusinessAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\businessaccesslayer\\dtos\\shipment\\shippmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32A8EBBB-544A-4D37-997B-205356BE8940}|..\\Apis\\Apis.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29AD3E62-9EAE-41DE-9D2A-1D2E9246A8D5}|..\\DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\yassin\\source\\repos\\shippingsystemwebsite\\dataaccesslayer\\shipingcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +40,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -53,10 +59,6 @@
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MappingProfile.cs",
@@ -64,101 +66,122 @@
               "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Mapping\\MappingProfile.cs",
               "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Mapping\\MappingProfile.cs",
               "RelativeToolTip": "..\\BusinessAccessLayer\\Mapping\\MappingProfile.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAmwEAAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T17:31:19.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T14:28:02.971Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "VwShipmentSummaryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\VwShipmentSummaryDTO.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\DTOs\\Shipment\\VwShipmentSummaryDTO.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\VwShipmentSummaryDTO.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\DTOs\\Shipment\\VwShipmentSummaryDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T14:26:59.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Apis\\Program.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Program.cs",
+              "RelativeToolTip": "..\\Apis\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T13:43:11.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "IShippingService.cs",
               "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Interfaces\\IShippingService.cs",
               "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Interfaces\\IShippingService.cs",
               "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Interfaces\\IShippingService.cs",
               "RelativeToolTip": "..\\BusinessAccessLayer\\Interfaces\\IShippingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T17:13:30.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ShippingResponse.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShippingResponse.cs",
-              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShippingResponse.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShippingResponse.cs",
-              "RelativeToolTip": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShippingResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T17:10:00.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GenericService.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\GenericService.cs",
-              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\GenericService.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\GenericService.cs",
-              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\GenericService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAkwDQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T16:44:55.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-04T13:41:10.055Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ShipmentDataToSendToDbDTO.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShipmentDataToSendToDbDTO.cs",
-              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShipmentDataToSendToDbDTO.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShipmentDataToSendToDbDTO.cs",
-              "RelativeToolTip": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShipmentDataToSendToDbDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T16:42:50.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ShippmentDto.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShippmentDto.cs",
-              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShippmentDto.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\DTOs\\Shipment\\ShippmentDto.cs",
-              "RelativeToolTip": "..\\BusinessAccessLayer\\DTOs\\Shipment\\ShippmentDto.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAwwCkAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T16:40:38.001Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ShippingService.cs",
-              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
-              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
-              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
-              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAtwFEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T16:01:02.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "..\\Apis\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Controllers\\HomeController.cs",
               "RelativeToolTip": "..\\Apis\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAD4vxwAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAwDYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T10:23:06.36Z",
+              "WhenOpened": "2025-10-04T13:34:54.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShippingService.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "RelativeDocumentMoniker": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "RelativeToolTip": "..\\BusinessAccessLayer\\Services\\ShippingService.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAowKIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:43:58.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "..\\DataAccessLayer\\Repositories\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "..\\DataAccessLayer\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:19:45.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ShipingContext.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\ShipingContext.cs",
+              "RelativeDocumentMoniker": "..\\DataAccessLayer\\ShipingContext.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\ShipingContext.cs",
+              "RelativeToolTip": "..\\DataAccessLayer\\ShipingContext.cs",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAgwAEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:00:00.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VwShipmentSummary.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Views\\VwShipmentSummary.cs",
+              "RelativeDocumentMoniker": "..\\Domains\\Views\\VwShipmentSummary.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Views\\VwShipmentSummary.cs",
+              "RelativeToolTip": "..\\Domains\\Views\\VwShipmentSummary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:56:41.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ViewRepository.cs",
+              "DocumentMoniker": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\ViewRepository.cs",
+              "RelativeDocumentMoniker": "..\\DataAccessLayer\\Repositories\\ViewRepository.cs",
+              "ToolTip": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\Repositories\\ViewRepository.cs",
+              "RelativeToolTip": "..\\DataAccessLayer\\Repositories\\ViewRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:33:21.239Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }

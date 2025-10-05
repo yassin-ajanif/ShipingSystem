@@ -6,6 +6,7 @@ using BusinessAccessLayer.DTOs;
 using System;
 using System.Threading.Tasks;
 using BusinessAccessLayer.DTOs.Shipment;
+using Domains.Views;
 
 namespace BusinessAccessLayer.Services
 {
@@ -23,8 +24,11 @@ namespace BusinessAccessLayer.Services
         private readonly ISubscriptionPackageService _subscriptionPackageService;
         private readonly IPaymentMethodService _paymentMethodService;
 
+        private readonly IViewRepository<VwShipmentSummary> _vwRepository;
+
         public ShippingService(
             IGenericRepository<TbShippment> repository,
+            IViewRepository<VwShipmentSummary> viewRepository,
             IMapper mapper,
             IUserService userService,
             IRecieverService recieverService,
@@ -47,6 +51,8 @@ namespace BusinessAccessLayer.Services
             _shippingTypeService = shippingTypeService;
             _subscriptionPackageService = subscriptionPackageService;
             _paymentMethodService = paymentMethodService;
+
+            _vwRepository = viewRepository;
         }
 
         public async Task<ShippingResponse> CreateShippment(CreateShippingRequest shippmentDto)
@@ -115,7 +121,6 @@ namespace BusinessAccessLayer.Services
             return receiverId.Value;
         }
 
-
         // ShippingType
         private async Task<Guid> AddOrGetShippingTypeIdAsync(Guid? shippingTypeId, ShippingTypeDto shippingTypeDto)
         {
@@ -154,5 +159,12 @@ namespace BusinessAccessLayer.Services
 
             return paymentMethodId.Value;
         }
+ 
+        public async Task<List<VwShipmentSummaryDTO>> GetAllShipmentSummaries()
+        {
+            var shipingSummaries = await _vwRepository.GetAll();
+            return _mapper.Map<List<VwShipmentSummaryDTO>>(shipingSummaries);
+        }
+
     }
 }

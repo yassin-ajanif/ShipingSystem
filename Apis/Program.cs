@@ -93,6 +93,8 @@ builder.Services.AddScoped<ISenderService,SenderService>();
 builder.Services.AddScoped<ISubscriptionPackageService,SubscriptionPackageService>();
 builder.Services.AddScoped<IPaymentMethodService,PaymentPackageService>();
 
+builder.Services.AddScoped(typeof(IViewRepository<>),typeof(ViewRepository<>));
+
 // Learn more about configuring Swagger/OpenAPI 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
