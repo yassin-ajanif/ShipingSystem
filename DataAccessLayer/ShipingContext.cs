@@ -46,7 +46,7 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
 
     public virtual DbSet<TbShippment> TbShippments { get; set; }
 
-    public virtual DbSet<TbShippmentStatus> TbShippmentStatuses { get; set; }
+    public virtual DbSet<TbStatusShipment> TbStatusShipments { get; set; }
 
     public virtual DbSet<TbSubscriptionPackage> TbSubscriptionPackages { get; set; }
 
@@ -127,6 +127,20 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
             entity.ToTable("TbSetting");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            // Seed data for shipping rates
+            entity.HasData(
+                new TbSetting 
+                { 
+                    Id = Guid.Parse("11111111-1111-1111-1111-111111111111"), 
+                    KiloMeterRate = 0.50, 
+                    KilooGramRate = 2.00,
+                    CreatedDate = new DateTime(2025, 1, 1),
+                    UpdatedDate = null
+                }
+            );
         });
 
         modelBuilder.Entity<TbShippingType>(entity =>
@@ -168,24 +182,26 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
                 .HasForeignKey(d => d.ShippingTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TbShippments_TbShippingTypes");
+
+            entity.HasOne(d => d.StatusShipment).WithMany(p => p.TbShippments)
+                .HasForeignKey(d => d.StatusShipmentId)
+                .HasConstraintName("FK_TbShippments_TbStatusShipments");
         });
 
-        modelBuilder.Entity<TbShippmentStatus>(entity =>
+        modelBuilder.Entity<TbStatusShipment>(entity =>
         {
-            entity.ToTable("TbShippmentStatus");
+            entity.Property(e => e.Id).HasColumnType("tinyint");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
 
-            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Carrier).WithMany(p => p.TbShippmentStatuses)
-                .HasForeignKey(d => d.CarrierId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TbShippmentStatus_TbCarriers");
-
-            entity.HasOne(d => d.Shippment).WithMany(p => p.TbShippmentStatuses)
-                .HasForeignKey(d => d.ShippmentId)
-                .HasConstraintName("FK_TbShippmentStatus_TbShippments");
+            // Seed data
+            entity.HasData(
+                new TbStatusShipment { Id = 1, Name = "Ongoing" },
+                new TbStatusShipment { Id = 2, Name = "Completed" },
+                new TbStatusShipment { Id = 3, Name = "Cancelled" },
+                new TbStatusShipment { Id = 4, Name = "Returned" }
+            );
         });
 
         modelBuilder.Entity<TbSubscriptionPackage>(entity =>
