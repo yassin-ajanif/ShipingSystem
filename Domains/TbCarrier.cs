@@ -10,5 +10,4 @@ public partial class TbCarrier : Base
 
    
 
-    public virtual ICollection<TbShippmentStatus> TbShippmentStatuses { get; set; } = new List<TbShippmentStatus>();
 }

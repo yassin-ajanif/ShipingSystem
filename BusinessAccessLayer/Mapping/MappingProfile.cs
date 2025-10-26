@@ -25,7 +25,6 @@ namespace BusinessAccessLayer.Mapping
             CreateMap<TbShippingType, ShippingTypeDto>().ReverseMap();
             CreateMap<TbUserReceiver, UserReceiverDto>().ReverseMap();
             CreateMap<TbUserSebder, UserSenderDto>().ReverseMap();
-            CreateMap<TbShippmentStatus, ShippmentStatusDto>().ReverseMap();
             CreateMap<TbSubscriptionPackage, SubscriptionPackageDto>().ReverseMap();
             CreateMap<TbUserSubscription, UserSubscriptionDto>().ReverseMap();
             CreateMap<TbSetting, SettingDto>().ReverseMap();
@@ -43,6 +42,9 @@ namespace BusinessAccessLayer.Mapping
 
             // If you need to map between entity and API DTO directly
             CreateMap<TbShippment, ShippmentDto>().ReverseMap();
+
+            // Mapping for cancel shipment functionality
+            CreateMap<TbShippment, UpdatedShipmentDto>();
 
             // ShippmentDto -> ShipmentDataToSendToDbDTO (flatten nested objects to IDs)
             CreateMap<ShippmentDto, ShipmentDataToSendToDbDTO>()

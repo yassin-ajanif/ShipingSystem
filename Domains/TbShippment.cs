@@ -26,6 +26,10 @@ public partial class TbShippment : Base
     public virtual TbSubscriptionPackage SubscriptionPackage { get; set; } = null!;
 
 
+    public byte StatusShipmentId { get; set; }
+    public virtual TbStatusShipment StatusShipment { get; set; } = null!;
+
+
     public double? TrackingNumber { get; set; }
     public Guid? ReferenceId { get; set; }
 
@@ -36,5 +40,4 @@ public partial class TbShippment : Base
     
     
 
-    public virtual ICollection<TbShippmentStatus> TbShippmentStatuses { get; set; } = new List<TbShippmentStatus>();
 }

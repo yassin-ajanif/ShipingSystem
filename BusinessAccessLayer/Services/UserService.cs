@@ -35,7 +35,17 @@ namespace BusinessAccessLayer.Services
         public  Guid GetLoggedInUser()
         {
             var userId =  _httpContextAcessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            return   Guid.Parse(userId);
+            
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new UnauthorizedAccessException("Invalid or not existing JWT token");
+            }
+            
+            if (!Guid.TryParse(userId, out var parsedUserId))
+            {
+                throw new UnauthorizedAccessException("Invalid user ID format in JWT token");
+            }
+            return parsedUserId;
         }
 
         public async Task<UserDto> GetUserByEmailAsync(string email)

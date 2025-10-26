@@ -62,7 +62,6 @@ C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\staticw
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\Apis.csproj.Up2Date
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\Apis.dll
 C:\Users\yassin\source\repos\ShippingSystemWebsite\Apis\obj\Debug\net8.0\refint\Apis.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj": {}
+    "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj": {
+    "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
+        "projectUniqueName": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
         "projectName": "Apis",
-        "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
+        "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
         "packagesPath": "C:\\Users\\yassin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\obj\\",
+        "outputPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj"
+              "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
+                "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj"
               }
             }
           }
@@ -104,14 +104,14 @@
         }
       }
     },
-    "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
+    "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj",
+        "projectUniqueName": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj",
         "projectName": "BusinessAccessLayer",
-        "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj",
+        "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\BusinessAccessLayer.csproj",
         "packagesPath": "C:\\Users\\yassin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\obj\\",
+        "outputPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\BusinessAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -132,8 +132,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj"
+              "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -187,14 +187,14 @@
         }
       }
     },
-    "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\yassin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\obj\\",
+        "outputPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -215,8 +215,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj": {
-                "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj"
+              "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj": {
+                "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj"
               }
             }
           }
@@ -278,14 +278,14 @@
         }
       }
     },
-    "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj": {
+    "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj",
+        "projectUniqueName": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj",
         "projectName": "Domains",
-        "projectPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj",
+        "projectPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\Domains.csproj",
         "packagesPath": "C:\\Users\\yassin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\obj\\",
+        "outputPath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Domains\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

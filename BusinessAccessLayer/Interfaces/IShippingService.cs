@@ -14,5 +14,13 @@ namespace BusinessAccessLayer.Interfaces
 
         public Task<List<VwShipmentSummaryDTO>> GetAllShipmentSummaries();
 
+        public Task<bool> CancelShipmentAsync(Guid shipmentId);
+
+        public Task<bool> ReturnShipmentAsync(Guid shipmentId);
+
+        public Task<byte> TrackShipmentStatusAsync(Guid shipmentId);
+
+        public Task<RateCalculationResponseDto> CalculateShippingRateAsync(RateCalculationRequestDto request);
+
     }
 }

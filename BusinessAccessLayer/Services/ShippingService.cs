@@ -25,6 +25,7 @@ namespace BusinessAccessLayer.Services
         private readonly IPaymentMethodService _paymentMethodService;
 
         private readonly IViewRepository<VwShipmentSummary> _vwRepository;
+        private readonly IGenericRepository<TbSetting> _settingsRepository;
 
         public ShippingService(
             IGenericRepository<TbShippment> repository,
@@ -37,7 +38,8 @@ namespace BusinessAccessLayer.Services
             // NEW: inject services
             IShippingTypeService shippingTypeService,
             ISubscriptionPackageService subscriptionPackageService,
-            IPaymentMethodService paymentMethodService
+            IPaymentMethodService paymentMethodService,
+            IGenericRepository<TbSetting> settingsRepository
         )
             : base(genericUnitOfWork, mapper, userService)
         {
@@ -51,6 +53,7 @@ namespace BusinessAccessLayer.Services
             _shippingTypeService = shippingTypeService;
             _subscriptionPackageService = subscriptionPackageService;
             _paymentMethodService = paymentMethodService;
+            _settingsRepository = settingsRepository;
 
             _vwRepository = viewRepository;
         }
@@ -164,6 +167,114 @@ namespace BusinessAccessLayer.Services
         {
             var shipingSummaries = await _vwRepository.GetAll();
             return _mapper.Map<List<VwShipmentSummaryDTO>>(shipingSummaries);
+        }
+
+        public async Task<bool> CancelShipmentAsync(Guid shipmentId)
+        {
+            // Get the shipment from database
+            var shipment = await _repository.GetByIdAsync(shipmentId);
+            
+            if (shipment == null)
+            {
+                throw new ArgumentException("Shipment not found", nameof(shipmentId));
+            }
+
+            // Check if shipment can be cancelled (only if status is "Ongoing" = 1)
+            if (shipment.StatusShipmentId != 1) // 1 = Ongoing
+            {
+                throw new InvalidOperationException("Shipment cannot be cancelled. Only ongoing shipments can be cancelled.");
+            }
+
+            // Update status to "Cancelled" (3)
+            shipment.StatusShipmentId = 3; // 3 = Cancelled
+            shipment.UpdatedDate = DateTime.Now;
+
+            // Save changes - single table update
+            await _repository.UpdateAsync(shipment);
+
+            return true;
+        }
+
+        public async Task<bool> ReturnShipmentAsync(Guid shipmentId)
+        {
+            // Get the shipment from database
+            var shipment = await _repository.GetByIdAsync(shipmentId);
+            
+            if (shipment == null)
+            {
+                throw new ArgumentException("Shipment not found", nameof(shipmentId));
+            }
+
+            // Check if shipment can be returned (only if status is "Ongoing" = 1 or "Cancelled" = 3)
+            if (shipment.StatusShipmentId != 1 && shipment.StatusShipmentId != 3)
+            {
+                throw new InvalidOperationException("Shipment cannot be returned. Only ongoing or cancelled shipments can be returned.");
+            }
+
+            // Update status to "Returned" (4)
+            shipment.StatusShipmentId = 4; // 4 = Returned
+            shipment.UpdatedDate = DateTime.Now;
+
+            // Save changes - single table update
+            await _repository.UpdateAsync(shipment);
+
+            return true;
+        }
+
+        public async Task<byte> TrackShipmentStatusAsync(Guid shipmentId)
+        {
+            // Get the shipment from database
+            var shipment = await _repository.GetByIdAsync(shipmentId);
+            
+            if (shipment == null)
+            {
+                throw new ArgumentException("Shipment not found", nameof(shipmentId));
+            }
+
+            // Return the status ID as byte
+            return shipment.StatusShipmentId;
+        }
+
+        private decimal CalculateDistance(string origin, string destination)
+        {
+            // TODO: Implement actual distance calculation
+            return 150.0m; // Constant 150 km for now
+        }
+
+        public async Task<RateCalculationResponseDto> CalculateShippingRateAsync(RateCalculationRequestDto request)
+        {
+            // Step 1: Calculate distance using the separate function
+            decimal distanceKm = CalculateDistance(request.Origin, request.Destination);
+
+            // Step 2: Query TbSetting by the seed GUID ID this is default guid id of rate values 
+            var settingId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var shippingRates = await _settingsRepository.GetByIdAsync(settingId);
+            
+            if (shippingRates == null)
+            {
+                throw new InvalidOperationException("Shipping rates not found in system settings.");
+            }
+
+            // Step 3: Get rates from the seed data
+            decimal ratePerKm = (decimal)shippingRates.KiloMeterRate!;
+            decimal ratePerKg = (decimal)shippingRates.KilooGramRate!;
+
+            // Step 4: Calculate costs
+            decimal distanceCost = distanceKm * ratePerKm;
+            decimal weightCost = request.WeightKg * ratePerKg;
+            decimal totalAmount = distanceCost + weightCost;
+
+            // Step 5: Build and return response
+            return new RateCalculationResponseDto
+            {
+                DistanceKm = distanceKm,
+                WeightKg = request.WeightKg,
+                RatePerKm = ratePerKm,
+                RatePerKg = ratePerKg,
+                DistanceCost = Math.Round(distanceCost, 2),
+                WeightCost = Math.Round(weightCost, 2),
+                TotalAmount = Math.Round(totalAmount, 2)
+            };
         }
 
     }

@@ -210,6 +210,40 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.PackageName).HasMaxLength(200);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            // Seed data for subscription packages
+            entity.HasData(
+                new TbSubscriptionPackage
+                {
+                    Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                    PackageName = "Basic",
+                    ShippimentCount = 10,
+                    NumberOfKiloMeters = 100.0,
+                    TotalWeight = 50.0,
+                    CreatedDate = new DateTime(2024, 1, 1),
+                    UpdatedDate = null
+                },
+                new TbSubscriptionPackage
+                {
+                    Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                    PackageName = "Pro",
+                    ShippimentCount = 50,
+                    NumberOfKiloMeters = 500.0,
+                    TotalWeight = 250.0,
+                    CreatedDate = new DateTime(2024, 1, 1),
+                    UpdatedDate = null
+                },
+                new TbSubscriptionPackage
+                {
+                    Id = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                    PackageName = "Enterprise",
+                    ShippimentCount = 200,
+                    NumberOfKiloMeters = 2000.0,
+                    TotalWeight = 1000.0,
+                    CreatedDate = new DateTime(2024, 1, 1),
+                    UpdatedDate = null
+                }
+            );
         });
 
         modelBuilder.Entity<TbUserReceiver>(entity =>
@@ -279,6 +313,14 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
 
         modelBuilder.Entity<VwShipmentSummary>().HasNoKey().ToView("VwShippmentsSummary"); 
 
+        // Configure ApplicationUser relationship with TbSubscriptionPackage
+        modelBuilder.Entity<applicationUser>(entity =>
+        {
+            entity.Property(e => e.FirstName).HasMaxLength(100);
+            entity.Property(e => e.LastName).HasMaxLength(100);
+            entity.Property(e => e.Phone).HasMaxLength(20);
+
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }

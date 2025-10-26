@@ -88,7 +88,9 @@ builder.Services.AddScoped<IGenericUnitOfWork,GenericUnitOfWork>();
 builder.Services.AddScoped<IShippingService,ShippingService>();
 builder.Services.AddScoped<IShippingTypeService,ShippingTypeService>();
 builder.Services.AddScoped<IRecieverService,ReceiverService>();
-builder.Services.AddScoped<ISenderService,SenderService>();
+builder.Services.AddScoped<ISenderService, SenderService>();
+builder.Services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();
+
 
 builder.Services.AddScoped<ISubscriptionPackageService,SubscriptionPackageService>();
 builder.Services.AddScoped<IPaymentMethodService,PaymentPackageService>();

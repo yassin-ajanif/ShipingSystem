@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uGoqSGhSUuY=",
+  "dgSpecHash": "2KP4g1I9ZWY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
+  "projectFilePath": "c:\\Users\\yassin\\source\\repos\\ShippingSystemWebsite\\Apis\\Apis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yassin\\.nuget\\packages\\automapper\\15.0.1\\automapper.15.0.1.nupkg.sha512",
     "C:\\Users\\yassin\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
