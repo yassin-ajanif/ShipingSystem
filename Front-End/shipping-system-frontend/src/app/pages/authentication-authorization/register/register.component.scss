@@ -1,0 +1,91 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 600px; // Increased width to accommodate two fields
+  padding: 24px;
+  
+  .mat-mdc-card-title {
+    margin-bottom: 24px;
+  }
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-field {
+  flex: 1;
+  min-width: 0; // Allows fields to shrink properly
+  
+  &.full-width {
+    flex: 1 1 100%;
+  }
+}
+
+// Responsive design for smaller screens
+@media (max-width: 600px) {
+  .form-field {
+    flex: 1 1 100%; // Stack fields vertically on small screens
+  }
+  
+  .form-row {
+    gap: 0; // Remove gap between fields on mobile
+    margin-bottom: 8px; // Reduce margin between rows on mobile
+  }
+  
+  .register-card {
+    max-width: 400px; // Reduce card width on mobile
+    
+    .mat-mdc-card-title {
+      margin-bottom: 16px; // Reduce title margin on mobile
+    }
+  }
+}
+
+.submit-button {
+  height: 48px;
+  margin-top: 24px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 200px; // Set a minimum width for better appearance
+}
+
+.terms-section {
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.terms-text {
+  font-size: 14px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.terms-link {
+  color: #1976d2;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}

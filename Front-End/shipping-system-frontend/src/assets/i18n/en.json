@@ -1,0 +1,111 @@
+{
+  "navbar": {
+    "logo": "SwiftShip",
+    "features": "Features",
+    "pricing": "Pricing", 
+    "support": "Support",
+    "login": "Log In",
+    "english": "English",
+    "arabic": "Arabic",
+    "language": {
+      "english": "English",
+      "arabic": "Arabic",
+      "current": "Language"
+    }
+  },
+  "register": {
+    "title": "Create your account",
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "Enter your full name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Create a password",
+      "hideLabel": "Hide password"
+    },
+    "phoneNumber": {
+      "label": "Phone Number",
+      "placeholder": "Enter your phone number"
+    },
+    "companyName": {
+      "label": "Company Name (Optional)",
+      "placeholder": "Enter your company name"
+    },
+    "submitButton": "Sign Up",
+    "terms": {
+      "text": "By signing up, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "errors": {
+      "required": "is required",
+      "email": "Please enter a valid email address",
+      "minLength": "must be at least {count} characters",
+      "phonePattern": "Please enter a valid phone number"
+    },
+    "fieldNames": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "phoneNumber": "Phone Number",
+      "companyName": "Company Name"
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "hideLabel": "Hide password"
+    },
+    "forgotPassword": "Forgot password?",
+    "submitButton": "Log in",
+    "errors": {
+      "required": "is required",
+      "email": "Please enter a valid email address",
+      "minLength": "must be at least {count} characters"
+    },
+    "fieldNames": {
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeBack": "Welcome back",
+    "stats": {
+      "activeShipments": "Active Shipments",
+      "accountBalance": "Account Balance",
+      "packagesInTransit": "Packages in Transit"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "createShipment": "Create Shipment",
+      "viewAllShipments": "View All Shipments"
+    },
+    "recentShipments": {
+      "title": "Recent Shipments",
+      "trackingNumber": "Tracking Number",
+      "status": "Status",
+      "destination": "Destination",
+      "estimatedDelivery": "Estimated Delivery",
+      "actions": "Actions",
+      "viewDetails": "View Details"
+    },
+    "statuses": {
+      "intransit": "In Transit",
+      "delivered": "Delivered",
+      "pending": "Pending"
+    }
+  }
+}

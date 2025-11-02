@@ -1,0 +1,121 @@
+<div class="dashboard-container">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">{{ 'dashboard.title' | translate }}</h1>
+    <p class="welcome-message">{{ 'dashboard.welcomeBack' | translate }}, {{ userName }}</p>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid">
+    <mat-card *ngFor="let stat of statCards" class="stat-card">
+      <mat-card-content>
+        <div class="stat-header">
+          <h3 class="stat-title">{{ stat.title | translate }}</h3>
+          <span [class]="getChangeClass(stat.changeType)" class="stat-change">
+            {{ stat.change }}
+          </span>
+        </div>
+        <div class="stat-value">{{ stat.value }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Quick Actions Section -->
+  <div class="quick-actions-section">
+    <h2 class="section-title">{{ 'dashboard.quickActions.title' | translate }}</h2>
+    <div class="quick-actions">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        class="action-button primary-action"
+        (click)="onCreateShipment()">
+        {{ 'dashboard.quickActions.createShipment' | translate }}
+      </button>
+      <button 
+        mat-stroked-button 
+        class="action-button secondary-action"
+        (click)="onViewAllShipments()">
+        {{ 'dashboard.quickActions.viewAllShipments' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Recent Shipments Section -->
+  <div class="recent-shipments-section">
+    <h2 class="section-title">{{ 'dashboard.recentShipments.title' | translate }}</h2>
+   
+    
+    <mat-card class="shipments-table-card">
+      <mat-card-content>
+        <div class="table-container">
+          <table mat-table [dataSource]="recentShipments" class="shipments-table">
+            
+            <!-- Tracking Number Column -->
+            <ng-container matColumnDef="trackingNumber">
+              <th mat-header-cell *matHeaderCellDef class="table-header">
+                {{ 'dashboard.recentShipments.trackingNumber' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let shipment" class="tracking-cell">
+                {{ shipment.trackingNumber }}
+              </td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="table-header">
+                {{ 'dashboard.recentShipments.status' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let shipment" class="status-cell">
+                <mat-chip [class]="getStatusClass(shipment.status)" class="status-chip">
+                  {{ 'dashboard.statuses.' + shipment.status.toLowerCase().replace(' ', '') | translate }}
+                </mat-chip>
+              </td>
+            </ng-container>
+
+            <!-- Destination Column -->
+            <ng-container matColumnDef="destination">
+              <th mat-header-cell *matHeaderCellDef class="table-header">
+                {{ 'dashboard.recentShipments.destination' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let shipment" class="destination-cell">
+                {{ shipment.destination }}
+              </td>
+            </ng-container>
+
+            <!-- Estimated Delivery Column -->
+            <ng-container matColumnDef="estimatedDelivery">
+              <th mat-header-cell *matHeaderCellDef class="table-header">
+                {{ 'dashboard.recentShipments.estimatedDelivery' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let shipment" class="delivery-cell">
+                {{ shipment.estimatedDelivery }}
+              </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="table-header">
+                {{ 'dashboard.recentShipments.actions' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let shipment" class="actions-cell">
+                <button 
+                  mat-button 
+                  color="primary" 
+                  class="view-details-button"
+                  (click)="onViewDetails(shipment)">
+                  {{ 'dashboard.recentShipments.viewDetails' | translate }}
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+    
+  </div>
+</div>

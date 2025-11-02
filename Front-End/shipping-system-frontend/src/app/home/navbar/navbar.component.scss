@@ -1,0 +1,51 @@
+// Minimal custom styling - let Angular Material handle the rest
+.logo-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 46px !important;
+  margin-right: 12px;
+}
+
+.logo-section .mat-icon {
+    height: 46px;
+    width: 45px;
+    
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+/* Works for mat-button */
+.nav-item .mdc-button__label {
+  display: inline-flex;
+  align-items: center;
+}
+.nav-item .trailing {
+  order: 2;           /* put icon after text */
+  margin-left: 8px;   /* space between text and icon */
+  margin-right: 0;
+}
+
+
+// Hide desktop nav on mobile, show mobile nav
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+}

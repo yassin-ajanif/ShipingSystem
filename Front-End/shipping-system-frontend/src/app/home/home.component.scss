@@ -1,0 +1,32 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+  min-height: calc(100vh - 64px);
+  
+  // Ensure content fills available space
+  display: flex;
+  flex-direction: column;
+}
+
+// Global styles for router outlet content
+:host ::ng-deep {
+  router-outlet + * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 56px; // Smaller navbar height on mobile
+    min-height: calc(100vh - 56px);
+  }
+}

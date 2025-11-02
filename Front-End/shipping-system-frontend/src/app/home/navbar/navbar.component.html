@@ -1,0 +1,129 @@
+<mat-toolbar class="navbar" color="primary">
+  <!-- Logo Section -->
+  <div class="logo-section" (click)="onLogoClick()">
+    <mat-icon class="logo-icon">local_shipping</mat-icon>
+    <span class="logo-text">SwiftShip</span>
+  </div>
+
+  <!-- Spacer to push navigation items to the right -->
+  <span class="navbar-spacer"></span>
+
+  <!-- Desktop Navigation Items -->
+  <div class="desktop-nav">
+    <button 
+      mat-button 
+      class="nav-item"
+      (click)="onFeaturesClick()">
+      {{ 'navbar.features' | translate }}
+    </button>
+    
+    <button 
+      mat-button 
+      class="nav-item"
+      (click)="onPricingClick()">
+      {{ 'navbar.pricing' | translate }}
+    </button>
+    
+    <button 
+      mat-button 
+      class="nav-item"
+      (click)="onSupportClick()">
+      {{ 'navbar.support' | translate }}
+    </button>
+
+    <!-- Language Dropdown -->
+   <button
+  mat-button
+  class="nav-item"
+  [matMenuTriggerFor]="languageMenu">
+  <span class="label">{{ getCurrentLanguageDisplay().name }}</span>
+  <mat-icon class="trailing">keyboard_arrow_down</mat-icon>
+</button>
+    
+    <mat-menu #languageMenu="matMenu">
+      
+        <button mat-menu-item (click)="onLanguageChange('en')" 
+              [class.selected]="currentLanguage === 'en'">
+       
+       
+         <span>{{ 'navbar.english' | translate }}</span>
+         <mat-icon *ngIf="currentLanguage === 'en'">check</mat-icon>
+
+      </button>
+      
+      <button mat-menu-item (click)="onLanguageChange('ar')" 
+              [class.selected]="currentLanguage === 'ar'">
+
+        <span>{{ 'navbar.arabic' | translate }}</span>
+        <mat-icon *ngIf="currentLanguage === 'ar'">check</mat-icon>
+             
+        
+      </button>
+    </mat-menu>
+    
+    <button 
+      mat-button 
+      class="nav-item login-button"
+      (click)="onLoginClick()">
+      {{ 'navbar.login' | translate }}
+    </button>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <div class="mobile-nav">
+    <button 
+      mat-icon-button 
+      [matMenuTriggerFor]="mobileMenu"
+      class="mobile-menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <!-- Mobile Menu -->
+    <mat-menu #mobileMenu="matMenu" class="mobile-menu">
+      <button mat-menu-item (click)="onFeaturesClick()">
+        <mat-icon>star</mat-icon>
+        <span>{{ 'navbar.features' | translate }}</span>
+      </button>
+      
+      <button mat-menu-item (click)="onPricingClick()">
+        <mat-icon>attach_money</mat-icon>
+        <span>{{ 'navbar.pricing' | translate }}</span>
+      </button>
+      
+      <button mat-menu-item (click)="onSupportClick()">
+        <mat-icon>support</mat-icon>
+        <span>{{ 'navbar.support' | translate }}</span>
+      </button>
+      
+      <mat-divider></mat-divider>
+
+      <!-- Mobile Language Selector - Shows current language -->
+      <button mat-menu-item [matMenuTriggerFor]="mobileLangMenu" 
+              [style.flex-direction]="currentLanguage === 'ar' ? 'row-reverse' : 'row'">
+        <mat-icon>language</mat-icon>
+        <span>{{ getCurrentLanguageDisplay().name }}</span>
+      </button>
+      
+      <!-- Mobile Language Submenu -->
+      <mat-menu #mobileLangMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="onLanguageChange('en')" 
+                [class.selected]="currentLanguage === 'en'">
+          <span>{{ 'navbar.english' | translate }}</span>
+          <mat-icon *ngIf="currentLanguage === 'en'">check</mat-icon>
+        </button>
+        <button mat-menu-item (click)="onLanguageChange('ar')" 
+                [class.selected]="currentLanguage === 'ar'">
+          <span>{{ 'navbar.arabic' | translate }}</span>
+          <mat-icon *ngIf="currentLanguage === 'ar'">check</mat-icon>
+        </button>
+      </mat-menu>
+      
+      <mat-divider></mat-divider>
+      
+      <button mat-menu-item (click)="onLoginClick()">
+        <mat-icon>login</mat-icon>
+        <span>{{ 'navbar.login' | translate }}</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

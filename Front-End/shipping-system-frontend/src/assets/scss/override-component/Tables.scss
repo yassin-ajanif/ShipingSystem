@@ -1,0 +1,54 @@
+// Material Design Table Headers
+.mat-mdc-header-cell,
+th[mat-header-cell]
+ {
+    background-color: var(--mat-sys-primary-container) !important; // Lighter primary color
+    color: var(--mat-sys-on-primary-container) !important; // Proper contrast text
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+// Regular table headers fallback
+th {
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+  
+  .mat-mdc-cell {
+    padding: 10px;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    font-weight: 500;
+  }
+
+// Zebra Striping - Alternating Row Colors
+.mat-mdc-row:nth-child(even) {
+    background-color: var(--mat-sys-surface-variant) !important;
+}
+
+.mat-mdc-row:nth-child(odd) {
+    background-color: var(--mat-sys-surface) !important;
+}
+
+
+// Fallback for regular HTML tables
+table {
+    tr:nth-child(even) {
+        background-color: var(--mat-sys-surface-variant);
+    }
+    
+    tr:nth-child(odd) {
+        background-color: var(--mat-sys-surface);
+    }
+    
+  
+}
+  
+ 

@@ -1,0 +1,111 @@
+{
+  "navbar": {
+    "logo": "شيب سويفت",
+    "features": "المميزات",
+    "pricing": "الأسعار", 
+    "support": "الدعم",
+    "login": "تسجيل الدخول",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "language": {
+      "english": "الإنجليزية",
+      "arabic": "العربية",
+      "current": "اللغة"
+    }
+  },
+  "register": {
+    "title": "إنشاء حسابك",
+    "fullName": {
+      "label": "الاسم الكامل",
+      "placeholder": "أدخل اسمك الكامل"
+    },
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "أدخل بريدك الإلكتروني"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "أنشئ كلمة مرور",
+      "hideLabel": "إخفاء كلمة المرور"
+    },
+    "phoneNumber": {
+      "label": "رقم الهاتف",
+      "placeholder": "أدخل رقم هاتفك"
+    },
+    "companyName": {
+      "label": "اسم الشركة (اختياري)",
+      "placeholder": "أدخل اسم شركتك"
+    },
+    "submitButton": "تسجيل",
+    "terms": {
+      "text": "بالتسجيل، أنت توافق على",
+      "termsOfService": "شروط الخدمة",
+      "and": "و",
+      "privacyPolicy": "سياسة الخصوصية"
+    },
+    "errors": {
+      "required": "مطلوب",
+      "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+      "minLength": "يجب أن يكون على الأقل {count} أحرف",
+      "phonePattern": "يرجى إدخال رقم هاتف صحيح"
+    },
+    "fieldNames": {
+      "fullName": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "phoneNumber": "رقم الهاتف",
+      "companyName": "اسم الشركة"
+    }
+  },
+  "login": {
+    "title": "مرحبا بعودتك",
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "أدخل بريدك الإلكتروني"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "أدخل كلمة المرور",
+      "hideLabel": "إخفاء كلمة المرور"
+    },
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "submitButton": "تسجيل الدخول",
+    "errors": {
+      "required": "مطلوب",
+      "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+      "minLength": "يجب أن يكون على الأقل {count} أحرف"
+    },
+    "fieldNames": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور"
+    }
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcomeBack": "مرحبا بعودتك",
+    "stats": {
+      "activeShipments": "الشحنات النشطة",
+      "accountBalance": "رصيد الحساب",
+      "packagesInTransit": "الطرود في الطريق"
+    },
+    "quickActions": {
+      "title": "الإجراءات السريعة",
+      "createShipment": "إنشاء شحنة",
+      "viewAllShipments": "عرض جميع الشحنات"
+    },
+    "recentShipments": {
+      "title": "الشحنات الأخيرة",
+      "trackingNumber": "رقم التتبع",
+      "status": "الحالة",
+      "destination": "الوجهة",
+      "estimatedDelivery": "التسليم المتوقع",
+      "actions": "الإجراءات",
+      "viewDetails": "عرض التفاصيل"
+    },
+    "statuses": {
+      "intransit": "في الطريق",
+      "delivered": "تم التسليم",
+      "pending": "معلق"
+    }
+  }
+}
