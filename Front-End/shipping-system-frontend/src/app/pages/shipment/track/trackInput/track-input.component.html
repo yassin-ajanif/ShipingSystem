@@ -1,0 +1,31 @@
+<div class="track-input-container">
+  <h1 class="page-title">{{ 'shipmentTrack.title' | translate }}</h1>
+  <p class="page-description">{{ 'shipmentTrack.description' | translate }}</p>
+
+  <form [formGroup]="trackingForm" (ngSubmit)="onTrack()" class="tracking-form">
+    <mat-form-field appearance="outline" class="tracking-input">
+      <mat-label>{{ 'shipmentTrack.input.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        formControlName="trackingNumber"
+        [placeholder]="'shipmentTrack.input.placeholder' | translate"
+        type="text"
+        maxlength="9">
+      <mat-error *ngIf="trackingForm.get('trackingNumber')?.hasError('required')">
+        {{ 'shipmentTrack.input.required' | translate }}
+      </mat-error>
+      <mat-error *ngIf="trackingForm.get('trackingNumber')?.hasError('pattern')">
+        {{ 'shipmentTrack.input.invalid' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="trackingForm.invalid || isLoading"
+      class="track-button">
+      {{ isLoading ? ('shipmentTrack.buttons.tracking' | translate) : ('shipmentTrack.buttons.track' | translate) }}
+    </button>
+  </form>
+</div>

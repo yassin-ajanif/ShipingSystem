@@ -1,0 +1,90 @@
+<div class="track-results-container">
+  <h1 class="page-title">{{ 'shipmentTrack.details.title' | translate }}</h1>
+  <p class="page-description">{{ 'shipmentTrack.details.description' | translate }}</p>
+
+  <!-- Tracking Input (compact) -->
+  <form [formGroup]="trackingForm" (ngSubmit)="onTrack()" class="tracking-form">
+    <mat-form-field appearance="outline" class="tracking-input">
+      <mat-label>{{ 'shipmentTrack.input.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        formControlName="trackingNumber"
+        [placeholder]="'shipmentTrack.input.placeholder' | translate"
+        type="text">
+    </mat-form-field>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="trackingForm.invalid || isLoading"
+      class="track-button">
+      {{ 'shipmentTrack.buttons.track' | translate }}
+    </button>
+  </form>
+
+  <!-- Tracking Details Card -->
+  <mat-card class="details-card" *ngIf="trackingDetails">
+    <mat-card-content>
+      <h2 class="section-title">{{ 'shipmentTrack.details.trackingDetails' | translate }}</h2>
+      
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-label">{{ 'shipmentTrack.details.trackingNumber' | translate }}</span>
+          <span class="detail-value">{{ trackingDetails.trackingNumber }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label">{{ 'shipmentTrack.details.orderDate' | translate }}</span>
+          <span class="detail-value">{{ trackingDetails.orderDate }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label">{{ 'shipmentTrack.details.estimatedDelivery' | translate }}</span>
+          <span class="detail-value">{{ trackingDetails.estimatedDelivery }}</span>
+        </div>
+      </div>
+
+      <!-- Order Status -->
+      <div class="status-section">
+        <h3 class="section-subtitle">{{ 'shipmentTrack.details.orderStatus' | translate }}</h3>
+        <div class="status-info">
+          <span class="status-label">{{ trackingDetails.currentStatus }}</span>
+          <mat-progress-bar 
+            mode="determinate" 
+            [value]="trackingDetails.statusProgress"
+            class="status-progress">
+          </mat-progress-bar>
+          <p class="status-description">{{ 'shipmentTrack.details.statusMessage' | translate }}</p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline-section">
+        <h3 class="section-subtitle">{{ 'shipmentTrack.details.timeline' | translate }}</h3>
+        
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let event of trackingDetails.timeline; let last = last">
+            <div class="timeline-marker">
+              <mat-icon class="timeline-icon">{{ event.icon }}</mat-icon>
+              <div class="timeline-line" *ngIf="!last"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-status">{{ event.status }}</span>
+              <span class="timeline-date">{{ event.date }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section (Placeholder) -->
+      <div class="map-section">
+        <h3 class="section-subtitle">{{ 'shipmentTrack.details.map' | translate }}</h3>
+        <div class="map-placeholder">
+          <mat-icon class="map-icon">map</mat-icon>
+          <p class="map-text">{{ 'shipmentTrack.details.mapPlaceholder' | translate }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,156 @@
+<div class="payment-container">
+  <h1 class="page-title">{{ 'packages.payment.title' | translate }}</h1>
+  <p class="page-subtitle">{{ 'packages.payment.subtitle' | translate }}</p>
+
+  <form [formGroup]="paymentForm" (ngSubmit)="onActivatePackage()" class="payment-form">
+    
+    <!-- Credit or Debit Card Section -->
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>{{ 'packages.payment.cardDetails.title' | translate }}</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'packages.payment.cardDetails.cardNumber' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="cardNumber"
+              [placeholder]="'packages.payment.cardDetails.cardNumberPlaceholder' | translate"
+              (input)="formatCardNumber($event)"
+              maxlength="16">
+            <mat-error *ngIf="paymentForm.get('cardNumber')?.hasError('required')">
+              {{ 'packages.payment.errors.cardNumberRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="paymentForm.get('cardNumber')?.hasError('pattern')">
+              {{ 'packages.payment.errors.cardNumberInvalid' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row two-cols">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'packages.payment.cardDetails.expirationDate' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="expirationDate"
+              [placeholder]="'packages.payment.cardDetails.expirationDatePlaceholder' | translate"
+              (input)="formatExpirationDate($event)"
+              maxlength="5">
+            <mat-error *ngIf="paymentForm.get('expirationDate')?.hasError('required')">
+              {{ 'packages.payment.errors.expirationDateRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="paymentForm.get('expirationDate')?.hasError('pattern')">
+              {{ 'packages.payment.errors.expirationDateInvalid' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'packages.payment.cardDetails.cvc' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="cvc"
+              [placeholder]="'packages.payment.cardDetails.cvcPlaceholder' | translate"
+              maxlength="3"
+              type="text">
+            <mat-error *ngIf="paymentForm.get('cvc')?.hasError('required')">
+              {{ 'packages.payment.errors.cvcRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="paymentForm.get('cvc')?.hasError('pattern')">
+              {{ 'packages.payment.errors.cvcInvalid' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'packages.payment.cardDetails.nameOnCard' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="nameOnCard"
+              [placeholder]="'packages.payment.cardDetails.nameOnCardPlaceholder' | translate">
+            <mat-error *ngIf="paymentForm.get('nameOnCard')?.hasError('required')">
+              {{ 'packages.payment.errors.nameOnCardRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Billing Address Section -->
+    <mat-card class="form-section">
+      <mat-card-header>
+        <mat-card-title>{{ 'packages.payment.billingAddress.title' | translate }}</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'packages.payment.billingAddress.address' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="address"
+              [placeholder]="'packages.payment.billingAddress.addressPlaceholder' | translate">
+            <mat-error *ngIf="paymentForm.get('address')?.hasError('required')">
+              {{ 'packages.payment.errors.addressRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'packages.payment.billingAddress.city' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="city"
+              [placeholder]="'packages.payment.billingAddress.cityPlaceholder' | translate">
+            <mat-error *ngIf="paymentForm.get('city')?.hasError('required')">
+              {{ 'packages.payment.errors.cityRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row two-cols">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'packages.payment.billingAddress.state' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="state"
+              [placeholder]="'packages.payment.billingAddress.statePlaceholder' | translate">
+            <mat-error *ngIf="paymentForm.get('state')?.hasError('required')">
+              {{ 'packages.payment.errors.stateRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'packages.payment.billingAddress.zipCode' | translate }}</mat-label>
+            <input 
+              matInput 
+              formControlName="zipCode"
+              [placeholder]="'packages.payment.billingAddress.zipCodePlaceholder' | translate"
+              maxlength="5">
+            <mat-error *ngIf="paymentForm.get('zipCode')?.hasError('required')">
+              {{ 'packages.payment.errors.zipCodeRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="paymentForm.get('zipCode')?.hasError('pattern')">
+              {{ 'packages.payment.errors.zipCodeInvalid' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Submit Button -->
+    <div class="button-container">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="paymentForm.invalid || isProcessing"
+        class="activate-button">
+        {{ isProcessing ? ('packages.payment.buttons.processing' | translate) : ('packages.payment.buttons.activate' | translate) }}
+      </button>
+    </div>
+  </form>
+</div>

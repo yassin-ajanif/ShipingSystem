@@ -1,0 +1,38 @@
+<div class="not-found-container">
+  <mat-icon class="error-icon">error_outline</mat-icon>
+  
+  <h1 class="error-title">{{ 'shipmentTrack.notFound.title' | translate }}</h1>
+  <p class="error-message">{{ 'shipmentTrack.notFound.message' | translate }}</p>
+
+  <form [formGroup]="trackingForm" (ngSubmit)="onTryAgain()" class="tracking-form">
+    <mat-form-field appearance="outline" class="tracking-input">
+      <mat-label>{{ 'shipmentTrack.input.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        formControlName="trackingNumber"
+        [placeholder]="'shipmentTrack.input.placeholder' | translate"
+        type="text">
+    </mat-form-field>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="trackingForm.invalid || isLoading"
+      class="track-button">
+      {{ 'shipmentTrack.notFound.tryAgain' | translate }}
+    </button>
+  </form>
+
+  <div class="help-section">
+    <h3 class="help-title">{{ 'shipmentTrack.notFound.needHelp' | translate }}</h3>
+    <p class="help-message">{{ 'shipmentTrack.notFound.helpMessage' | translate }}</p>
+    
+    <button 
+      mat-stroked-button 
+      (click)="onContactSupport()"
+      class="support-button">
+      {{ 'shipmentTrack.notFound.contactSupport' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,2 +1,9 @@
 
-@use "scss/override-component";
+
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@use "override-component";
+@use "theme-variables/light-theme";
+@use "theme-variables/dark-theme";
+

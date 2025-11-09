@@ -1,0 +1,131 @@
+<div class="calculate-container">
+  <!-- Input Form -->
+  <div class="input-section" *ngIf="!showResults">
+    <h1 class="page-title">{{ 'rateCalculate.title' | translate }}</h1>
+
+    <form [formGroup]="rateForm" (ngSubmit)="onCalculate()" class="rate-form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>{{ 'rateCalculate.origin.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          formControlName="origin"
+          [placeholder]="'rateCalculate.origin.placeholder' | translate"
+          type="text">
+        <mat-error *ngIf="rateForm.get('origin')?.hasError('required')">
+          {{ 'rateCalculate.origin.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>{{ 'rateCalculate.destination.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          formControlName="destination"
+          [placeholder]="'rateCalculate.destination.placeholder' | translate"
+          type="text">
+        <mat-error *ngIf="rateForm.get('destination')?.hasError('required')">
+          {{ 'rateCalculate.destination.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>{{ 'rateCalculate.weight.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          formControlName="weight"
+          [placeholder]="'rateCalculate.weight.placeholder' | translate"
+          type="number"
+          min="0.1"
+          step="0.1">
+        <mat-error *ngIf="rateForm.get('weight')?.hasError('required')">
+          {{ 'rateCalculate.weight.required' | translate }}
+        </mat-error>
+        <mat-error *ngIf="rateForm.get('weight')?.hasError('min')">
+          {{ 'rateCalculate.weight.invalid' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="rateForm.invalid || isCalculating"
+        class="calculate-button">
+        {{ isCalculating ? ('rateCalculate.buttons.calculating' | translate) : ('rateCalculate.buttons.calculate' | translate) }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Results Section -->
+  <div class="results-section" *ngIf="showResults && calculation">
+    <h1 class="page-title">{{ 'rateCalculate.results.title' | translate }}</h1>
+
+    <!-- Calculation Summary -->
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span class="summary-label">{{ 'rateCalculate.results.distance' | translate }}</span>
+        <span class="summary-value">{{ calculation.distance }}</span>
+      </div>
+
+      <div class="summary-item">
+        <span class="summary-label">{{ 'rateCalculate.results.weight' | translate }}</span>
+        <span class="summary-value">{{ calculation.weight }}</span>
+      </div>
+
+      <div class="summary-item">
+        <span class="summary-label">{{ 'rateCalculate.results.ratePerKm' | translate }}</span>
+        <span class="summary-value">${{ calculation.ratePerKm.toFixed(2) }}</span>
+      </div>
+
+      <div class="summary-item">
+        <span class="summary-label">{{ 'rateCalculate.results.ratePerKg' | translate }}</span>
+        <span class="summary-value">${{ calculation.ratePerKg.toFixed(2) }}</span>
+      </div>
+    </div>
+
+    <!-- Cost Breakdown Card -->
+    <mat-card class="breakdown-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'rateCalculate.results.costBreakdown' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="breakdown-item">
+          <span class="breakdown-label">{{ 'rateCalculate.results.distanceCost' | translate }}</span>
+          <span class="breakdown-value">${{ calculation.distanceCost.toFixed(2) }}</span>
+        </div>
+
+        <div class="breakdown-item">
+          <span class="breakdown-label">{{ 'rateCalculate.results.weightCost' | translate }}</span>
+          <span class="breakdown-value">${{ calculation.weightCost.toFixed(2) }}</span>
+        </div>
+
+        <div class="breakdown-divider"></div>
+
+        <div class="breakdown-total">
+          <span class="total-label">{{ 'rateCalculate.results.totalRate' | translate }}</span>
+          <span class="total-value">${{ calculation.totalRate.toFixed(2) }}</span>
+        </div>
+
+        <p class="breakdown-note">{{ 'rateCalculate.results.note' | translate }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button 
+        mat-stroked-button 
+        (click)="onReset()"
+        class="reset-button">
+        {{ 'rateCalculate.buttons.newCalculation' | translate }}
+      </button>
+
+      <button 
+        mat-raised-button 
+        color="primary"
+        (click)="onConfirm()"
+        class="confirm-button">
+        {{ 'rateCalculate.buttons.confirm' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

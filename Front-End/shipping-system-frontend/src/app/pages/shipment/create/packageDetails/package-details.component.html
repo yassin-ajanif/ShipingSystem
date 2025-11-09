@@ -1,0 +1,124 @@
+<div class="package-details-container">
+  <form [formGroup]="packageForm" class="package-form">
+    <!-- Package Name -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentCreate.packageDetails.packageName.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.packageDetails.packageName.placeholder' | translate"
+        formControlName="packageName"
+        type="text">
+      <mat-error *ngIf="packageForm.get('packageName')?.invalid && packageForm.get('packageName')?.touched">
+        {{ 'shipmentCreate.packageDetails.errors.packageNameRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Package Type -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentCreate.packageDetails.packageType.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.packageDetails.packageType.placeholder' | translate"
+        formControlName="packageType"
+        type="text">
+      <mat-error *ngIf="packageForm.get('packageType')?.invalid && packageForm.get('packageType')?.touched">
+        {{ 'shipmentCreate.packageDetails.errors.packageTypeRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Length and Width Row -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.packageDetails.dimensions.length' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.packageDetails.dimensions.lengthPlaceholder' | translate"
+          formControlName="length"
+          type="number">
+        <mat-error *ngIf="packageForm.get('length')?.invalid && packageForm.get('length')?.touched">
+          {{ packageForm.get('length')?.hasError('pattern') ? 
+             ('shipmentCreate.packageDetails.errors.dimensionInvalid' | translate) : 
+             ('shipmentCreate.packageDetails.errors.lengthRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.packageDetails.dimensions.width' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.packageDetails.dimensions.widthPlaceholder' | translate"
+          formControlName="width"
+          type="number">
+        <mat-error *ngIf="packageForm.get('width')?.invalid && packageForm.get('width')?.touched">
+          {{ packageForm.get('width')?.hasError('pattern') ? 
+             ('shipmentCreate.packageDetails.errors.dimensionInvalid' | translate) : 
+             ('shipmentCreate.packageDetails.errors.widthRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Height and Weight Row -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.packageDetails.dimensions.height' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.packageDetails.dimensions.heightPlaceholder' | translate"
+          formControlName="height"
+          type="number">
+        <mat-error *ngIf="packageForm.get('height')?.invalid && packageForm.get('height')?.touched">
+          {{ packageForm.get('height')?.hasError('pattern') ? 
+             ('shipmentCreate.packageDetails.errors.dimensionInvalid' | translate) : 
+             ('shipmentCreate.packageDetails.errors.heightRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.packageDetails.weight.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.packageDetails.weight.placeholder' | translate"
+          formControlName="weight"
+          type="number">
+        <mat-error *ngIf="packageForm.get('weight')?.invalid && packageForm.get('weight')?.touched">
+          {{ packageForm.get('weight')?.hasError('pattern') ? 
+             ('shipmentCreate.packageDetails.errors.dimensionInvalid' | translate) : 
+             ('shipmentCreate.packageDetails.errors.weightRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Contents Description -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentCreate.packageDetails.contentsDescription.label' | translate }}</mat-label>
+      <textarea 
+        matInput 
+        [placeholder]="'shipmentCreate.packageDetails.contentsDescription.placeholder' | translate"
+        formControlName="contentsDescription"
+        rows="4">
+      </textarea>
+      <mat-error *ngIf="packageForm.get('contentsDescription')?.invalid && packageForm.get('contentsDescription')?.touched">
+        {{ 'shipmentCreate.packageDetails.errors.contentsDescriptionRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Special Handling (Optional) -->
+    <div class="special-handling-section" formGroupName="specialHandling">
+      <h3 class="section-subtitle">{{ 'shipmentCreate.packageDetails.specialHandling.title' | translate }}</h3>
+      
+      <div class="checkbox-group">
+        <mat-checkbox formControlName="fragile">
+          {{ 'shipmentCreate.packageDetails.specialHandling.fragile' | translate }}
+        </mat-checkbox>
+        
+        <mat-checkbox formControlName="handleWithCare">
+          {{ 'shipmentCreate.packageDetails.specialHandling.handleWithCare' | translate }}
+        </mat-checkbox>
+        
+        <mat-checkbox formControlName="keepDry">
+          {{ 'shipmentCreate.packageDetails.specialHandling.keepDry' | translate }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </form>
+</div>

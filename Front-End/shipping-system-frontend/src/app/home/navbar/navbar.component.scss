@@ -36,6 +36,28 @@
   margin-right: 0;
 }
 
+// Dark theme support for navbar
+:host-context(html.dark-theme) {
+  ::ng-deep .navbar.mat-toolbar {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    
+    .mat-mdc-button,
+    .mat-mdc-icon-button {
+      color: #ffffff !important;
+    }
+    
+    .mat-icon {
+      color: #ffffff !important;
+    }
+  }
+}
+
+// Light theme support for navbar
+:host-context(html.light-theme) {
+ 
+  
+}
 
 // Hide desktop nav on mobile, show mobile nav
 @media (max-width: 768px) {

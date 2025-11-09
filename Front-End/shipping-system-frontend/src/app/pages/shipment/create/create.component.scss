@@ -1,0 +1,127 @@
+.create-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 14px;
+
+  .breadcrumb-link {
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .breadcrumb-separator {
+    margin: 0 8px;
+  }
+
+  .breadcrumb-current {
+    font-weight: 500;
+  }
+}
+
+.progress-section {
+  margin-bottom: 32px;
+
+  .step-indicator {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    border-radius: 4px;
+  }
+}
+
+.step-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.content-area {
+  margin-bottom: 32px;
+  min-height: 400px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+
+  .back-button,
+  .next-button {
+    min-width: 120px;
+    height: 44px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: none;
+  }
+
+  .back-button {
+    border-width: 2px;
+  }
+}
+
+.feedback-wrapper {
+  margin-top: -32px; // Remove extra spacing for last step
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .create-container {
+    padding: 24px 16px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .progress-section {
+    margin-bottom: 24px;
+
+    .step-indicator {
+      font-size: 13px;
+    }
+  }
+
+  .step-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .content-area {
+    min-height: 300px;
+    margin-bottom: 24px;
+  }
+
+  .navigation-buttons {
+    flex-direction: column-reverse;
+    gap: 12px;
+
+    .back-button,
+    .next-button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .create-container {
+    padding: 20px 12px;
+  }
+
+  .step-title {
+    font-size: 20px;
+  }
+}

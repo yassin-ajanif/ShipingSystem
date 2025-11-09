@@ -1,4 +1,4 @@
-<mat-toolbar class="navbar" color="primary">
+<mat-toolbar class="navbar" >
   <!-- Logo Section -->
   <div class="logo-section" (click)="onLogoClick()">
     <mat-icon class="logo-icon">local_shipping</mat-icon>
@@ -60,6 +60,15 @@
         
       </button>
     </mat-menu>
+
+    <!-- Theme Toggle Button -->
+    <button 
+      mat-icon-button 
+      class="nav-item theme-toggle"
+      (click)="onThemeToggle()"
+      [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+      <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
     
     <button 
       mat-button 
@@ -117,6 +126,14 @@
           <mat-icon *ngIf="currentLanguage === 'ar'">check</mat-icon>
         </button>
       </mat-menu>
+      
+      <mat-divider></mat-divider>
+
+      <!-- Mobile Theme Toggle -->
+      <button mat-menu-item (click)="onThemeToggle()">
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        <span>{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+      </button>
       
       <mat-divider></mat-divider>
       

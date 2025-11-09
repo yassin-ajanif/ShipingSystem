@@ -29,6 +29,7 @@ export class NavbarComponent {
   private translate = inject(TranslateService);
   
   currentLanguage: 'ar' | 'en' = defaults.language;
+  isDarkMode: boolean = false;
   
   // Language options for the dropdown
   languages = [
@@ -41,6 +42,9 @@ export class NavbarComponent {
       this.translate.addLangs(['en', 'ar']);
         this.translate.setFallbackLang('en');
         this.translate.use(this.currentLanguage);
+        
+        // Set default theme to light
+        this.applyTheme();
   }
 
   onFeaturesClick(): void {
@@ -88,5 +92,28 @@ export class NavbarComponent {
   getCurrentLanguageDisplay(): { name: string; flag: string } {
     const lang = this.languages.find(l => l.code === this.currentLanguage);
     return lang || this.languages[0];
+  }
+
+  /**
+   * Toggle between dark and light theme
+   */
+  onThemeToggle(): void {
+    this.isDarkMode = !this.isDarkMode;
+    this.applyTheme();
+  }
+
+  /**
+   * Apply the current theme to the HTML root element
+   */
+  private applyTheme(): void {
+    const htmlElement = document.documentElement;
+    
+    if (this.isDarkMode) {
+      htmlElement.classList.remove('light-theme');
+      htmlElement.classList.add('dark-theme');
+    } else {
+      htmlElement.classList.remove('dark-theme');
+      htmlElement.classList.add('light-theme');
+    }
   }
 }

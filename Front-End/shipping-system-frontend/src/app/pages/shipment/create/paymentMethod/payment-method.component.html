@@ -1,0 +1,94 @@
+<div class="payment-method-container">
+  <form [formGroup]="paymentForm" class="payment-form">
+    
+    <!-- Payment Method Selection -->
+    <mat-radio-group formControlName="paymentMethod" class="payment-methods">
+      <mat-radio-button value="creditCard" class="payment-option">
+        {{ 'shipmentCreate.paymentMethod.methods.creditCard' | translate }}
+      </mat-radio-button>
+      
+      <mat-radio-button value="digitalWallet" class="payment-option">
+        {{ 'shipmentCreate.paymentMethod.methods.digitalWallet' | translate }}
+      </mat-radio-button>
+      
+      <mat-radio-button value="existingBalance" class="payment-option">
+        {{ 'shipmentCreate.paymentMethod.methods.existingBalance' | translate }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Credit Card Details (shown when Credit Card is selected) -->
+    <div class="card-details" *ngIf="paymentForm.get('paymentMethod')?.value === 'creditCard'">
+      <!-- Card Number -->
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>{{ 'shipmentCreate.paymentMethod.cardNumber.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.paymentMethod.cardNumber.placeholder' | translate"
+          formControlName="cardNumber"
+          type="text"
+          maxlength="16">
+        <mat-error *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
+          {{ paymentForm.get('cardNumber')?.hasError('pattern') ? 
+             ('shipmentCreate.paymentMethod.errors.cardNumberInvalid' | translate) : 
+             ('shipmentCreate.paymentMethod.errors.cardNumberRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Expiry Date and CVV Row -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>{{ 'shipmentCreate.paymentMethod.expiryDate.label' | translate }}</mat-label>
+          <input 
+            matInput 
+            [placeholder]="'shipmentCreate.paymentMethod.expiryDate.placeholder' | translate"
+            formControlName="expiryDate"
+            type="text"
+            maxlength="5">
+          <mat-error *ngIf="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched">
+            {{ paymentForm.get('expiryDate')?.hasError('pattern') ? 
+               ('shipmentCreate.paymentMethod.errors.expiryDateInvalid' | translate) : 
+               ('shipmentCreate.paymentMethod.errors.expiryDateRequired' | translate) }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>{{ 'shipmentCreate.paymentMethod.cvv.label' | translate }}</mat-label>
+          <input 
+            matInput 
+            [placeholder]="'shipmentCreate.paymentMethod.cvv.placeholder' | translate"
+            formControlName="cvv"
+            type="text"
+            maxlength="4">
+          <mat-error *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
+            {{ paymentForm.get('cvv')?.hasError('pattern') ? 
+               ('shipmentCreate.paymentMethod.errors.cvvInvalid' | translate) : 
+               ('shipmentCreate.paymentMethod.errors.cvvRequired' | translate) }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Cardholder Name -->
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>{{ 'shipmentCreate.paymentMethod.cardholderName.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.paymentMethod.cardholderName.placeholder' | translate"
+          formControlName="cardholderName"
+          type="text">
+        <mat-error *ngIf="paymentForm.get('cardholderName')?.invalid && paymentForm.get('cardholderName')?.touched">
+          {{ 'shipmentCreate.paymentMethod.errors.cardholderNameRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Placeholder for other payment methods -->
+    <div class="alternative-payment" *ngIf="paymentForm.get('paymentMethod')?.value === 'digitalWallet'">
+      <p class="info-message">{{ 'shipmentCreate.paymentMethod.messages.digitalWalletInfo' | translate }}</p>
+    </div>
+
+    <div class="alternative-payment" *ngIf="paymentForm.get('paymentMethod')?.value === 'existingBalance'">
+      <p class="info-message">{{ 'shipmentCreate.paymentMethod.messages.existingBalanceInfo' | translate }}</p>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,41 @@
+<div class="confirmation-container">
+  <div class="success-icon-wrapper">
+    <mat-icon class="success-icon">check_circle</mat-icon>
+  </div>
+
+  <h1 class="page-title">{{ 'packages.confirmation.title' | translate }}</h1>
+  <p class="page-message">{{ 'packages.confirmation.message' | translate }}</p>
+
+  <!-- Subscription Details Card -->
+  <mat-card class="details-card" *ngIf="selectedPlan">
+    <mat-card-header>
+      <mat-card-title>{{ 'packages.confirmation.details.title' | translate }}</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="detail-row">
+        <span class="detail-label">{{ 'packages.confirmation.details.plan' | translate }}</span>
+        <span class="detail-value">{{ 'packages.pricing.plans.' + selectedPlan.id + '.name' | translate }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">{{ 'packages.confirmation.details.startDate' | translate }}</span>
+        <span class="detail-value">{{ subscriptionStartDate }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button 
+      mat-raised-button 
+      color="primary"
+      (click)="onManageSubscription()"
+      class="manage-button">
+      {{ 'packages.confirmation.buttons.manage' | translate }}
+    </button>
+  </div>
+
+  <!-- Additional Info -->
+  <p class="additional-info">{{ 'packages.confirmation.additionalInfo' | translate }}</p>
+</div>

@@ -1,0 +1,73 @@
+.package-details-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.package-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  &.full-width {
+    width: 100%;
+  }
+
+  &.half-width {
+    width: 100%;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  .form-field {
+    flex: 1;
+  }
+}
+
+.special-handling-section {
+  margin-top: 8px;
+
+  .section-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .package-details-container {
+    padding: 16px;
+  }
+
+  .package-form {
+    gap: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+
+    .form-field {
+      width: 100%;
+    }
+  }
+
+  .special-handling-section {
+    .section-subtitle {
+      font-size: 14px;
+    }
+  }
+}

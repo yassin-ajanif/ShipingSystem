@@ -1,0 +1,66 @@
+<div class="return-items-container">
+  <p class="description">{{ 'shipmentReturn.returnItems.description' | translate }}</p>
+
+  <!-- Shipment Number -->
+  <h3 class="shipment-number">{{ 'shipmentReturn.returnItems.shipmentNumber' | translate }}: {{ shipmentNumber }}</h3>
+
+  <!-- Items Table -->
+  <div class="items-table">
+    <table mat-table [dataSource]="items" class="items-list">
+      <!-- Item Column -->
+      <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef>{{ 'shipmentReturn.returnItems.table.item' | translate }}</th>
+        <td mat-cell *matCellDef="let item">
+          <div class="item-cell">
+            <mat-checkbox 
+              [checked]="item.selected"
+              (change)="toggleItemSelection(item)">
+            </mat-checkbox>
+            <span class="item-name">{{ item.name }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>{{ 'shipmentReturn.returnItems.table.quantity' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>{{ 'shipmentReturn.returnItems.table.price' | translate }}</th>
+        <td mat-cell *matCellDef="let item">${{ item.price.toFixed(2) }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- Return Details -->
+  <form [formGroup]="returnForm" class="return-details">
+    <h3 class="section-title">{{ 'shipmentReturn.returnItems.returnDetails.title' | translate }}</h3>
+
+    <!-- Reason for Return -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentReturn.returnItems.returnDetails.reason.label' | translate }}</mat-label>
+      <mat-select formControlName="returnReason" [placeholder]="'shipmentReturn.returnItems.returnDetails.reason.placeholder' | translate">
+        <mat-option *ngFor="let reason of returnReasons" [value]="reason">
+          {{ reason }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Comments -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentReturn.returnItems.returnDetails.comments.label' | translate }}</mat-label>
+      <textarea 
+        matInput 
+        formControlName="comments"
+        [placeholder]="'shipmentReturn.returnItems.returnDetails.comments.placeholder' | translate"
+        rows="4">
+      </textarea>
+    </mat-form-field>
+  </form>
+</div>

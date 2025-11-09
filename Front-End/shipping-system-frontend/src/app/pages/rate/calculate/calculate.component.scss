@@ -1,0 +1,198 @@
+.calculate-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--mat-sys-on-surface);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  // Input Section
+  .input-section {
+    .rate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+
+      .form-field {
+        width: 100%;
+      }
+
+      .calculate-button {
+        align-self: center;
+        min-width: 200px;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Results Section
+  .results-section {
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .summary-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: var(--mat-sys-surface-container);
+        border-radius: 8px;
+
+        .summary-label {
+          font-size: 0.75rem;
+          color: var(--mat-sys-on-surface-variant);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .summary-value {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: var(--mat-sys-primary);
+        }
+      }
+    }
+
+    .breakdown-card {
+      margin-bottom: 2rem;
+
+      mat-card-header {
+        margin-bottom: 1.5rem;
+
+        mat-card-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: var(--mat-sys-on-surface);
+        }
+      }
+
+      mat-card-content {
+        .breakdown-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 0;
+          border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+          .breakdown-label {
+            font-size: 1rem;
+            color: var(--mat-sys-on-surface);
+          }
+
+          .breakdown-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--mat-sys-on-surface);
+          }
+        }
+
+        .breakdown-divider {
+          height: 1px;
+          background-color: var(--mat-sys-outline);
+          margin: 1rem 0;
+        }
+
+        .breakdown-total {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.5rem 0;
+
+          .total-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--mat-sys-on-surface);
+          }
+
+          .total-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mat-sys-primary);
+          }
+        }
+
+        .breakdown-note {
+          font-size: 0.875rem;
+          color: var(--mat-sys-on-surface-variant);
+          margin-top: 1rem;
+          margin-bottom: 0;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+
+      .reset-button,
+      .confirm-button {
+        min-width: 180px;
+        padding: 0.75rem 2rem;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .calculate-container {
+    padding: 1rem;
+
+    .page-title {
+      font-size: 1.5rem;
+    }
+
+    .results-section {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        .summary-item {
+          .summary-value {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .breakdown-card {
+        mat-card-content {
+          .breakdown-total {
+            .total-value {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+
+      .action-buttons {
+        flex-direction: column;
+
+        .reset-button,
+        .confirm-button {
+          width: 100%;
+        }
+      }
+    }
+
+    .input-section {
+      .rate-form {
+        .calculate-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="pricing-container">
+  <h1 class="page-title">{{ 'packages.pricing.title' | translate }}</h1>
+
+  <!-- Pricing Cards -->
+  <div class="pricing-grid">
+    <mat-card *ngFor="let plan of plans" [class.highlighted]="plan.highlighted" class="pricing-card">
+      <mat-card-header>
+        <mat-card-title class="plan-name">{{ 'packages.pricing.plans.' + plan.id + '.name' | translate }}</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="price-section">
+          <span class="price" *ngIf="plan.price > 0">${{ plan.price }}</span>
+          <span class="price" *ngIf="plan.price === 0 && plan.period === 'Free'">${{ plan.price }}</span>
+          <span class="price contact-price" *ngIf="plan.period === 'Contact Us'">{{ 'packages.pricing.plans.enterprise.contactUs' | translate }}</span>
+          <span class="period">{{ 'packages.pricing.plans.' + plan.id + '.period' | translate }}</span>
+        </div>
+
+        <button 
+          mat-raised-button 
+          [color]="plan.highlighted ? 'primary' : ''"
+          class="select-button"
+          (click)="onSelectPlan(plan)">
+          {{ plan.buttonText | translate }}
+        </button>
+
+        <ul class="features-list">
+          <li *ngFor="let feature of plan.features" class="feature-item">
+            <mat-icon class="check-icon">check</mat-icon>
+            <span>{{ feature | translate }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2 class="faq-title">{{ 'packages.pricing.faq.title' | translate }}</h2>
+    
+    <mat-accordion class="faq-accordion">
+      <mat-expansion-panel *ngFor="let faq of faqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ faq.question | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="faq-answer">{{ faq.answer | translate }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

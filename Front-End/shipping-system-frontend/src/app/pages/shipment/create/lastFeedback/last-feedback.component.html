@@ -1,0 +1,33 @@
+<div class="feedback-container">
+  <div class="feedback-content">
+    <!-- Success Icon -->
+    <div class="success-icon">
+      <mat-icon class="check-icon">check_circle</mat-icon>
+    </div>
+
+    <!-- Success Message -->
+    <h1 class="success-title">{{ 'shipmentCreate.confirmation.title' | translate }}</h1>
+    
+    <p class="success-message">
+      {{ 'shipmentCreate.confirmation.message' | translate }}
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        class="primary-button"
+        (click)="onViewShipmentDetails()">
+        {{ 'shipmentCreate.confirmation.buttons.viewDetails' | translate }}
+      </button>
+      
+      <button 
+        mat-stroked-button 
+        class="secondary-button"
+        (click)="onBackToShipments()">
+        {{ 'shipmentCreate.confirmation.buttons.backToShipments' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="sender-info-container">
+  <form [formGroup]="senderForm" class="sender-form">
+    <!-- Full Name -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>{{ 'shipmentCreate.senderInfo.fullName.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.senderInfo.fullName.placeholder' | translate"
+        formControlName="fullName"
+        type="text">
+      <mat-error *ngIf="senderForm.get('fullName')?.invalid && senderForm.get('fullName')?.touched">
+        {{ 'shipmentCreate.senderInfo.errors.fullNameRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Address -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>{{ 'shipmentCreate.senderInfo.address.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.senderInfo.address.placeholder' | translate"
+        formControlName="address"
+        type="text">
+      <mat-error *ngIf="senderForm.get('address')?.invalid && senderForm.get('address')?.touched">
+        {{ 'shipmentCreate.senderInfo.errors.addressRequired' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Phone Number -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>{{ 'shipmentCreate.senderInfo.phoneNumber.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.senderInfo.phoneNumber.placeholder' | translate"
+        formControlName="phoneNumber"
+        type="tel">
+      <mat-error *ngIf="senderForm.get('phoneNumber')?.invalid && senderForm.get('phoneNumber')?.touched">
+        {{ senderForm.get('phoneNumber')?.hasError('pattern') ? 
+           ('shipmentCreate.senderInfo.errors.phoneNumberInvalid' | translate) : 
+           ('shipmentCreate.senderInfo.errors.phoneNumberRequired' | translate) }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>{{ 'shipmentCreate.senderInfo.email.label' | translate }}</mat-label>
+      <input 
+        matInput 
+        [placeholder]="'shipmentCreate.senderInfo.email.placeholder' | translate"
+        formControlName="email"
+        type="email">
+      <mat-error *ngIf="senderForm.get('email')?.invalid && senderForm.get('email')?.touched">
+        {{ senderForm.get('email')?.hasError('email') ? 
+           ('shipmentCreate.senderInfo.errors.emailInvalid' | translate) : 
+           ('shipmentCreate.senderInfo.errors.emailRequired' | translate) }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>

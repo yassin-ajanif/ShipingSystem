@@ -1,0 +1,207 @@
+.track-results-container {
+  .page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--mat-sys-on-surface);
+    margin-bottom: 0.5rem;
+  }
+
+  .page-description {
+    font-size: 0.875rem;
+    color: var(--mat-sys-on-surface-variant);
+    margin-bottom: 2rem;
+  }
+
+  .tracking-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .tracking-input {
+      flex: 1;
+    }
+
+    .track-button {
+      margin-top: 0;
+    }
+  }
+
+  .details-card {
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+      margin-bottom: 1rem;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .detail-label {
+          font-size: 0.75rem;
+          color: var(--mat-sys-on-surface-variant);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--mat-sys-on-surface);
+        }
+      }
+    }
+
+    .status-section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: var(--mat-sys-surface-container);
+      border-radius: 8px;
+
+      .status-info {
+        .status-label {
+          display: block;
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: var(--mat-sys-primary);
+          margin-bottom: 1rem;
+        }
+
+        .status-progress {
+          height: 8px;
+          border-radius: 4px;
+          margin-bottom: 0.5rem;
+        }
+
+        .status-description {
+          font-size: 0.875rem;
+          color: var(--mat-sys-on-surface-variant);
+          margin: 0;
+        }
+      }
+    }
+
+    .timeline-section {
+      margin-bottom: 2rem;
+
+      .timeline {
+        margin-top: 1.5rem;
+
+        .timeline-item {
+          display: flex;
+          gap: 1rem;
+
+          .timeline-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .timeline-icon {
+              width: 40px;
+              height: 40px;
+              font-size: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: var(--mat-sys-primary);
+              color: var(--mat-sys-on-primary);
+              border-radius: 50%;
+              z-index: 1;
+            }
+
+            .timeline-line {
+              width: 2px;
+              flex: 1;
+              background-color: var(--mat-sys-outline-variant);
+              margin-top: 0.5rem;
+              margin-bottom: 0.5rem;
+              min-height: 30px;
+            }
+          }
+
+          .timeline-content {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 2rem;
+
+            .timeline-status {
+              font-size: 1rem;
+              font-weight: 500;
+              color: var(--mat-sys-on-surface);
+              margin-bottom: 0.25rem;
+            }
+
+            .timeline-date {
+              font-size: 0.875rem;
+              color: var(--mat-sys-on-surface-variant);
+            }
+          }
+        }
+      }
+    }
+
+    .map-section {
+      .map-placeholder {
+        height: 300px;
+        background-color: var(--mat-sys-surface-container);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .map-icon {
+          font-size: 64px;
+          width: 64px;
+          height: 64px;
+          color: var(--mat-sys-on-surface-variant);
+        }
+
+        .map-text {
+          font-size: 0.875rem;
+          color: var(--mat-sys-on-surface-variant);
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .track-results-container {
+    .page-title {
+      font-size: 1.5rem;
+    }
+
+    .tracking-form {
+      flex-direction: column;
+
+      .track-button {
+        width: 100%;
+      }
+    }
+
+    .details-card {
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<div class="return-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span class="breadcrumb-link">{{ 'shipmentReturn.breadcrumb.shipments' | translate }}</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">{{ 'shipmentReturn.breadcrumb.returnShipment' | translate }}</span>
+  </div>
+
+  <!-- Progress Section -->
+  <div class="progress-section">
+    <div class="step-indicator">{{ stepIndicator }}</div>
+    <mat-progress-bar 
+      mode="determinate" 
+      [value]="progressValue"
+      class="progress-bar">
+    </mat-progress-bar>
+  </div>
+
+  <!-- Step Title -->
+  <h2 class="step-title">{{ currentStepLabel | translate }}</h2>
+
+  <!-- Content Area - Router Outlet for child components -->
+  <div class="content-area">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="navigation-buttons" *ngIf="!isLastStep()">
+    <button 
+      mat-stroked-button 
+      class="back-button"
+      (click)="onPrevious()"
+      [disabled]="isFirstStep()">
+      {{ 'shipmentReturn.buttons.back' | translate }}
+    </button>
+
+    <button 
+      mat-raised-button 
+      color="primary"
+      class="next-button"
+      (click)="onNext()">
+      {{ currentStep === steps.length - 2 ? ('shipmentReturn.buttons.submitReturn' | translate) : ('shipmentReturn.buttons.next' | translate) }}
+    </button>
+  </div>
+
+  <!-- Last Step Component Event Handling -->
+  <div *ngIf="isLastStep()" class="confirmation-wrapper">
+    <!-- The confirmation component will be rendered via router-outlet -->
+  </div>
+</div>

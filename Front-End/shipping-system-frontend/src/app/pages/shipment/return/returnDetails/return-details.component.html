@@ -1,0 +1,72 @@
+<div class="return-details-container">
+  <p class="description">{{ 'shipmentReturn.returnDetails.description' | translate }}</p>
+
+  <form [formGroup]="returnDetailsForm" class="details-form">
+    <!-- Return Address -->
+    <div class="form-section">
+      <h3 class="section-title">{{ 'shipmentReturn.returnDetails.returnAddress.title' | translate }}</h3>
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>{{ 'shipmentReturn.returnDetails.returnAddress.label' | translate }}</mat-label>
+        <mat-select formControlName="returnAddress" [placeholder]="'shipmentReturn.returnDetails.returnAddress.placeholder' | translate">
+          <mat-option *ngFor="let address of returnAddresses" [value]="address">
+            {{ address }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Pickup Location -->
+    <div class="form-section">
+      <h3 class="section-title">{{ 'shipmentReturn.returnDetails.pickupLocation.title' | translate }}</h3>
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>{{ 'shipmentReturn.returnDetails.pickupLocation.label' | translate }}</mat-label>
+        <mat-select formControlName="pickupLocation" [placeholder]="'shipmentReturn.returnDetails.pickupLocation.placeholder' | translate">
+          <mat-option *ngFor="let location of pickupLocations" [value]="location">
+            {{ location }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Return Shipping Options -->
+    <div class="form-section">
+      <h3 class="section-title">{{ 'shipmentReturn.returnDetails.shippingOptions.title' | translate }}</h3>
+      <mat-radio-group formControlName="shippingOption" class="shipping-options">
+        <mat-radio-button 
+          *ngFor="let option of shippingOptions" 
+          [value]="option.value" 
+          class="shipping-option">
+          <div class="option-content">
+            <div class="option-header">
+              <span class="option-label">{{ option.label }}</span>
+              <span class="option-price">${{ option.cost.toFixed(2) }}</span>
+            </div>
+            <span class="option-description">{{ option.description }}</span>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Return Shipping Cost -->
+    <div class="form-section cost-summary">
+      <h3 class="section-title">{{ 'shipmentReturn.returnDetails.shippingCost.title' | translate }}</h3>
+      
+      <div class="cost-breakdown">
+        <div class="cost-item">
+          <span class="cost-label">{{ 'shipmentReturn.returnDetails.shippingCost.shippingCost' | translate }}</span>
+          <span class="cost-value">${{ getSelectedShippingCost().toFixed(2) }}</span>
+        </div>
+        
+        <div class="cost-item">
+          <span class="cost-label">{{ 'shipmentReturn.returnDetails.shippingCost.returnShippingCost' | translate }}</span>
+          <span class="cost-value">${{ getReturnShippingCost().toFixed(2) }}</span>
+        </div>
+        
+        <div class="cost-item total">
+          <span class="cost-label">{{ 'shipmentReturn.returnDetails.shippingCost.totalCost' | translate }}</span>
+          <span class="cost-value">${{ getTotalReturnCost().toFixed(2) }}</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

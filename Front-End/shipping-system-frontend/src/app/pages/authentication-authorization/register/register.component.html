@@ -1,3 +1,5 @@
+
+
 <div class="register-container">
   <mat-card class="register-card">
     <mat-card-header>
@@ -94,12 +96,13 @@
     </mat-card-content>
 
     <mat-card-actions class="terms-section">
-      <p class="terms-text">
+      <mat-card-footer>
         {{ 'register.terms.text' | translate }} 
         <a href="#" class="terms-link">{{ 'register.terms.termsOfService' | translate }}</a> 
         {{ 'register.terms.and' | translate }} 
         <a href="#" class="terms-link">{{ 'register.terms.privacyPolicy' | translate }}</a>.
-      </p>
+      </mat-card-footer>
+      
     </mat-card-actions>
   </mat-card>
 </div>

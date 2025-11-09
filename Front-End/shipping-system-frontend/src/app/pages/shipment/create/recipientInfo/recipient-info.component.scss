@@ -1,0 +1,62 @@
+.recipient-info-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.recipient-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  &.full-width {
+    width: 100%;
+  }
+
+  &.half-width {
+    width: 100%;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  .form-field {
+    flex: 1;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .recipient-info-container {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .recipient-form {
+    gap: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+
+    .form-field {
+      width: 100%;
+    }
+  }
+}

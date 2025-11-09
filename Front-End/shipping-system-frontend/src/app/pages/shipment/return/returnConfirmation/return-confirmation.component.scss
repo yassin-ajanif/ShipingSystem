@@ -1,0 +1,118 @@
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  padding: 2rem;
+
+  .confirmation-content {
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .success-icon {
+      .check-icon {
+        font-size: 96px;
+        width: 96px;
+        height: 96px;
+        color: var(--mat-sys-primary);
+        animation: scaleIn 0.5s ease-out;
+      }
+    }
+
+    .success-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+      margin: 0;
+    }
+
+    .success-message {
+      font-size: 1rem;
+      color: var(--mat-sys-on-surface-variant);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .primary-button,
+      .secondary-button {
+        min-width: 200px;
+        padding: 0.75rem 2rem;
+      }
+    }
+  }
+}
+
+// Animation
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .confirmation-container {
+    min-height: 400px;
+    padding: 1rem;
+
+    .confirmation-content {
+      .success-icon {
+        .check-icon {
+          font-size: 72px;
+          width: 72px;
+          height: 72px;
+        }
+      }
+
+      .success-title {
+        font-size: 1.5rem;
+      }
+
+      .success-message {
+        font-size: 0.875rem;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+
+        .primary-button,
+        .secondary-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Theme support
+:host-context(html.dark-theme) {
+  .confirmation-container {
+    .confirmation-content {
+      .success-icon {
+        .check-icon {
+          color: var(--mat-sys-primary);
+        }
+      }
+    }
+  }
+}
