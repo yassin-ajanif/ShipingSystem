@@ -15,9 +15,13 @@
   },
   "register": {
     "title": "Create your account",
-    "fullName": {
-      "label": "Full Name",
-      "placeholder": "Enter your full name"
+    "firstName": {
+      "label": "First Name",
+      "placeholder": "Enter your first name"
+    },
+    "lastName": {
+      "label": "Last Name",
+      "placeholder": "Enter your last name"
     },
     "email": {
       "label": "Email",
@@ -32,10 +36,6 @@
       "label": "Phone Number",
       "placeholder": "Enter your phone number"
     },
-    "companyName": {
-      "label": "Company Name (Optional)",
-      "placeholder": "Enter your company name"
-    },
     "submitButton": "Sign Up",
     "terms": {
       "text": "By signing up, you agree to our",
@@ -47,14 +47,16 @@
       "required": "is required",
       "email": "Please enter a valid email address",
       "minLength": "must be at least {count} characters",
-      "phonePattern": "Please enter a valid phone number"
+      "phonePattern": "Please enter a valid phone number",
+      "passwordsDoNotMatch": "Passwords do not match"
     },
     "fieldNames": {
-      "fullName": "Full Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
       "email": "Email",
       "password": "Password",
-      "phoneNumber": "Phone Number",
-      "companyName": "Company Name"
+      "confirmPassword": "Confirm Password",
+      "phoneNumber": "Phone Number"
     }
   },
   "login": {
@@ -128,25 +130,46 @@
     },
     "senderInfo": {
       "title": "Sender Information",
-      "fullName": {
-        "label": "Full Name",
-        "placeholder": "Enter your full name"
+      "senderName": {
+        "label": "Sender's Name",
+        "placeholder": "Enter sender's full name"
       },
       "address": {
         "label": "Address",
-        "placeholder": "Enter your address"
+        "placeholder": "Enter sender's address"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "Enter city"
+      },
+      "state": {
+        "label": "State",
+        "placeholder": "Select state"
+      },
+      "zipCode": {
+        "label": "Zip Code",
+        "placeholder": "Enter zipcode"
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "Select country"
       },
       "phoneNumber": {
         "label": "Phone Number",
-        "placeholder": "Enter your phone number"
+        "placeholder": "Enter sender's phone number"
       },
       "email": {
         "label": "Email",
-        "placeholder": "Enter your email"
+        "placeholder": "Enter sender's email"
       },
       "errors": {
-        "fullNameRequired": "Full Name is required",
+        "senderNameRequired": "Sender Name is required",
         "addressRequired": "Address is required",
+        "cityRequired": "City is required",
+        "stateRequired": "State is required",
+        "zipCodeRequired": "Zip Code is required",
+        "zipCodeInvalid": "Please enter a valid zip code",
+        "countryRequired": "Country is required",
         "phoneNumberRequired": "Phone Number is required",
         "phoneNumberInvalid": "Please enter a valid phone number",
         "emailRequired": "Email is required",

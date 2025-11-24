@@ -40,6 +40,16 @@
   }
 }
 
+.status-message {
+  color: #d32f2f;
+  margin: 8px 0;
+  font-size: 14px;
+  
+  &.success {
+    color: #2e7d32;
+  }
+}
+
 // Responsive design for smaller screens
 @media (max-width: 600px) {
   .form-field {

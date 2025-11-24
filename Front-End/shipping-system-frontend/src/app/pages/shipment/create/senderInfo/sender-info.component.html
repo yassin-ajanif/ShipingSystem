@@ -1,20 +1,20 @@
 <div class="sender-info-container">
   <form [formGroup]="senderForm" class="sender-form">
-    <!-- Full Name -->
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>{{ 'shipmentCreate.senderInfo.fullName.label' | translate }}</mat-label>
+    <!-- Sender's Name -->
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>{{ 'shipmentCreate.senderInfo.senderName.label' | translate }}</mat-label>
       <input 
         matInput 
-        [placeholder]="'shipmentCreate.senderInfo.fullName.placeholder' | translate"
-        formControlName="fullName"
+        [placeholder]="'shipmentCreate.senderInfo.senderName.placeholder' | translate"
+        formControlName="senderName"
         type="text">
-      <mat-error *ngIf="senderForm.get('fullName')?.invalid && senderForm.get('fullName')?.touched">
-        {{ 'shipmentCreate.senderInfo.errors.fullNameRequired' | translate }}
+      <mat-error *ngIf="senderForm.get('senderName')?.invalid && senderForm.get('senderName')?.touched">
+        {{ 'shipmentCreate.senderInfo.errors.senderNameRequired' | translate }}
       </mat-error>
     </mat-form-field>
 
     <!-- Address -->
-    <mat-form-field appearance="outline" class="form-field">
+    <mat-form-field appearance="outline" class="form-field full-width">
       <mat-label>{{ 'shipmentCreate.senderInfo.address.label' | translate }}</mat-label>
       <input 
         matInput 
@@ -26,8 +26,64 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- City and State Row -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.senderInfo.city.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate"
+          formControlName="city"
+          type="text">
+        <mat-error *ngIf="senderForm.get('city')?.invalid && senderForm.get('city')?.touched">
+          {{ 'shipmentCreate.senderInfo.errors.cityRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.senderInfo.state.label' | translate }}</mat-label>
+        <mat-select formControlName="state" [placeholder]="'shipmentCreate.senderInfo.state.placeholder' | translate">
+          <mat-option *ngFor="let state of states" [value]="state">
+            {{ state }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="senderForm.get('state')?.invalid && senderForm.get('state')?.touched">
+          {{ 'shipmentCreate.senderInfo.errors.stateRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Zip Code and Country Row -->
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.senderInfo.zipCode.label' | translate }}</mat-label>
+        <input 
+          matInput 
+          [placeholder]="'shipmentCreate.senderInfo.zipCode.placeholder' | translate"
+          formControlName="zipCode"
+          type="text">
+        <mat-error *ngIf="senderForm.get('zipCode')?.invalid && senderForm.get('zipCode')?.touched">
+          {{ senderForm.get('zipCode')?.hasError('pattern') ? 
+             ('shipmentCreate.senderInfo.errors.zipCodeInvalid' | translate) : 
+             ('shipmentCreate.senderInfo.errors.zipCodeRequired' | translate) }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.senderInfo.country.label' | translate }}</mat-label>
+        <mat-select formControlName="country" [placeholder]="'shipmentCreate.senderInfo.country.placeholder' | translate">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="senderForm.get('country')?.invalid && senderForm.get('country')?.touched">
+          {{ 'shipmentCreate.senderInfo.errors.countryRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
     <!-- Phone Number -->
-    <mat-form-field appearance="outline" class="form-field">
+    <mat-form-field appearance="outline" class="form-field full-width">
       <mat-label>{{ 'shipmentCreate.senderInfo.phoneNumber.label' | translate }}</mat-label>
       <input 
         matInput 
@@ -42,7 +98,7 @@
     </mat-form-field>
 
     <!-- Email -->
-    <mat-form-field appearance="outline" class="form-field">
+    <mat-form-field appearance="outline" class="form-field full-width">
       <mat-label>{{ 'shipmentCreate.senderInfo.email.label' | translate }}</mat-label>
       <input 
         matInput 

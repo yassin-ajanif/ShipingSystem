@@ -51,13 +51,17 @@
           </button>
         </div>
 
+        <div class="error-message" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
         <!-- Submit Button -->
         <button 
           mat-raised-button 
           color="primary" 
           type="submit"
           class="submit-button"
-          [disabled]="loginForm.invalid">
+          [disabled]="loginForm.invalid || isSubmitting">
           {{ 'login.submitButton' | translate }}
         </button>
       </form>

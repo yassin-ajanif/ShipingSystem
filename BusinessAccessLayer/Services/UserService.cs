@@ -98,7 +98,7 @@ namespace BusinessAccessLayer.Services
             }
 
             // Generate token (if needed) or return success
-            return new UserResultDto { Success = true, Token = "DummyTokenForNow" };
+            return new UserResultDto { Success = true,};
         }
 
         public Task LogoutAsync()
@@ -128,9 +128,28 @@ namespace BusinessAccessLayer.Services
             };
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
+            if (!result.Succeeded)
+            {
+                return new UserResultDto
+                {
+                    Success = false,
+                    Errors = result.Errors?.Select(e => e.Description)
+                };
+            }
+
+            var createdUser = await _userManager.FindByEmailAsync(registerDto.Email);
+            if (createdUser == null)
+            {
+                return new UserResultDto
+                {
+                    Success = false,
+                    Errors = new[] { "User could not be persisted." }
+                };
+            }
+
             var roleName = (string.IsNullOrEmpty(registerDto.Role)) ? "User" : registerDto.Role;
 
-            var roleResult = await _userManager.AddToRoleAsync(user, roleName);
+            var roleResult = await _userManager.AddToRoleAsync(createdUser, roleName);
 
             if (!roleResult.Succeeded)
             {

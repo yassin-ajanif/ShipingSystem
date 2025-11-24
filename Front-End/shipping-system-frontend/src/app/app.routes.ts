@@ -19,7 +19,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/dashboards/Shipment-/dashboard.component').then(m => m.DashboardComponent)
   },
   {
-    path: 'shipments/create',
+    path: 'shipment/create',
     loadComponent: () => import('./pages/shipment/create/create.component').then(m => m.CreateComponent),
     loadChildren: () => import('./pages/shipment/create/create.routes').then(m => m.createRoutes)
   },

@@ -1,534 +1,536 @@
 {
-  "navbar": {
-    "logo": "شيب سويفت",
-    "features": "المميزات",
-    "pricing": "الأسعار", 
-    "support": "الدعم",
-    "login": "تسجيل الدخول",
-    "english": "الإنجليزية",
-    "arabic": "العربية",
-    "language": {
-      "english": "الإنجليزية",
-      "arabic": "العربية",
-      "current": "اللغة"
-    }
-  },
-  "register": {
-    "title": "إنشاء حسابك",
-    "fullName": {
-      "label": "الاسم الكامل",
-      "placeholder": "أدخل اسمك الكامل"
-    },
-    "email": {
-      "label": "البريد الإلكتروني",
-      "placeholder": "أدخل بريدك الإلكتروني"
-    },
-    "password": {
-      "label": "كلمة المرور",
-      "placeholder": "أنشئ كلمة مرور",
-      "hideLabel": "إخفاء كلمة المرور"
-    },
-    "phoneNumber": {
-      "label": "رقم الهاتف",
-      "placeholder": "أدخل رقم هاتفك"
-    },
-    "companyName": {
-      "label": "اسم الشركة (اختياري)",
-      "placeholder": "أدخل اسم شركتك"
-    },
-    "submitButton": "تسجيل",
-    "terms": {
-      "text": "بالتسجيل، أنت توافق على",
-      "termsOfService": "شروط الخدمة",
-      "and": "و",
-      "privacyPolicy": "سياسة الخصوصية"
-    },
-    "errors": {
-      "required": "مطلوب",
-      "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
-      "minLength": "يجب أن يكون على الأقل {count} أحرف",
-      "phonePattern": "يرجى إدخال رقم هاتف صحيح"
-    },
-    "fieldNames": {
-      "fullName": "الاسم الكامل",
-      "email": "البريد الإلكتروني",
-      "password": "كلمة المرور",
-      "phoneNumber": "رقم الهاتف",
-      "companyName": "اسم الشركة"
-    }
-  },
-  "login": {
-    "title": "مرحبا بعودتك",
-    "email": {
-      "label": "البريد الإلكتروني",
-      "placeholder": "أدخل بريدك الإلكتروني"
-    },
-    "password": {
-      "label": "كلمة المرور",
-      "placeholder": "أدخل كلمة المرور",
-      "hideLabel": "إخفاء كلمة المرور"
-    },
-    "forgotPassword": "نسيت كلمة المرور؟",
-    "submitButton": "تسجيل الدخول",
-    "errors": {
-      "required": "مطلوب",
-      "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
-      "minLength": "يجب أن يكون على الأقل {count} أحرف"
-    },
-    "fieldNames": {
-      "email": "البريد الإلكتروني",
-      "password": "كلمة المرور"
-    }
-  },
-  "dashboard": {
-    "title": "لوحة التحكم",
-    "welcomeBack": "مرحبا بعودتك",
-    "stats": {
-      "activeShipments": "الشحنات النشطة",
-      "accountBalance": "رصيد الحساب",
-      "packagesInTransit": "الطرود في الطريق"
-    },
-    "quickActions": {
-      "title": "الإجراءات السريعة",
-      "createShipment": "إنشاء شحنة",
-      "viewAllShipments": "عرض جميع الشحنات"
-    },
-    "recentShipments": {
-      "title": "الشحنات الأخيرة",
-      "trackingNumber": "رقم التتبع",
-      "status": "الحالة",
-      "destination": "الوجهة",
-      "estimatedDelivery": "التسليم المتوقع",
-      "actions": "الإجراءات",
-      "viewDetails": "عرض التفاصيل"
-    },
-    "statuses": {
-      "intransit": "في الطريق",
-      "delivered": "تم التسليم",
-      "pending": "معلق"
-    }
-  },
-  "shipmentCreate": {
-    "breadcrumb": {
-      "shipments": "الشحنات",
-      "createShipment": "إنشاء شحنة"
-    },
-    "steps": {
-      "senderInformation": "معلومات المرسل",
-      "recipientInformation": "معلومات المستلم",
-      "packageDetails": "تفاصيل الطرد",
-      "paymentMethod": "طريقة الدفع",
-      "confirmation": "التأكيد"
-    },
-    "stepIndicator": "الخطوة {current} من {total}",
-    "buttons": {
-      "back": "رجوع",
-      "next": "التالي",
-      "submit": "إرسال"
-    },
-    "senderInfo": {
-      "title": "معلومات المرسل",
-      "fullName": {
-        "label": "الاسم الكامل",
-        "placeholder": "أدخل اسمك الكامل"
-      },
-      "address": {
-        "label": "العنوان",
-        "placeholder": "أدخل عنوانك"
-      },
-      "phoneNumber": {
-        "label": "رقم الهاتف",
-        "placeholder": "أدخل رقم هاتفك"
-      },
-      "email": {
-        "label": "البريد الإلكتروني",
-        "placeholder": "أدخل بريدك الإلكتروني"
-      },
-      "errors": {
-        "fullNameRequired": "الاسم الكامل مطلوب",
-        "addressRequired": "العنوان مطلوب",
-        "phoneNumberRequired": "رقم الهاتف مطلوب",
-        "phoneNumberInvalid": "يرجى إدخال رقم هاتف صحيح",
-        "emailRequired": "البريد الإلكتروني مطلوب",
-        "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح"
-      }
-    },
-    "recipientInfo": {
-      "title": "معلومات المستلم",
-      "recipientName": {
-        "label": "اسم المستلم",
-        "placeholder": "أدخل الاسم الكامل للمستلم"
-      },
-      "address": {
-        "label": "العنوان",
-        "placeholder": "أدخل عنوان المستلم"
-      },
-      "city": {
-        "label": "المدينة",
-        "placeholder": "أدخل المدينة"
-      },
-      "state": {
-        "label": "الولاية",
-        "placeholder": "اختر الولاية"
-      },
-      "zipCode": {
-        "label": "الرمز البريدي",
-        "placeholder": "أدخل الرمز البريدي"
-      },
-      "country": {
-        "label": "الدولة",
-        "placeholder": "اختر الدولة"
-      },
-      "phoneNumber": {
-        "label": "رقم الهاتف",
-        "placeholder": "أدخل رقم هاتف المستلم"
-      },
-      "email": {
-        "label": "البريد الإلكتروني",
-        "placeholder": "أدخل البريد الإلكتروني للمستلم"
-      },
-      "errors": {
-        "recipientNameRequired": "اسم المستلم مطلوب",
-        "addressRequired": "العنوان مطلوب",
-        "cityRequired": "المدينة مطلوبة",
-        "stateRequired": "الولاية مطلوبة",
-        "zipCodeRequired": "الرمز البريدي مطلوب",
-        "zipCodeInvalid": "يرجى إدخال رمز بريدي صحيح",
-        "countryRequired": "الدولة مطلوبة",
-        "phoneNumberRequired": "رقم الهاتف مطلوب",
-        "phoneNumberInvalid": "يرجى إدخال رقم هاتف صحيح",
-        "emailRequired": "البريد الإلكتروني مطلوب",
-        "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح"
-      }
-    },
-    "packageDetails": {
-      "title": "تفاصيل الطرد",
-      "packageName": {
-        "label": "اسم الطرد",
-        "placeholder": "مثال: 'إلكترونيات/طلب', 'ملابس/إرجاع'"
-      },
-      "packageType": {
-        "label": "نوع الطرد",
-        "placeholder": "أدخل نوع الطرد"
-      },
-      "dimensions": {
-        "length": "الطول (سم)",
-        "lengthPlaceholder": "أدخل الطول",
-        "width": "العرض (سم)",
-        "widthPlaceholder": "أدخل العرض",
-        "height": "الارتفاع (سم)",
-        "heightPlaceholder": "أدخل الارتفاع"
-      },
-      "weight": {
-        "label": "الوزن (كجم)",
-        "placeholder": "أدخل الوزن"
-      },
-      "contentsDescription": {
-        "label": "وصف المحتويات",
-        "placeholder": "صف محتويات الطرد"
-      },
-      "specialHandling": {
-        "title": "معالجة خاصة (اختياري)",
-        "fragile": "قابل للكسر",
-        "handleWithCare": "التعامل بحذر",
-        "keepDry": "الحفظ جافًا"
-      },
-      "errors": {
-        "packageNameRequired": "اسم الطرد مطلوب",
-        "packageTypeRequired": "نوع الطرد مطلوب",
-        "lengthRequired": "الطول مطلوب",
-        "widthRequired": "العرض مطلوب",
-        "heightRequired": "الارتفاع مطلوب",
-        "weightRequired": "الوزن مطلوب",
-        "dimensionInvalid": "يرجى إدخال رقم صحيح",
-        "contentsDescriptionRequired": "وصف المحتويات مطلوب"
-      }
-    },
-    "paymentMethod": {
-      "title": "طريقة الدفع",
-      "methods": {
-        "creditCard": "بطاقة ائتمان",
-        "digitalWallet": "محفظة رقمية",
-        "existingBalance": "الرصيد الحالي"
-      },
-      "cardNumber": {
-        "label": "رقم البطاقة",
-        "placeholder": "أدخل رقم البطاقة"
-      },
-      "expiryDate": {
-        "label": "تاريخ الانتهاء",
-        "placeholder": "شهر/سنة"
-      },
-      "cvv": {
-        "label": "رمز الأمان",
-        "placeholder": "أدخل رمز الأمان"
-      },
-      "cardholderName": {
-        "label": "اسم حامل البطاقة",
-        "placeholder": "أدخل اسم حامل البطاقة"
-      },
-      "messages": {
-        "digitalWalletInfo": "ستكون معالجة الدفع بالمحفظة الرقمية متاحة قريبًا.",
-        "existingBalanceInfo": "سيتم استخدام رصيدك الحالي لهذه الشحنة."
-      },
-      "errors": {
-        "cardNumberRequired": "رقم البطاقة مطلوب",
-        "cardNumberInvalid": "يرجى إدخال رقم بطاقة صحيح من 16 رقمًا",
-        "expiryDateRequired": "تاريخ الانتهاء مطلوب",
-        "expiryDateInvalid": "يرجى إدخال التاريخ بصيغة شهر/سنة",
-        "cvvRequired": "رمز الأمان مطلوب",
-        "cvvInvalid": "يرجى إدخال رمز أمان صحيح",
-        "cardholderNameRequired": "اسم حامل البطاقة مطلوب"
-      }
-    },
-    "confirmation": {
-      "title": "تم إنشاء الشحنة بنجاح",
-      "message": "تم إنشاء شحنتك بنجاح وهي الآن جاهزة للمعالجة. يمكنك عرض تفاصيل الشحنة وتتبع تقدمها من صفحة الشحنات.",
-      "buttons": {
-        "viewDetails": "عرض تفاصيل الشحنة",
-        "backToShipments": "العودة إلى الشحنات"
-      }
-    }
-  },
-  "shipmentReturn": {
-    "breadcrumb": {
-      "shipments": "الشحنات",
-      "returnShipment": "إرجاع الشحنة"
-    },
-    "steps": {
-      "returnItems": "العناصر المرتجعة",
-      "returnDetails": "تفاصيل الإرجاع",
-      "confirmation": "التأكيد"
-    },
-    "buttons": {
-      "back": "رجوع",
-      "next": "التالي",
-      "submitReturn": "إرسال الإرجاع"
-    },
-    "returnItems": {
-      "description": "قم بتأكيد إرجاع جميع العناصر في هذه الشحنة.",
-      "shipmentNumber": "الشحنة",
-      "table": {
-        "item": "العنصر",
-        "quantity": "الكمية",
-        "price": "السعر"
-      },
-      "returnDetails": {
-        "title": "تفاصيل الإرجاع",
-        "reason": {
-          "label": "سبب الإرجاع",
-          "placeholder": "اختر"
-        },
-        "comments": {
-          "label": "تعليقات",
-          "placeholder": "أضف أي تعليقات إضافية (اختياري)"
-        }
-      }
-    },
-    "returnDetails": {
-      "description": "يرجى تقديم التفاصيل اللازمة لشحنة الإرجاع.",
-      "returnAddress": {
-        "title": "عنوان الإرجاع",
-        "label": "اختر عنوان الإرجاع",
-        "placeholder": "اختر عنوانًا"
-      },
-      "pickupLocation": {
-        "title": "موقع الاستلام",
-        "label": "اختر موقع الاستلام",
-        "placeholder": "اختر موقعًا"
-      },
-      "shippingOptions": {
-        "title": "خيارات الشحن للإرجاع"
-      },
-      "shippingCost": {
-        "title": "تكلفة شحن الإرجاع",
-        "shippingCost": "تكلفة الشحن",
-        "returnShippingCost": "تكلفة شحن الإرجاع",
-        "totalCost": "التكلفة الإجمالية للإرجاع"
-      }
-    },
-    "confirmation": {
-      "title": "تم إرسال طلب الإرجاع بنجاح",
-      "message": "تم إرسال طلب الإرجاع الخاص بك بنجاح ويتم الآن معالجته. يمكنك عرض تفاصيل الإرجاع وتتبع تقدمه من صفحة الشحنات.",
-      "buttons": {
-        "viewDetails": "عرض تفاصيل الإرجاع",
-        "backToShipments": "العودة إلى الشحنات"
-      }
-    }
-  },
-  "shipmentTrack": {
-    "title": "تتبع الطرد الخاص بك",
-    "description": "أدخل رقم التتبع المكون من 9 أرقام لعرض حالة شحنتك.",
-    "input": {
-      "label": "أدخل رقم التتبع",
-      "placeholder": "رقم تتبع مكون من 9 أرقام",
-      "required": "رقم التتبع مطلوب",
-      "invalid": "يرجى إدخال رقم تتبع صحيح مكون من 9 أرقام"
-    },
-    "buttons": {
-      "track": "تتبع",
-      "tracking": "جاري التتبع..."
-    },
-    "details": {
-      "title": "تتبع الطلب",
-      "description": "أدخل رقم التتبع المكون من 9 أرقام لعرض حالة شحنتك.",
-      "trackingDetails": "تفاصيل التتبع",
-      "trackingNumber": "رقم التتبع",
-      "orderDate": "تاريخ الطلب",
-      "estimatedDelivery": "التسليم المتوقع",
-      "orderStatus": "حالة الطلب",
-      "statusMessage": "الطرد الخاص بك في طريقه إليك حاليًا.",
-      "timeline": "الجدول الزمني",
-      "map": "الخريطة",
-      "mapPlaceholder": "عرض الخريطة سيكون متاحًا قريبًا"
-    },
-    "notFound": {
-      "title": "الطلب غير موجود",
-      "message": "لم نتمكن من العثور على أي معلومات تتبع للرقم الذي أدخلته. يرجى التحقق مرة أخرى من رقم التتبع والمحاولة مرة أخرى.",
-      "tryAgain": "حاول مرة أخرى",
-      "needHelp": "هل تحتاج إلى مساعدة؟",
-      "helpMessage": "إذا كنت تعتقد أن هذا خطأ أو تحتاج إلى مزيد من المساعدة، يرجى الاتصال بفريق الدعم لدينا.",
-      "contactSupport": "اتصل بالدعم"
-    }
-  },
-  "rateCalculate": {
-    "title": "حساب تكلفة الشحن",
-    "origin": {
-      "label": "الأصل",
-      "placeholder": "أدخل عنوان الأصل",
-      "required": "الأصل مطلوب"
-    },
-    "destination": {
-      "label": "الوجهة",
-      "placeholder": "أدخل عنوان الوجهة",
-      "required": "الوجهة مطلوبة"
-    },
-    "weight": {
-      "label": "الوزن (رطل)",
-      "placeholder": "أدخل وزن الطرد",
-      "required": "الوزن مطلوب",
-      "invalid": "يجب أن يكون الوزن أكبر من 0"
-    },
-    "buttons": {
-      "calculate": "احسب التكلفة",
-      "calculating": "جاري الحساب...",
-      "confirm": "تأكيد",
-      "newCalculation": "حساب جديد"
-    },
-    "results": {
-      "title": "حساب تكلفة الشحن",
-      "distance": "المسافة (كم)",
-      "weight": "الوزن (كجم)",
-      "ratePerKm": "السعر لكل كم",
-      "ratePerKg": "السعر لكل كجم",
-      "costBreakdown": "تفاصيل التكلفة",
-      "distanceCost": "تكلفة المسافة",
-      "weightCost": "تكلفة الوزن",
-      "totalRate": "إجمالي تكلفة الشحن",
-      "note": "يتم حساب إجمالي تكلفة الشحن بناءً على المسافة ووزن الطرد."
-    }
-  },
-  "packages": {
-    "pricing": {
-      "title": "الأسعار",
-      "plans": {
-        "basic": {
-          "name": "أساسي",
-          "period": "مجاني",
-          "feature1": "حتى 100 شحنة شهريًا",
-          "feature2": "التتبع والدعم الأساسي",
-          "button": "ابدأ الآن"
-        },
-        "pro": {
-          "name": "احترافي",
-          "period": "شهريًا",
-          "feature1": "شحنات غير محدودة",
-          "feature2": "التتبع والتحليلات المتقدمة",
-          "feature3": "الدعم ذو الأولوية",
-          "button": "ابدأ الآن"
-        },
-        "enterprise": {
-          "name": "المؤسسات",
-          "period": "اتصل بنا",
-          "contactUs": "اتصل بنا",
-          "feature1": "حلول مخصصة",
-          "feature2": "مدير حساب مخصص",
-          "feature3": "دعم على مدار الساعة",
-          "button": "اتصل بالمبيعات"
-        }
-      },
-      "faq": {
-        "title": "الأسئلة الشائعة",
-        "q1": {
-          "question": "ما هي طرق الدفع التي تقبلونها؟",
-          "answer": "نقبل جميع بطاقات الائتمان الرئيسية، بما في ذلك Visa وMastercard وAmerican Express. يتم معالجة المدفوعات بشكل آمن من خلال بوابة الدفع الخاصة بنا."
-        },
-        "q2": {
-          "question": "هل يمكنني إلغاء اشتراكي في أي وقت؟",
-          "answer": "نعم، يمكنك إلغاء اشتراكك في أي وقت من إعدادات حسابك. ستستمر في الوصول حتى نهاية فترة الفوترة."
-        },
-        "q3": {
-          "question": "هل تقدمون خصومات للمنظمات غير الربحية؟",
-          "answer": "نعم، نقدم أسعارًا خاصة للمنظمات غير الربحية. يرجى الاتصال بفريق المبيعات لدينا لمزيد من المعلومات."
-        }
-      }
-    },
-    "payment": {
-      "title": "تفاصيل الدفع",
-      "subtitle": "اختر طريقة دفع لتفعيل باقتك.",
-      "cardDetails": {
-        "title": "بطاقة ائتمان أو خصم",
-        "cardNumber": "رقم البطاقة",
-        "cardNumberPlaceholder": "0000 0000 0000 0000",
-        "expirationDate": "تاريخ الانتهاء (شهر/سنة)",
-        "expirationDatePlaceholder": "01/25",
-        "cvc": "رمز الأمان",
-        "cvcPlaceholder": "123",
-        "nameOnCard": "الاسم على البطاقة",
-        "nameOnCardPlaceholder": "أحمد محمد"
-      },
-      "billingAddress": {
-        "title": "عنوان الفواتير",
-        "address": "العنوان",
-        "addressPlaceholder": "123 الشارع الرئيسي",
-        "city": "المدينة",
-        "cityPlaceholder": "أي مدينة",
-        "state": "الولاية",
-        "statePlaceholder": "كاليفورنيا",
-        "zipCode": "الرمز البريدي",
-        "zipCodePlaceholder": "90210"
-      },
-      "buttons": {
-        "activate": "تفعيل الباقة",
-        "processing": "جاري المعالجة..."
-      },
-      "errors": {
-        "cardNumberRequired": "رقم البطاقة مطلوب",
-        "cardNumberInvalid": "يرجى إدخال رقم بطاقة صحيح مكون من 16 رقمًا",
-        "expirationDateRequired": "تاريخ الانتهاء مطلوب",
-        "expirationDateInvalid": "يرجى إدخال التاريخ بصيغة شهر/سنة",
-        "cvcRequired": "رمز الأمان مطلوب",
-        "cvcInvalid": "يرجى إدخال رمز أمان صحيح مكون من 3 أرقام",
-        "nameOnCardRequired": "الاسم على البطاقة مطلوب",
-        "addressRequired": "العنوان مطلوب",
-        "cityRequired": "المدينة مطلوبة",
-        "stateRequired": "الولاية مطلوبة",
-        "zipCodeRequired": "الرمز البريدي مطلوب",
-        "zipCodeInvalid": "يرجى إدخال رمز بريدي صحيح مكون من 5 أرقام"
-      }
-    },
-    "confirmation": {
-      "title": "كل شيء جاهز!",
-      "message": "اشتراكك في ShipFast Pro نشط الآن. يمكنك البدء في استخدام جميع الميزات المتميزة على الفور.",
-      "details": {
-        "title": "تفاصيل الاشتراك",
-        "plan": "الباقة",
-        "startDate": "تاريخ البدء"
-      },
-      "buttons": {
-        "manage": "إدارة الاشتراك"
-      },
-      "additionalInfo": "يمكنك إدارة تفاصيل اشتراكك ومعلومات الفوترة في إعدادات حسابك."
-    }
-  }
+    "navbar":  {
+                   "logo":  "شيب سويفت",
+                   "features":  "المميزات",
+                   "pricing":  "الأسعار",
+                   "support":  "الدعم",
+                   "login":  "تسجيل الدخول",
+                   "english":  "الإنجليزية",
+                   "arabic":  "العربية",
+                   "language":  {
+                                    "english":  "الإنجليزية",
+                                    "arabic":  "العربية",
+                                    "current":  "اللغة"
+                                }
+               },
+    "register":  {
+                     "title":  "إنشاء حسابك",
+                     "email":  {
+                                   "label":  "البريد الإلكتروني",
+                                   "placeholder":  "أدخل بريدك الإلكتروني"
+                               },
+                     "password":  {
+                                      "label":  "كلمة المرور",
+                                      "placeholder":  "أنشئ كلمة مرور",
+                                      "hideLabel":  "إخفاء كلمة المرور"
+                                  },
+                     "phoneNumber":  {
+                                         "label":  "رقم الهاتف",
+                                         "placeholder":  "أدخل رقم هاتفك"
+                                     },
+                     "submitButton":  "تسجيل",
+                     "terms":  {
+                                   "text":  "بالتسجيل، أنت توافق على",
+                                   "termsOfService":  "شروط الخدمة",
+                                   "and":  "و",
+                                   "privacyPolicy":  "سياسة الخصوصية"
+                               },
+                     "errors":  {
+                                    "required":  "مطلوب",
+                                    "email":  "يرجى إدخال عنوان بريد إلكتروني صحيح",
+                                    "minLength":  "يجب أن يكون على الأقل {count} أحرف",
+                                    "phonePattern":  "يرجى إدخال رقم هاتف صحيح",
+                                    "passwordsDoNotMatch":  "كلمتا المرور غير متطابقتين"
+                                },
+                     "fieldNames":  {
+                                        "email":  "البريد الإلكتروني",
+                                        "password":  "كلمة المرور",
+                                        "phoneNumber":  "رقم الهاتف",
+                                        "firstName":  "الاسم الأول",
+                                        "lastName":  "اسم العائلة",
+                                        "confirmPassword":  "تأكيد كلمة المرور"
+                                    },
+                     "firstName":  {
+                                       "placeholder":  "أدخل اسمك الأول",
+                                       "label":  "الاسم الأول"
+                                   },
+                     "lastName":  {
+                                      "placeholder":  "أدخل اسم العائلة",
+                                      "label":  "اسم العائلة"
+                                  }
+                 },
+    "login":  {
+                  "title":  "مرحبا بعودتك",
+                  "email":  {
+                                "label":  "البريد الإلكتروني",
+                                "placeholder":  "أدخل بريدك الإلكتروني"
+                            },
+                  "password":  {
+                                   "label":  "كلمة المرور",
+                                   "placeholder":  "أدخل كلمة المرور",
+                                   "hideLabel":  "إخفاء كلمة المرور"
+                               },
+                  "forgotPassword":  "نسيت كلمة المرور؟",
+                  "submitButton":  "تسجيل الدخول",
+                  "errors":  {
+                                 "required":  "مطلوب",
+                                 "email":  "يرجى إدخال عنوان بريد إلكتروني صحيح",
+                                 "minLength":  "يجب أن يكون على الأقل {count} أحرف"
+                             },
+                  "fieldNames":  {
+                                     "email":  "البريد الإلكتروني",
+                                     "password":  "كلمة المرور"
+                                 }
+              },
+    "dashboard":  {
+                      "title":  "لوحة التحكم",
+                      "welcomeBack":  "مرحبا بعودتك",
+                      "stats":  {
+                                    "activeShipments":  "الشحنات النشطة",
+                                    "accountBalance":  "رصيد الحساب",
+                                    "packagesInTransit":  "الطرود في الطريق"
+                                },
+                      "quickActions":  {
+                                           "title":  "الإجراءات السريعة",
+                                           "createShipment":  "إنشاء شحنة",
+                                           "viewAllShipments":  "عرض جميع الشحنات"
+                                       },
+                      "recentShipments":  {
+                                              "title":  "الشحنات الأخيرة",
+                                              "trackingNumber":  "رقم التتبع",
+                                              "status":  "الحالة",
+                                              "destination":  "الوجهة",
+                                              "estimatedDelivery":  "التسليم المتوقع",
+                                              "actions":  "الإجراءات",
+                                              "viewDetails":  "عرض التفاصيل"
+                                          },
+                      "statuses":  {
+                                       "intransit":  "في الطريق",
+                                       "delivered":  "تم التسليم",
+                                       "pending":  "معلق"
+                                   }
+                  },
+    "shipmentCreate":  {
+                           "breadcrumb":  {
+                                              "shipments":  "الشحنات",
+                                              "createShipment":  "إنشاء شحنة"
+                                          },
+                           "steps":  {
+                                         "senderInformation":  "معلومات المرسل",
+                                         "recipientInformation":  "معلومات المستلم",
+                                         "packageDetails":  "تفاصيل الطرد",
+                                         "paymentMethod":  "طريقة الدفع",
+                                         "confirmation":  "التأكيد"
+                                     },
+                           "stepIndicator":  "الخطوة {current} من {total}",
+                           "buttons":  {
+                                           "back":  "رجوع",
+                                           "next":  "التالي",
+                                           "submit":  "إرسال"
+                                       },
+                           "senderInfo":  {
+                                              "title":  "معلومات المرسل",
+                                              "fullName":  {
+                                                               "label":  "الاسم الكامل",
+                                                               "placeholder":  "أدخل اسمك الكامل"
+                                                           },
+                                              "address":  {
+                                                              "label":  "العنوان",
+                                                              "placeholder":  "أدخل عنوانك"
+                                                          },
+                                              "phoneNumber":  {
+                                                                  "label":  "رقم الهاتف",
+                                                                  "placeholder":  "أدخل رقم هاتفك"
+                                                              },
+                                              "email":  {
+                                                            "label":  "البريد الإلكتروني",
+                                                            "placeholder":  "أدخل بريدك الإلكتروني"
+                                                        },
+                                              "errors":  {
+                                                             "fullNameRequired":  "الاسم الكامل مطلوب",
+                                                             "addressRequired":  "العنوان مطلوب",
+                                                             "phoneNumberRequired":  "رقم الهاتف مطلوب",
+                                                             "phoneNumberInvalid":  "يرجى إدخال رقم هاتف صحيح",
+                                                             "emailRequired":  "البريد الإلكتروني مطلوب",
+                                                             "emailInvalid":  "يرجى إدخال بريد إلكتروني صحيح"
+                                                         }
+                                          },
+                           "recipientInfo":  {
+                                                 "title":  "معلومات المستلم",
+                                                 "recipientName":  {
+                                                                       "label":  "اسم المستلم",
+                                                                       "placeholder":  "أدخل الاسم الكامل للمستلم"
+                                                                   },
+                                                 "address":  {
+                                                                 "label":  "العنوان",
+                                                                 "placeholder":  "أدخل عنوان المستلم"
+                                                             },
+                                                 "city":  {
+                                                              "label":  "المدينة",
+                                                              "placeholder":  "أدخل المدينة"
+                                                          },
+                                                 "state":  {
+                                                               "label":  "الولاية",
+                                                               "placeholder":  "اختر الولاية"
+                                                           },
+                                                 "zipCode":  {
+                                                                 "label":  "الرمز البريدي",
+                                                                 "placeholder":  "أدخل الرمز البريدي"
+                                                             },
+                                                 "country":  {
+                                                                 "label":  "الدولة",
+                                                                 "placeholder":  "اختر الدولة"
+                                                             },
+                                                 "phoneNumber":  {
+                                                                     "label":  "رقم الهاتف",
+                                                                     "placeholder":  "أدخل رقم هاتف المستلم"
+                                                                 },
+                                                 "email":  {
+                                                               "label":  "البريد الإلكتروني",
+                                                               "placeholder":  "أدخل البريد الإلكتروني للمستلم"
+                                                           },
+                                                 "errors":  {
+                                                                "recipientNameRequired":  "اسم المستلم مطلوب",
+                                                                "addressRequired":  "العنوان مطلوب",
+                                                                "cityRequired":  "المدينة مطلوبة",
+                                                                "stateRequired":  "الولاية مطلوبة",
+                                                                "zipCodeRequired":  "الرمز البريدي مطلوب",
+                                                                "zipCodeInvalid":  "يرجى إدخال رمز بريدي صحيح",
+                                                                "countryRequired":  "الدولة مطلوبة",
+                                                                "phoneNumberRequired":  "رقم الهاتف مطلوب",
+                                                                "phoneNumberInvalid":  "يرجى إدخال رقم هاتف صحيح",
+                                                                "emailRequired":  "البريد الإلكتروني مطلوب",
+                                                                "emailInvalid":  "يرجى إدخال بريد إلكتروني صحيح"
+                                                            }
+                                             },
+                           "packageDetails":  {
+                                                  "title":  "تفاصيل الطرد",
+                                                  "packageName":  {
+                                                                      "label":  "اسم الطرد",
+                                                                      "placeholder":  "مثال: \u0027إلكترونيات/طلب\u0027, \u0027ملابس/إرجاع\u0027"
+                                                                  },
+                                                  "packageType":  {
+                                                                      "label":  "نوع الطرد",
+                                                                      "placeholder":  "أدخل نوع الطرد"
+                                                                  },
+                                                  "dimensions":  {
+                                                                     "length":  "الطول (سم)",
+                                                                     "lengthPlaceholder":  "أدخل الطول",
+                                                                     "width":  "العرض (سم)",
+                                                                     "widthPlaceholder":  "أدخل العرض",
+                                                                     "height":  "الارتفاع (سم)",
+                                                                     "heightPlaceholder":  "أدخل الارتفاع"
+                                                                 },
+                                                  "weight":  {
+                                                                 "label":  "الوزن (كجم)",
+                                                                 "placeholder":  "أدخل الوزن"
+                                                             },
+                                                  "contentsDescription":  {
+                                                                              "label":  "وصف المحتويات",
+                                                                              "placeholder":  "صف محتويات الطرد"
+                                                                          },
+                                                  "specialHandling":  {
+                                                                          "title":  "معالجة خاصة (اختياري)",
+                                                                          "fragile":  "قابل للكسر",
+                                                                          "handleWithCare":  "التعامل بحذر",
+                                                                          "keepDry":  "الحفظ جافًا"
+                                                                      },
+                                                  "errors":  {
+                                                                 "packageNameRequired":  "اسم الطرد مطلوب",
+                                                                 "packageTypeRequired":  "نوع الطرد مطلوب",
+                                                                 "lengthRequired":  "الطول مطلوب",
+                                                                 "widthRequired":  "العرض مطلوب",
+                                                                 "heightRequired":  "الارتفاع مطلوب",
+                                                                 "weightRequired":  "الوزن مطلوب",
+                                                                 "dimensionInvalid":  "يرجى إدخال رقم صحيح",
+                                                                 "contentsDescriptionRequired":  "وصف المحتويات مطلوب"
+                                                             }
+                                              },
+                           "paymentMethod":  {
+                                                 "title":  "طريقة الدفع",
+                                                 "methods":  {
+                                                                 "creditCard":  "بطاقة ائتمان",
+                                                                 "digitalWallet":  "محفظة رقمية",
+                                                                 "existingBalance":  "الرصيد الحالي"
+                                                             },
+                                                 "cardNumber":  {
+                                                                    "label":  "رقم البطاقة",
+                                                                    "placeholder":  "أدخل رقم البطاقة"
+                                                                },
+                                                 "expiryDate":  {
+                                                                    "label":  "تاريخ الانتهاء",
+                                                                    "placeholder":  "شهر/سنة"
+                                                                },
+                                                 "cvv":  {
+                                                             "label":  "رمز الأمان",
+                                                             "placeholder":  "أدخل رمز الأمان"
+                                                         },
+                                                 "cardholderName":  {
+                                                                        "label":  "اسم حامل البطاقة",
+                                                                        "placeholder":  "أدخل اسم حامل البطاقة"
+                                                                    },
+                                                 "messages":  {
+                                                                  "digitalWalletInfo":  "ستكون معالجة الدفع بالمحفظة الرقمية متاحة قريبًا.",
+                                                                  "existingBalanceInfo":  "سيتم استخدام رصيدك الحالي لهذه الشحنة."
+                                                              },
+                                                 "errors":  {
+                                                                "cardNumberRequired":  "رقم البطاقة مطلوب",
+                                                                "cardNumberInvalid":  "يرجى إدخال رقم بطاقة صحيح من 16 رقمًا",
+                                                                "expiryDateRequired":  "تاريخ الانتهاء مطلوب",
+                                                                "expiryDateInvalid":  "يرجى إدخال التاريخ بصيغة شهر/سنة",
+                                                                "cvvRequired":  "رمز الأمان مطلوب",
+                                                                "cvvInvalid":  "يرجى إدخال رمز أمان صحيح",
+                                                                "cardholderNameRequired":  "اسم حامل البطاقة مطلوب"
+                                                            }
+                                             },
+                           "confirmation":  {
+                                                "title":  "تم إنشاء الشحنة بنجاح",
+                                                "message":  "تم إنشاء شحنتك بنجاح وهي الآن جاهزة للمعالجة. يمكنك عرض تفاصيل الشحنة وتتبع تقدمها من صفحة الشحنات.",
+                                                "buttons":  {
+                                                                "viewDetails":  "عرض تفاصيل الشحنة",
+                                                                "backToShipments":  "العودة إلى الشحنات"
+                                                            }
+                                            }
+                       },
+    "shipmentReturn":  {
+                           "breadcrumb":  {
+                                              "shipments":  "الشحنات",
+                                              "returnShipment":  "إرجاع الشحنة"
+                                          },
+                           "steps":  {
+                                         "returnItems":  "العناصر المرتجعة",
+                                         "returnDetails":  "تفاصيل الإرجاع",
+                                         "confirmation":  "التأكيد"
+                                     },
+                           "buttons":  {
+                                           "back":  "رجوع",
+                                           "next":  "التالي",
+                                           "submitReturn":  "إرسال الإرجاع"
+                                       },
+                           "returnItems":  {
+                                               "description":  "قم بتأكيد إرجاع جميع العناصر في هذه الشحنة.",
+                                               "shipmentNumber":  "الشحنة",
+                                               "table":  {
+                                                             "item":  "العنصر",
+                                                             "quantity":  "الكمية",
+                                                             "price":  "السعر"
+                                                         },
+                                               "returnDetails":  {
+                                                                     "title":  "تفاصيل الإرجاع",
+                                                                     "reason":  {
+                                                                                    "label":  "سبب الإرجاع",
+                                                                                    "placeholder":  "اختر"
+                                                                                },
+                                                                     "comments":  {
+                                                                                      "label":  "تعليقات",
+                                                                                      "placeholder":  "أضف أي تعليقات إضافية (اختياري)"
+                                                                                  }
+                                                                 }
+                                           },
+                           "returnDetails":  {
+                                                 "description":  "يرجى تقديم التفاصيل اللازمة لشحنة الإرجاع.",
+                                                 "returnAddress":  {
+                                                                       "title":  "عنوان الإرجاع",
+                                                                       "label":  "اختر عنوان الإرجاع",
+                                                                       "placeholder":  "اختر عنوانًا"
+                                                                   },
+                                                 "pickupLocation":  {
+                                                                        "title":  "موقع الاستلام",
+                                                                        "label":  "اختر موقع الاستلام",
+                                                                        "placeholder":  "اختر موقعًا"
+                                                                    },
+                                                 "shippingOptions":  {
+                                                                         "title":  "خيارات الشحن للإرجاع"
+                                                                     },
+                                                 "shippingCost":  {
+                                                                      "title":  "تكلفة شحن الإرجاع",
+                                                                      "shippingCost":  "تكلفة الشحن",
+                                                                      "returnShippingCost":  "تكلفة شحن الإرجاع",
+                                                                      "totalCost":  "التكلفة الإجمالية للإرجاع"
+                                                                  }
+                                             },
+                           "confirmation":  {
+                                                "title":  "تم إرسال طلب الإرجاع بنجاح",
+                                                "message":  "تم إرسال طلب الإرجاع الخاص بك بنجاح ويتم الآن معالجته. يمكنك عرض تفاصيل الإرجاع وتتبع تقدمه من صفحة الشحنات.",
+                                                "buttons":  {
+                                                                "viewDetails":  "عرض تفاصيل الإرجاع",
+                                                                "backToShipments":  "العودة إلى الشحنات"
+                                                            }
+                                            }
+                       },
+    "shipmentTrack":  {
+                          "title":  "تتبع الطرد الخاص بك",
+                          "description":  "أدخل رقم التتبع المكون من 9 أرقام لعرض حالة شحنتك.",
+                          "input":  {
+                                        "label":  "أدخل رقم التتبع",
+                                        "placeholder":  "رقم تتبع مكون من 9 أرقام",
+                                        "required":  "رقم التتبع مطلوب",
+                                        "invalid":  "يرجى إدخال رقم تتبع صحيح مكون من 9 أرقام"
+                                    },
+                          "buttons":  {
+                                          "track":  "تتبع",
+                                          "tracking":  "جاري التتبع..."
+                                      },
+                          "details":  {
+                                          "title":  "تتبع الطلب",
+                                          "description":  "أدخل رقم التتبع المكون من 9 أرقام لعرض حالة شحنتك.",
+                                          "trackingDetails":  "تفاصيل التتبع",
+                                          "trackingNumber":  "رقم التتبع",
+                                          "orderDate":  "تاريخ الطلب",
+                                          "estimatedDelivery":  "التسليم المتوقع",
+                                          "orderStatus":  "حالة الطلب",
+                                          "statusMessage":  "الطرد الخاص بك في طريقه إليك حاليًا.",
+                                          "timeline":  "الجدول الزمني",
+                                          "map":  "الخريطة",
+                                          "mapPlaceholder":  "عرض الخريطة سيكون متاحًا قريبًا"
+                                      },
+                          "notFound":  {
+                                           "title":  "الطلب غير موجود",
+                                           "message":  "لم نتمكن من العثور على أي معلومات تتبع للرقم الذي أدخلته. يرجى التحقق مرة أخرى من رقم التتبع والمحاولة مرة أخرى.",
+                                           "tryAgain":  "حاول مرة أخرى",
+                                           "needHelp":  "هل تحتاج إلى مساعدة؟",
+                                           "helpMessage":  "إذا كنت تعتقد أن هذا خطأ أو تحتاج إلى مزيد من المساعدة، يرجى الاتصال بفريق الدعم لدينا.",
+                                           "contactSupport":  "اتصل بالدعم"
+                                       }
+                      },
+    "rateCalculate":  {
+                          "title":  "حساب تكلفة الشحن",
+                          "origin":  {
+                                         "label":  "الأصل",
+                                         "placeholder":  "أدخل عنوان الأصل",
+                                         "required":  "الأصل مطلوب"
+                                     },
+                          "destination":  {
+                                              "label":  "الوجهة",
+                                              "placeholder":  "أدخل عنوان الوجهة",
+                                              "required":  "الوجهة مطلوبة"
+                                          },
+                          "weight":  {
+                                         "label":  "الوزن (رطل)",
+                                         "placeholder":  "أدخل وزن الطرد",
+                                         "required":  "الوزن مطلوب",
+                                         "invalid":  "يجب أن يكون الوزن أكبر من 0"
+                                     },
+                          "buttons":  {
+                                          "calculate":  "احسب التكلفة",
+                                          "calculating":  "جاري الحساب...",
+                                          "confirm":  "تأكيد",
+                                          "newCalculation":  "حساب جديد"
+                                      },
+                          "results":  {
+                                          "title":  "حساب تكلفة الشحن",
+                                          "distance":  "المسافة (كم)",
+                                          "weight":  "الوزن (كجم)",
+                                          "ratePerKm":  "السعر لكل كم",
+                                          "ratePerKg":  "السعر لكل كجم",
+                                          "costBreakdown":  "تفاصيل التكلفة",
+                                          "distanceCost":  "تكلفة المسافة",
+                                          "weightCost":  "تكلفة الوزن",
+                                          "totalRate":  "إجمالي تكلفة الشحن",
+                                          "note":  "يتم حساب إجمالي تكلفة الشحن بناءً على المسافة ووزن الطرد."
+                                      }
+                      },
+    "packages":  {
+                     "pricing":  {
+                                     "title":  "الأسعار",
+                                     "plans":  {
+                                                   "basic":  {
+                                                                 "name":  "أساسي",
+                                                                 "period":  "مجاني",
+                                                                 "feature1":  "حتى 100 شحنة شهريًا",
+                                                                 "feature2":  "التتبع والدعم الأساسي",
+                                                                 "button":  "ابدأ الآن"
+                                                             },
+                                                   "pro":  {
+                                                               "name":  "احترافي",
+                                                               "period":  "شهريًا",
+                                                               "feature1":  "شحنات غير محدودة",
+                                                               "feature2":  "التتبع والتحليلات المتقدمة",
+                                                               "feature3":  "الدعم ذو الأولوية",
+                                                               "button":  "ابدأ الآن"
+                                                           },
+                                                   "enterprise":  {
+                                                                      "name":  "المؤسسات",
+                                                                      "period":  "اتصل بنا",
+                                                                      "contactUs":  "اتصل بنا",
+                                                                      "feature1":  "حلول مخصصة",
+                                                                      "feature2":  "مدير حساب مخصص",
+                                                                      "feature3":  "دعم على مدار الساعة",
+                                                                      "button":  "اتصل بالمبيعات"
+                                                                  }
+                                               },
+                                     "faq":  {
+                                                 "title":  "الأسئلة الشائعة",
+                                                 "q1":  {
+                                                            "question":  "ما هي طرق الدفع التي تقبلونها؟",
+                                                            "answer":  "نقبل جميع بطاقات الائتمان الرئيسية، بما في ذلك Visa وMastercard وAmerican Express. يتم معالجة المدفوعات بشكل آمن من خلال بوابة الدفع الخاصة بنا."
+                                                        },
+                                                 "q2":  {
+                                                            "question":  "هل يمكنني إلغاء اشتراكي في أي وقت؟",
+                                                            "answer":  "نعم، يمكنك إلغاء اشتراكك في أي وقت من إعدادات حسابك. ستستمر في الوصول حتى نهاية فترة الفوترة."
+                                                        },
+                                                 "q3":  {
+                                                            "question":  "هل تقدمون خصومات للمنظمات غير الربحية؟",
+                                                            "answer":  "نعم، نقدم أسعارًا خاصة للمنظمات غير الربحية. يرجى الاتصال بفريق المبيعات لدينا لمزيد من المعلومات."
+                                                        }
+                                             }
+                                 },
+                     "payment":  {
+                                     "title":  "تفاصيل الدفع",
+                                     "subtitle":  "اختر طريقة دفع لتفعيل باقتك.",
+                                     "cardDetails":  {
+                                                         "title":  "بطاقة ائتمان أو خصم",
+                                                         "cardNumber":  "رقم البطاقة",
+                                                         "cardNumberPlaceholder":  "0000 0000 0000 0000",
+                                                         "expirationDate":  "تاريخ الانتهاء (شهر/سنة)",
+                                                         "expirationDatePlaceholder":  "01/25",
+                                                         "cvc":  "رمز الأمان",
+                                                         "cvcPlaceholder":  "123",
+                                                         "nameOnCard":  "الاسم على البطاقة",
+                                                         "nameOnCardPlaceholder":  "أحمد محمد"
+                                                     },
+                                     "billingAddress":  {
+                                                            "title":  "عنوان الفواتير",
+                                                            "address":  "العنوان",
+                                                            "addressPlaceholder":  "123 الشارع الرئيسي",
+                                                            "city":  "المدينة",
+                                                            "cityPlaceholder":  "أي مدينة",
+                                                            "state":  "الولاية",
+                                                            "statePlaceholder":  "كاليفورنيا",
+                                                            "zipCode":  "الرمز البريدي",
+                                                            "zipCodePlaceholder":  "90210"
+                                                        },
+                                     "buttons":  {
+                                                     "activate":  "تفعيل الباقة",
+                                                     "processing":  "جاري المعالجة..."
+                                                 },
+                                     "errors":  {
+                                                    "cardNumberRequired":  "رقم البطاقة مطلوب",
+                                                    "cardNumberInvalid":  "يرجى إدخال رقم بطاقة صحيح مكون من 16 رقمًا",
+                                                    "expirationDateRequired":  "تاريخ الانتهاء مطلوب",
+                                                    "expirationDateInvalid":  "يرجى إدخال التاريخ بصيغة شهر/سنة",
+                                                    "cvcRequired":  "رمز الأمان مطلوب",
+                                                    "cvcInvalid":  "يرجى إدخال رمز أمان صحيح مكون من 3 أرقام",
+                                                    "nameOnCardRequired":  "الاسم على البطاقة مطلوب",
+                                                    "addressRequired":  "العنوان مطلوب",
+                                                    "cityRequired":  "المدينة مطلوبة",
+                                                    "stateRequired":  "الولاية مطلوبة",
+                                                    "zipCodeRequired":  "الرمز البريدي مطلوب",
+                                                    "zipCodeInvalid":  "يرجى إدخال رمز بريدي صحيح مكون من 5 أرقام"
+                                                }
+                                 },
+                     "confirmation":  {
+                                          "title":  "كل شيء جاهز!",
+                                          "message":  "اشتراكك في ShipFast Pro نشط الآن. يمكنك البدء في استخدام جميع الميزات المتميزة على الفور.",
+                                          "details":  {
+                                                          "title":  "تفاصيل الاشتراك",
+                                                          "plan":  "الباقة",
+                                                          "startDate":  "تاريخ البدء"
+                                                      },
+                                          "buttons":  {
+                                                          "manage":  "إدارة الاشتراك"
+                                                      },
+                                          "additionalInfo":  "يمكنك إدارة تفاصيل اشتراكك ومعلومات الفوترة في إعدادات حسابك."
+                                      }
+                 }
 }

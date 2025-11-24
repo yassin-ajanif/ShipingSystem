@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace Apis.Controllers
@@ -34,53 +36,80 @@ namespace Apis.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserDto request)
         {
-            var result = await _userService.RegisterAsync(request);
+            try
+            {
+                var result = await _userService.RegisterAsync(request);
 
-            if (!result.Success)
-                return BadRequest(result.Errors);
+                if (!result.Success)
+                {
+                    return BadRequest(ApiResponse<UserResultDto>.
+                        FailResponse("User registration failed", result.Errors?.ToList()));
+                }
 
-            return Ok(ApiResponse<UserResultDto>.SuccessResponse(result, "User registered successfully"));
+                return Ok(ApiResponse<UserResultDto>.
+                SuccessResponse(result, "User registered successfully"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<UserResultDto>.
+                    FailResponse("An unexpected error occurred while registering the user", new List<string> { ex.Message }));
+            }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto request)
         {
-
-            var userResult = await _userService.LoginAsync(request);
-            if (!userResult.Success)
+            try
             {
-                return Unauthorized("Invalid credentials");
+                var userResult = await _userService.LoginAsync(request);
+                if (!userResult.Success)
+                {
+                    return Unauthorized(ApiResponse<UserResultDto>.FailResponse("Invalid credentials"));
+                }
+
+        
+                var userData = await GetClims(request.Email);
+                var claims = userData.Item1;
+                UserDto user = userData.Item2;
+                var accessToken = _tokenService.GenerateAccessToken(claims);
+                var refreshToken = _tokenService.GenerateRefreshToken();
+
+                var storedToken = new RefreshTokenDto
+                {
+                    Token = refreshToken,
+                    UserId = user.Id.ToString(),
+                    Expires = DateTime.UtcNow.AddDays(7),
+                    CurrentState = 1
+                };
+
+               await _RefreshTokenService.RefreshToken(storedToken);
+
+                Response.Cookies.Append("RefreshToken", refreshToken, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = storedToken.Expires
+                });
+
+                var responseDto = new UserResultDto
+                {
+                    Success = true,
+                    accessToken = accessToken,
+                    refreshToken = refreshToken,
+                    FirstName = user.FirstName
+                };
+
+                return Ok(ApiResponse<UserResultDto>.SuccessResponse(
+                    responseDto,
+                    "Tokens retrieved successfully"
+                ));
             }
-
-           
-
-            var userData = await GetClims(request.Email);
-            var claims = userData.Item1;
-            UserDto user = userData.Item2;
-            var accessToken = _tokenService.GenerateAccessToken(claims);
-            var refreshToken = _tokenService.GenerateRefreshToken();
-
-            var storedToken = new RefreshTokenDto
+            catch (Exception ex)
             {
-                Token = refreshToken,
-                UserId = user.Id.ToString(),
-                Expires = DateTime.UtcNow.AddDays(7),
-                CurrentState = 1
-            };
-
-           await _RefreshTokenService.RefreshToken(storedToken);
-
-            Response.Cookies.Append("RefreshToken", refreshToken, new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                Expires = storedToken.Expires
-            });
-
-            return Ok(ApiResponse<object>.SuccessResponse(
-                new { AccessToken = accessToken, RefreshToken = refreshToken },
-                "Tokens retrieved successfully"
-            ));
+                return StatusCode(500, ApiResponse<UserResultDto>.FailResponse(
+                    "An unexpected error occurred while logging in",
+                    new List<string> { ex.Message }));
+            }
         }
 
 

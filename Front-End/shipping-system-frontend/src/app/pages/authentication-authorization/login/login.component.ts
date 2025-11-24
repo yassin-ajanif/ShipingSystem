@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../../Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +30,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
+  isSubmitting = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder, 
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,13 +46,34 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      console.log('Login Form Submitted:', this.loginForm.value);
-      // TODO: Implement login logic
-    } else {
-      console.log('Form is invalid');
+    if (!this.loginForm.valid) {
       this.markFormGroupTouched();
+      return;
     }
+
+    this.errorMessage = '';
+    this.isSubmitting = true;
+
+    const payload = this.loginForm.value as { email: string; password: string };
+
+    this.authService.login(payload).subscribe({
+      next: response => {
+        this.isSubmitting = false;
+        if (response.success) {
+          this.router.navigate(['/dashboard']);
+          return;
+        }
+
+        this.errorMessage = response.message || 'Login failed. Please try again.';
+      },
+      error: (err: HttpErrorResponse) => {
+        this.isSubmitting = false;
+        this.errorMessage =
+          err.error?.message ||
+          err.error?.title ||
+          'Unable to login. Please check your credentials and try again.';
+      }
+    });
   }
 
   onForgotPassword() {

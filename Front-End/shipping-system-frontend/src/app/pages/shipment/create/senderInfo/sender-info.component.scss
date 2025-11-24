@@ -17,7 +17,23 @@
 }
 
 .form-field {
+  &.full-width {
+    width: 100%;
+  }
+
+  &.half-width {
+    width: 100%;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
   width: 100%;
+
+  .form-field {
+    flex: 1;
+  }
 }
 
 // Responsive design
@@ -33,5 +49,14 @@
 
   .sender-form {
     gap: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+
+    .form-field {
+      width: 100%;
+    }
   }
 }
