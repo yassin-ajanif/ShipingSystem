@@ -20,17 +20,14 @@ namespace BusinessAccessLayer.DTOs.Shipment
         [DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")]
 
         public Guid? ShippingTypeId { get; set; }
-            public ShippingTypeDto? ShippingType { get; set; }
 
         [DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")]
 
         public Guid? PaymentMethodId { get; set; }
-            public PaymentMethodDto? PaymentMethod { get; set; }
 
         [DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")]
 
         public Guid? SubscriptionPackageId { get; set; }
-            public SubscriptionPackageDto? SubscriptionPackage { get; set; }
 
            
         }

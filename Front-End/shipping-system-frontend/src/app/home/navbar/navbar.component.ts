@@ -1,13 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { CommonModule, AsyncPipe } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
 import { TranslateService, TranslatePipe,TranslateDirective } from '@ngx-translate/core';
-import { AppSettings, defaults } from '../../config';
+import { defaults } from '../../config';
+import { Store } from '@ngrx/store';
+import * as LoginSelectors from '../../pages/authentication-authorization/login/store/login.selectors';
+import * as LoginActions from '../../pages/authentication-authorization/login/store/login.actions';
+import { Observable, Subject } from 'rxjs';
+import { pairwise, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -20,16 +25,21 @@ import { AppSettings, defaults } from '../../config';
     MatIconModule,
     MatMenuModule,
     MatDividerModule,
-    TranslatePipe
+    TranslatePipe,
+    AsyncPipe
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
+  private router = inject(Router);
+  private store = inject(Store);
   
   currentLanguage: 'ar' | 'en' = defaults.language;
   isDarkMode: boolean = false;
+  isAuthenticated$: Observable<boolean> = this.store.select(LoginSelectors.IsAuthenticated);
+  private destroy$ = new Subject<void>();
   
   // Language options for the dropdown
   languages = [
@@ -45,6 +55,17 @@ export class NavbarComponent {
         
         // Set default theme to light
         this.applyTheme();
+  }
+
+  ngOnInit(): void {
+    this.store
+      .select(LoginSelectors.IsLoggedOut)
+      .pipe(pairwise(), takeUntil(this.destroy$))
+      .subscribe(([previouslyLoggedOut, currentlyLoggedOut]) => {
+        if (!previouslyLoggedOut && currentlyLoggedOut) {
+          this.router.navigate(['/login']);
+        }
+      });
   }
 
   onFeaturesClick(): void {
@@ -63,8 +84,11 @@ export class NavbarComponent {
   }
 
   onLoginClick(): void {
-    console.log('Login clicked');
-    // TODO: Implement navigation to login page
+    this.router.navigate(['/login']);
+  }
+
+  onLogoutClick(): void {
+    this.store.dispatch(LoginActions.logout());
   }
 
   onLogoClick(): void {
@@ -115,5 +139,10 @@ export class NavbarComponent {
       htmlElement.classList.remove('dark-theme');
       htmlElement.classList.add('light-theme');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

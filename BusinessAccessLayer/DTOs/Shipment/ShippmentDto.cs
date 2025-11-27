@@ -36,7 +36,7 @@ namespace BusinessAccessLayer.DTOs.Shipment
         public Guid SubscriptionPackageID { get; set; }
         public SubscriptionPackageDto SubscriptionPackage { get; set; }
 
-       
+        public byte StatusShipmentId { get; set;}
 
     
       

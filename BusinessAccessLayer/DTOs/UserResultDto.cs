@@ -9,6 +9,7 @@ namespace BusinessAccessLayer.DTOs
     public class UserResultDto
     {
         public bool Success { get; set; }
+        public string UserId { get; set; }
         public string FirstName { get; set; }
         public string accessToken { get; set; }
 

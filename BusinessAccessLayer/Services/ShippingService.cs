@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using BusinessAccessLayer.DTOs.Shipment;
 using Domains.Views;
+using Domains.Enums;
 
 namespace BusinessAccessLayer.Services
 {
@@ -71,14 +72,13 @@ namespace BusinessAccessLayer.Services
              mappedShipmenDto.Receiver.Id =
                     await AddOrGetReceiverIdAsync(mappedShipmenDto.ReceiverId, mappedShipmenDto.Receiver);
 
-             mappedShipmenDto.ShippingType.Id =
-                    await AddOrGetShippingTypeIdAsync(mappedShipmenDto.ShippingTypeId, mappedShipmenDto.ShippingType);
+             mappedShipmenDto.ShippingTypeId = mappedShipmenDto.ShippingTypeId;
 
-             mappedShipmenDto.SubscriptionPackage.Id = 
-                    await AddOrGetSubscriptionPackageIdAsync(mappedShipmenDto.SubscriptionPackageID, shippmentDto.SubscriptionPackage);
+             mappedShipmenDto.SubscriptionPackageID = mappedShipmenDto.SubscriptionPackageID;
 
-             mappedShipmenDto.PaymentMethod.Id = 
-                    await AddOrGetPaymentMethodIdAsync(mappedShipmenDto.PaymentMethodId, mappedShipmenDto.PaymentMethod);
+             mappedShipmenDto.PaymentMethodId = mappedShipmenDto.PaymentMethodId;
+
+             mappedShipmenDto.StatusShipmentId = (byte)enShipmentStatus.Ongoing;
 
              var shipmentDataToSendToDb = _mapper.Map<ShipmentDataToSendToDbDTO>(mappedShipmenDto);
 
@@ -124,45 +124,7 @@ namespace BusinessAccessLayer.Services
             return receiverId.Value;
         }
 
-        // ShippingType
-        private async Task<Guid> AddOrGetShippingTypeIdAsync(Guid? shippingTypeId, ShippingTypeDto shippingTypeDto)
-        {
-            if (!shippingTypeId.HasValue || shippingTypeId == Guid.Empty)
-            {
-                
-                var created = await _shippingTypeService.AddAsync(shippingTypeDto);
-                return created.Id;
-            }
-
-            return shippingTypeId.Value;
-        }
-
-        // SubscriptionPackage
-        private async Task<Guid> AddOrGetSubscriptionPackageIdAsync(Guid? packageId, SubscriptionPackageDto packageDto)
-        {
-            if (!packageId.HasValue || packageId == Guid.Empty)
-            {
-
-                var created = await _subscriptionPackageService.AddAsync(packageDto);
-                return created.Id;
-            }
-
-            return packageId.Value;
-        }
-
-        // PaymentMethod
-        private async Task<Guid> AddOrGetPaymentMethodIdAsync(Guid? paymentMethodId, PaymentMethodDto paymentMethodDto)
-        {
-            if (!paymentMethodId.HasValue || paymentMethodId == Guid.Empty)
-            {
-
-                var created = await _paymentMethodService.AddAsync(paymentMethodDto);
-                return created.Id;
-            }
-
-            return paymentMethodId.Value;
-        }
- 
+     
         public async Task<List<VwShipmentSummaryDTO>> GetAllShipmentSummaries()
         {
             var shipingSummaries = await _vwRepository.GetAll();
@@ -179,14 +141,14 @@ namespace BusinessAccessLayer.Services
                 throw new ArgumentException("Shipment not found", nameof(shipmentId));
             }
 
-            // Check if shipment can be cancelled (only if status is "Ongoing" = 1)
-            if (shipment.StatusShipmentId != 1) // 1 = Ongoing
+            // Check if shipment can be cancelled (only if status is Ongoing)
+            if (shipment.StatusShipmentId != (byte)enShipmentStatus.Ongoing)
             {
                 throw new InvalidOperationException("Shipment cannot be cancelled. Only ongoing shipments can be cancelled.");
             }
 
-            // Update status to "Cancelled" (3)
-            shipment.StatusShipmentId = 3; // 3 = Cancelled
+            // Update status to Cancelled
+            shipment.StatusShipmentId = (byte)enShipmentStatus.Cancelled;
             shipment.UpdatedDate = DateTime.Now;
 
             // Save changes - single table update
@@ -205,14 +167,15 @@ namespace BusinessAccessLayer.Services
                 throw new ArgumentException("Shipment not found", nameof(shipmentId));
             }
 
-            // Check if shipment can be returned (only if status is "Ongoing" = 1 or "Cancelled" = 3)
-            if (shipment.StatusShipmentId != 1 && shipment.StatusShipmentId != 3)
+            // Check if shipment can be returned (only if status is Ongoing or Cancelled)
+            if (shipment.StatusShipmentId != (byte)enShipmentStatus.Ongoing &&
+                shipment.StatusShipmentId != (byte)enShipmentStatus.Cancelled)
             {
                 throw new InvalidOperationException("Shipment cannot be returned. Only ongoing or cancelled shipments can be returned.");
             }
 
-            // Update status to "Returned" (4)
-            shipment.StatusShipmentId = 4; // 4 = Returned
+            // Update status to Returned
+            shipment.StatusShipmentId = (byte)enShipmentStatus.Returned;
             shipment.UpdatedDate = DateTime.Now;
 
             // Save changes - single table update

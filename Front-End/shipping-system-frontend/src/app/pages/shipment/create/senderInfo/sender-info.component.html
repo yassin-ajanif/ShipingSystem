@@ -29,47 +29,6 @@
     <!-- City and State Row -->
     <div class="form-row">
       <mat-form-field appearance="outline" class="form-field half-width">
-        <mat-label>{{ 'shipmentCreate.senderInfo.city.label' | translate }}</mat-label>
-        <input 
-          matInput 
-          [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate"
-          formControlName="city"
-          type="text">
-        <mat-error *ngIf="senderForm.get('city')?.invalid && senderForm.get('city')?.touched">
-          {{ 'shipmentCreate.senderInfo.errors.cityRequired' | translate }}
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="form-field half-width">
-        <mat-label>{{ 'shipmentCreate.senderInfo.state.label' | translate }}</mat-label>
-        <mat-select formControlName="state" [placeholder]="'shipmentCreate.senderInfo.state.placeholder' | translate">
-          <mat-option *ngFor="let state of states" [value]="state">
-            {{ state }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="senderForm.get('state')?.invalid && senderForm.get('state')?.touched">
-          {{ 'shipmentCreate.senderInfo.errors.stateRequired' | translate }}
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <!-- Zip Code and Country Row -->
-    <div class="form-row">
-      <mat-form-field appearance="outline" class="form-field half-width">
-        <mat-label>{{ 'shipmentCreate.senderInfo.zipCode.label' | translate }}</mat-label>
-        <input 
-          matInput 
-          [placeholder]="'shipmentCreate.senderInfo.zipCode.placeholder' | translate"
-          formControlName="zipCode"
-          type="text">
-        <mat-error *ngIf="senderForm.get('zipCode')?.invalid && senderForm.get('zipCode')?.touched">
-          {{ senderForm.get('zipCode')?.hasError('pattern') ? 
-             ('shipmentCreate.senderInfo.errors.zipCodeInvalid' | translate) : 
-             ('shipmentCreate.senderInfo.errors.zipCodeRequired' | translate) }}
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="form-field half-width">
         <mat-label>{{ 'shipmentCreate.senderInfo.country.label' | translate }}</mat-label>
         <mat-select formControlName="country" [placeholder]="'shipmentCreate.senderInfo.country.placeholder' | translate">
           <mat-option *ngFor="let country of countries" [value]="country">
@@ -80,7 +39,22 @@
           {{ 'shipmentCreate.senderInfo.errors.countryRequired' | translate }}
         </mat-error>
       </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field half-width">
+        <mat-label>{{ 'shipmentCreate.senderInfo.city.label' | translate }}</mat-label>
+        <mat-select formControlName="city" [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="senderForm.get('city')?.invalid && senderForm.get('city')?.touched">
+          {{ 'shipmentCreate.senderInfo.errors.cityRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
     </div>
+
+    <!-- Zip Code and Country Row -->
+    <!-- Zip removed -->
 
     <!-- Phone Number -->
     <mat-form-field appearance="outline" class="form-field full-width">

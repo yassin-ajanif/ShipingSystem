@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,8 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../../../Services/auth.service';
+import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import * as LoginActions from './store/login.actions';
+import * as LoginSelectors from './store/login.selectors';
+import { loginRequestDto } from './dtos/loginRequestDto';
+import { AppState } from '../../../store/app.state';
 
 @Component({
   selector: 'app-login',
@@ -27,22 +32,57 @@ import { AuthService } from '../../../Services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   hidePassword = true;
   isSubmitting = false;
   errorMessage = '';
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder, 
     private translate: TranslateService,
     private router: Router,
-    private authService: AuthService
+    private store: Store<AppState>
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['yassin4.ajanif@gmail.com', [Validators.required, Validators.email]],
+      password: ['yassinajanif1A*', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  ngOnInit() {
+    // Subscribe to login state to handle errors and success
+    this.store.select(LoginSelectors.IsError)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(error => {
+        if (error) {
+          this.errorMessage = error;
+          this.isSubmitting = false;
+        }
+      });
+
+    // Navigate on successful login
+    this.store.select(LoginSelectors.IsAuthenticated)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isAuthenticated => {
+        if (isAuthenticated) {
+          this.isSubmitting = false;
+          this.router.navigate(['/dashboard']);
+        }
+      });
+
+    // Listen to logged-out state without navigation
+    this.store.select(LoginSelectors.IsLoggedOut)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((IsLoggedOut) => {
+        if(IsLoggedOut) this.router.navigate(['/login']);
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onSubmit() {
@@ -52,28 +92,9 @@ export class LoginComponent {
     }
 
     this.errorMessage = '';
-    this.isSubmitting = true;
-
-    const payload = this.loginForm.value as { email: string; password: string };
-
-    this.authService.login(payload).subscribe({
-      next: response => {
-        this.isSubmitting = false;
-        if (response.success) {
-          this.router.navigate(['/dashboard']);
-          return;
-        }
-
-        this.errorMessage = response.message || 'Login failed. Please try again.';
-      },
-      error: (err: HttpErrorResponse) => {
-        this.isSubmitting = false;
-        this.errorMessage =
-          err.error?.message ||
-          err.error?.title ||
-          'Unable to login. Please check your credentials and try again.';
-      }
-    });
+    
+    const credentials = this.loginForm.value as loginRequestDto;
+    this.store.dispatch(LoginActions.login({ credentials }));
   }
 
   onForgotPassword() {

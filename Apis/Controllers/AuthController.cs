@@ -94,6 +94,7 @@ namespace Apis.Controllers
                 var responseDto = new UserResultDto
                 {
                     Success = true,
+                    UserId = user.Id.ToString(),
                     accessToken = accessToken,
                     refreshToken = refreshToken,
                     FirstName = user.FirstName
