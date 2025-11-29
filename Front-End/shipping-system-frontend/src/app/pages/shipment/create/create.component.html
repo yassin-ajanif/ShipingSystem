@@ -38,6 +38,7 @@
       mat-raised-button 
       color="primary"
       class="next-button"
+      [disabled]="!isNextBtnEnabled()"
       (click)="onNext()">
       {{ currentStep === steps.length - 2 ? ('shipmentCreate.buttons.submit' | translate) : ('shipmentCreate.buttons.next' | translate) }}
     </button>

@@ -11,6 +11,10 @@ import { loginReducer } from './pages/authentication-authorization/login/store/l
 import { LoginEffects } from './pages/authentication-authorization/login/store/login.effects';
 import { loadingReducer } from './store/ui/loading.reducer';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { locationReducer } from './store/location/location.reducer';
+import { senderInfoReducer } from './pages/shipment/create/senderInfo/store/sender-info.reducer';
+import { LocationEffects } from './store/location/location.effects';
+import { createShipmentReducer } from './pages/shipment/create/store/create.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,8 +30,14 @@ export const appConfig: ApplicationConfig = {
       lang: 'en'
     }),
     // NgRx Store
-    provideStore({ login: loginReducer, ui: loadingReducer }),
-    provideEffects(LoginEffects),
+    provideStore({
+      login: loginReducer,
+      ui: loadingReducer,
+      location: locationReducer,
+      senderInfo: senderInfoReducer,
+      create: createShipmentReducer
+    }),
+    provideEffects([LoginEffects, LocationEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: false })
   ]
 };

@@ -30,24 +30,24 @@
     <div class="form-row">
       <mat-form-field appearance="outline" class="form-field half-width">
         <mat-label>{{ 'shipmentCreate.senderInfo.country.label' | translate }}</mat-label>
-        <mat-select formControlName="country" [placeholder]="'shipmentCreate.senderInfo.country.placeholder' | translate">
-          <mat-option *ngFor="let country of countries" [value]="country">
-            {{ country }}
+        <mat-select formControlName="countryId" [placeholder]="'shipmentCreate.senderInfo.country.placeholder' | translate">
+          <mat-option *ngFor="let country of countries()" [value]="country.id">
+            {{ country.countryEName || country.countryAName }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="senderForm.get('country')?.invalid && senderForm.get('country')?.touched">
+        <mat-error *ngIf="senderForm.get('countryId')?.invalid && senderForm.get('countryId')?.touched">
           {{ 'shipmentCreate.senderInfo.errors.countryRequired' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field half-width">
         <mat-label>{{ 'shipmentCreate.senderInfo.city.label' | translate }}</mat-label>
-        <mat-select formControlName="city" [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate">
-          <mat-option *ngFor="let city of cities" [value]="city">
-            {{ city }}
+        <mat-select formControlName="cityId" [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate">
+          <mat-option *ngFor="let city of cities()" [value]="city.id">
+            {{ city.cityEName || city.cityAName }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="senderForm.get('city')?.invalid && senderForm.get('city')?.touched">
+        <mat-error *ngIf="senderForm.get('cityId')?.invalid && senderForm.get('cityId')?.touched">
           {{ 'shipmentCreate.senderInfo.errors.cityRequired' | translate }}
         </mat-error>
       </mat-form-field>

@@ -87,6 +87,8 @@ builder.Services.AddScoped<IRefreshTokenService,RefreshTokenService>();
 builder.Services.AddScoped<IGenericUnitOfWork,GenericUnitOfWork>();
 builder.Services.AddScoped<IShippingService,ShippingService>();
 builder.Services.AddScoped<IShippingTypeService,ShippingTypeService>();
+builder.Services.AddScoped<ICountriesService, CountriesService>();
+builder.Services.AddScoped<ICitiesService, CitiesService>();
 builder.Services.AddScoped<IRecieverService,ReceiverService>();
 builder.Services.AddScoped<ISenderService, SenderService>();
 builder.Services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();

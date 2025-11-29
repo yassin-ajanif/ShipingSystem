@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, Signal, effect, inject } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RegisterComponent } from "./pages/authentication-authorization/register/register.component";
 import { HomeComponent } from "./home/home.component";
@@ -22,33 +22,27 @@ import { AppState } from './store/app.state';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements  OnDestroy {
   
   title = 'shipping-system-frontend';
   private store = inject(Store<AppState>);
   private renderer = inject(Renderer2);
   private destroy$ = new Subject<void>();
-  isLoading$: Observable<boolean> = this.store.select(uiSelectors.IsLoading);
+  isLoading: Signal<boolean> = this.store.selectSignal(uiSelectors.IsLoading);
 
-  ngOnInit(): void {
-    this.isLoading$
-      .pipe(distinctUntilChanged(), takeUntil(this.destroy$))
-      .subscribe(isLoading => {
-        if (isLoading) {
-          this.renderer.addClass(document.body, 'no-scroll');
-          this.renderer.addClass(document.documentElement, 'no-scroll');
-        } else {
-          this.renderer.removeClass(document.body, 'no-scroll');
-          this.renderer.removeClass(document.documentElement, 'no-scroll');
-        }
-      });
+ constructor() {
+    effect(() => {
+      const loading = this.isLoading();
+      if (loading) {
+        this.renderer.addClass(document.body, 'no-scroll');
+      } else {
+        this.renderer.removeClass(document.body, 'no-scroll');
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'no-scroll');
-    this.renderer.removeClass(document.documentElement, 'no-scroll');
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
 }

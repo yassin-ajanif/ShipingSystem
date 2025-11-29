@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { TranslatePipe } from '@ngx-translate/core';
+import { AppState } from '../../../store/app.state';
+import { select, Store } from '@ngrx/store';
+import * as createShipmentSelectors from './store/create.selectors';
 
 interface Step {
   label: string;
@@ -29,6 +32,8 @@ interface Step {
 export class CreateComponent implements OnInit {
   currentStep: number = 0;
   progressValue: number = 0;
+  store = inject(Store<AppState>);
+  isNextBtnEnabled: Signal<boolean> = this.store.selectSignal(createShipmentSelectors.selectIsNextEnabled); ;
 
   steps: Step[] = [
     { label: 'shipmentCreate.steps.senderInformation', route: 'senderInfo', completed: false },
@@ -44,6 +49,8 @@ export class CreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    
     // Get current route and set active step
     this.activatedRoute.firstChild?.url.subscribe(urlSegments => {
       if (urlSegments && urlSegments.length > 0) {

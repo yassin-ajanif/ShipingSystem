@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,8 +9,6 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import * as LoginActions from './store/login.actions';
 import * as LoginSelectors from './store/login.selectors';
 import { loginRequestDto } from './dtos/loginRequestDto';
@@ -32,57 +30,28 @@ import { AppState } from '../../../store/app.state';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
   isSubmitting = false;
   errorMessage = '';
-  private destroy$ = new Subject<void>();
+
+  store: Store<AppState> = inject(Store<AppState>);
+  readonly isError = this.store.selectSignal(LoginSelectors.IsError);
+  readonly isAuthenticated = this.store.selectSignal(LoginSelectors.IsAuthenticated);
+  readonly isLoggedOut = this.store.selectSignal(LoginSelectors.IsLoggedOut);
 
   constructor(
     private fb: FormBuilder, 
     private translate: TranslateService,
     private router: Router,
-    private store: Store<AppState>
+    
   ) {
     this.loginForm = this.fb.group({
       email: ['yassin4.ajanif@gmail.com', [Validators.required, Validators.email]],
       password: ['yassinajanif1A*', [Validators.required, Validators.minLength(6)]]
     });
-  }
-
-  ngOnInit() {
-    // Subscribe to login state to handle errors and success
-    this.store.select(LoginSelectors.IsError)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(error => {
-        if (error) {
-          this.errorMessage = error;
-          this.isSubmitting = false;
-        }
-      });
-
-    // Navigate on successful login
-    this.store.select(LoginSelectors.IsAuthenticated)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(isAuthenticated => {
-        if (isAuthenticated) {
-          this.isSubmitting = false;
-          this.router.navigate(['/dashboard']);
-        }
-      });
-
-    // Listen to logged-out state without navigation
-    this.store.select(LoginSelectors.IsLoggedOut)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((IsLoggedOut) => {
-        if(IsLoggedOut) this.router.navigate(['/login']);
-      });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.registerSignalEffects();
   }
 
   onSubmit() {
@@ -100,6 +69,34 @@ export class LoginComponent implements OnInit, OnDestroy {
   onForgotPassword() {
     console.log('Forgot password clicked');
     // TODO: Implement forgot password logic
+  }
+
+  private registerSignalEffects() {
+    // React to errors without manual subscriptions
+    effect(() => {
+      const error = this.isError();
+      if (error) {
+        this.errorMessage = error;
+        this.isSubmitting = false;
+      } else {
+        this.errorMessage = '';
+      }
+    });
+
+    // Navigate on successful login
+    effect(() => {
+      if (this.isAuthenticated()) {
+        this.isSubmitting = false;
+        this.router.navigate(['/dashboard']);
+      }
+    });
+
+    // Listen to logged-out state without navigation
+    effect(() => {
+      if (this.isLoggedOut()) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   private markFormGroupTouched() {
