@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +7,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../store/app.state';
+import { setPaymentMethodId } from './store/payment-method.actions';
+import { selectPaymentMethodId } from '../store/create.selectors';
 
 @Component({
   selector: 'app-payment-method',
@@ -26,6 +30,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class PaymentMethodComponent {
   paymentForm: FormGroup;
+  private store = inject(Store<AppState>);
+  readonly paymentMethodId: Signal<string> = this.store.selectSignal(selectPaymentMethodId);
 
   constructor(private fb: FormBuilder) {
     this.paymentForm = this.fb.group({
@@ -44,6 +50,9 @@ export class PaymentMethodComponent {
         this.disableCardFields();
       }
     });
+
+    // ensure store has the default payment method id on init
+    this.store.dispatch(setPaymentMethodId({ paymentMethodId: this.paymentMethodId() }));
   }
 
   private enableCardFields(): void {

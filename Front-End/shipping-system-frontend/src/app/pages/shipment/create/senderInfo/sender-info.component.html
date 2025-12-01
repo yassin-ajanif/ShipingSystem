@@ -43,7 +43,7 @@
       <mat-form-field appearance="outline" class="form-field half-width">
         <mat-label>{{ 'shipmentCreate.senderInfo.city.label' | translate }}</mat-label>
         <mat-select formControlName="cityId" [placeholder]="'shipmentCreate.senderInfo.city.placeholder' | translate">
-          <mat-option *ngFor="let city of cities()" [value]="city.id">
+          <mat-option *ngFor="let city of citiesOfSelectedCountry()" [value]="city.id">
             {{ city.cityEName || city.cityAName }}
           </mat-option>
         </mat-select>

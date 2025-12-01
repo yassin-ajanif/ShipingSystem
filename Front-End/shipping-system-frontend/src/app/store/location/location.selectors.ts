@@ -9,10 +9,7 @@ export const selectCountries = createSelector(
   state => state.countries
 );
 
-export const selectCities = createSelector(
-  selectLocationState,
-  state => state.cities
-);
+
 
 export const selectCurrentCountryId = createSelector(
   selectLocationState,

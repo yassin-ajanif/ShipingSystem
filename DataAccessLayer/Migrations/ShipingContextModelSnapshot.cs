@@ -215,6 +215,53 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("TbCountries");
                 });
 
+            modelBuilder.Entity("Domains.TbPackageInfo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContentsDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CurrentState")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Height")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Length")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PackageType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Weight")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Width")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TbPackageInfos");
+                });
+
             modelBuilder.Entity("Domains.TbPaymentMethod", b =>
                 {
                     b.Property<Guid>("Id")
@@ -400,6 +447,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CurrentState")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("PackageInfoId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("PaymentMethodId")
                         .HasColumnType("uniqueidentifier");
 
@@ -431,6 +481,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("datetime");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PackageInfoId");
 
                     b.HasIndex("PaymentMethodId");
 
@@ -883,6 +935,12 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("Domains.TbShippment", b =>
                 {
+                    b.HasOne("Domains.TbPackageInfo", null)
+                        .WithMany()
+                        .HasForeignKey("PackageInfoId")
+                        .IsRequired()
+                        .HasConstraintName("FK_TbShippments_TbPackageInfos");
+
                     b.HasOne("Domains.TbPaymentMethod", "PaymentMethod")
                         .WithMany("TbShippments")
                         .HasForeignKey("PaymentMethodId")

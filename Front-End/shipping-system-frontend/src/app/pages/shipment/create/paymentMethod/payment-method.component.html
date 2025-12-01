@@ -7,12 +7,8 @@
         {{ 'shipmentCreate.paymentMethod.methods.creditCard' | translate }}
       </mat-radio-button>
       
-      <mat-radio-button value="digitalWallet" class="payment-option">
-        {{ 'shipmentCreate.paymentMethod.methods.digitalWallet' | translate }}
-      </mat-radio-button>
-      
-      <mat-radio-button value="existingBalance" class="payment-option">
-        {{ 'shipmentCreate.paymentMethod.methods.existingBalance' | translate }}
+      <mat-radio-button value="paypal" class="payment-option">
+        {{ 'shipmentCreate.paymentMethod.methods.paypal' | translate }}
       </mat-radio-button>
     </mat-radio-group>
 
@@ -82,12 +78,8 @@
     </div>
 
     <!-- Placeholder for other payment methods -->
-    <div class="alternative-payment" *ngIf="paymentForm.get('paymentMethod')?.value === 'digitalWallet'">
-      <p class="info-message">{{ 'shipmentCreate.paymentMethod.messages.digitalWalletInfo' | translate }}</p>
-    </div>
-
-    <div class="alternative-payment" *ngIf="paymentForm.get('paymentMethod')?.value === 'existingBalance'">
-      <p class="info-message">{{ 'shipmentCreate.paymentMethod.messages.existingBalanceInfo' | translate }}</p>
+    <div class="alternative-payment" *ngIf="paymentForm.get('paymentMethod')?.value === 'paypal'">
+      <p class="info-message">{{ 'shipmentCreate.paymentMethod.messages.paypalInfo' | translate }}</p>
     </div>
 
   </form>

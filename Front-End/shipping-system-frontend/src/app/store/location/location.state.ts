@@ -1,9 +1,8 @@
-import { cityDto } from '../../pages/shipment/create/senderInfo/dtos/cityDto';
-import { countryDto } from '../../pages/shipment/create/senderInfo/dtos/countryDto';
+import { cityDto } from '../../models/cityDto';
+import { countryDto } from '../../models/countryDto';
 
 export interface LocationState {
   countries: countryDto[];
-  cities: cityDto[];
   currentCountryId: string | null;
   loading: boolean;
   error: string | null;
@@ -11,7 +10,6 @@ export interface LocationState {
 
 export const initialLocationState: LocationState = {
   countries: [],
-  cities: [],
   currentCountryId: null,
   loading: false,
   error: null

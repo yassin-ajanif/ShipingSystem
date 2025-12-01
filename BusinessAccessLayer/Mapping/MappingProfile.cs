@@ -28,6 +28,7 @@ namespace BusinessAccessLayer.Mapping
             CreateMap<TbSubscriptionPackage, SubscriptionPackageDto>().ReverseMap();
             CreateMap<TbUserSubscription, UserSubscriptionDto>().ReverseMap();
             CreateMap<TbSetting, SettingDto>().ReverseMap();
+            CreateMap<TbPackageInfo, PackageInfoDto>().ReverseMap();
 
             // If you really need this mapping (entity <-> flat DB DTO), keep it:
             CreateMap<TbShippment, ShipmentDataToSendToDbDTO>().ReverseMap();
@@ -85,6 +86,7 @@ namespace BusinessAccessLayer.Mapping
                 .ForMember(d => d.ShippingTypeId,        o => o.MapFrom(s => s.ShippingTypeId))
                 .ForMember(d => d.PaymentMethodId,       o => o.MapFrom(s => s.PaymentMethodId))
                 .ForMember(d => d.SubscriptionPackageID, o => o.MapFrom(s => s.SubscriptionPackageID))
+                .ForMember(d => d.PackageInfoId,         o => o.MapFrom(s => s.PackageInfoId))
                 .ForMember(d => d.Sender,               o => o.Ignore())
                 .ForMember(d => d.Receiver,             o => o.Ignore())
                 .ForMember(d => d.ShippingType,         o => o.Ignore())

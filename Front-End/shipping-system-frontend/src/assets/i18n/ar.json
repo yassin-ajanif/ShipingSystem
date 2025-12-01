@@ -250,8 +250,7 @@
                                                  "title":  "طريقة الدفع",
                                                  "methods":  {
                                                                  "creditCard":  "بطاقة ائتمان",
-                                                                 "digitalWallet":  "محفظة رقمية",
-                                                                 "existingBalance":  "الرصيد الحالي"
+                                                                 "paypal":  "باي بال"
                                                              },
                                                  "cardNumber":  {
                                                                     "label":  "رقم البطاقة",
@@ -270,8 +269,7 @@
                                                                         "placeholder":  "أدخل اسم حامل البطاقة"
                                                                     },
                                                  "messages":  {
-                                                                  "digitalWalletInfo":  "ستكون معالجة الدفع بالمحفظة الرقمية متاحة قريبًا.",
-                                                                  "existingBalanceInfo":  "سيتم استخدام رصيدك الحالي لهذه الشحنة."
+                                                                  "paypalInfo":  "سيتم تحويلك إلى باي بال لإتمام عملية الدفع."
                                                               },
                                                  "errors":  {
                                                                 "cardNumberRequired":  "رقم البطاقة مطلوب",

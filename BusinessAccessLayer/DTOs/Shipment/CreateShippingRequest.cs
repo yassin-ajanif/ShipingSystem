@@ -29,7 +29,9 @@ namespace BusinessAccessLayer.DTOs.Shipment
 
         public Guid? SubscriptionPackageId { get; set; }
 
-           
+        public PackageInfoDto? PackageInfo { get; set; }
+
+   
         }
     
 }

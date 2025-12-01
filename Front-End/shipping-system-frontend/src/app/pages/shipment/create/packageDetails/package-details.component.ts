@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,6 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../store/app.state';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map, startWith } from 'rxjs/operators';
+import { setPackageInfo, setPackageInfoValidity } from './store/package-info.actions';
+import { PackageInfoState } from './store/package-info.state';
+import { setNextBtnEnabled } from '../store/create.actions';
 
 @Component({
   selector: 'app-package-details',
@@ -24,6 +31,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class PackageDetailsComponent {
   packageForm: FormGroup;
+  private store = inject(Store<AppState>);
+  packageValid!: Signal<boolean>;
+  packageValue!: Signal<PackageInfoState>;
 
   constructor(private fb: FormBuilder) {
     this.packageForm = this.fb.group({
@@ -33,34 +43,38 @@ export class PackageDetailsComponent {
       width: ['', [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]+)?$/)]],
       height: ['', [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]+)?$/)]],
       weight: ['', [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]+)?$/)]],
-      contentsDescription: ['', [Validators.required]],
-      specialHandling: this.fb.group({
-        fragile: [false],
-        handleWithCare: [false],
-        keepDry: [false]
-      })
+      contentsDescription: ['', [Validators.required]]
     });
+
+    this.whenAnyValueOfPackageFormChangesGetItsValue();
+    this.checkTheValidityOfPackageInfo();
+    this.whenPackageValidityChangesDispatchToStore();
   }
 
-  getErrorMessage(fieldName: string): string {
-    const field = this.packageForm.get(fieldName);
-    
-    if (field?.hasError('required')) {
-      return `${fieldName} is required`;
-    }
-    
-    if (field?.hasError('pattern')) {
-      return 'Please enter a valid number';
-    }
-    
-    return '';
+  private whenAnyValueOfPackageFormChangesGetItsValue(): void {
+    this.packageValue = toSignal(
+      this.packageForm.valueChanges.pipe(startWith(this.packageForm.value)),
+      { initialValue: this.packageForm.value as PackageInfoState }
+    );
   }
 
-  getPackageData() {
-    return this.packageForm.value;
+  private checkTheValidityOfPackageInfo(): void {
+    this.packageValid = toSignal(
+      this.packageForm.statusChanges.pipe(
+        startWith(this.packageForm.status),
+        map(status => status === 'VALID')
+      ),
+      { initialValue: this.packageForm.status === 'VALID' }
+    ) as Signal<boolean>;
   }
 
-  isValid(): boolean {
-    return this.packageForm.valid;
+  private whenPackageValidityChangesDispatchToStore(): void {
+    effect(() => {
+      const isValid = this.packageValid();
+      const packageInfo = this.packageValue();
+      this.store.dispatch(setPackageInfoValidity({ isValid }));
+      this.store.dispatch(setPackageInfo({ packageInfo: { ...packageInfo, isValid } }));
+      this.store.dispatch(setNextBtnEnabled({ isNextBtnEnabled: isValid }));
+    });
   }
 }

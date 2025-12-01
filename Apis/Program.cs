@@ -96,6 +96,7 @@ builder.Services.AddScoped<IUserSubscriptionService, UserSubscriptionService>();
 
 builder.Services.AddScoped<ISubscriptionPackageService,SubscriptionPackageService>();
 builder.Services.AddScoped<IPaymentMethodService,PaymentPackageService>();
+builder.Services.AddScoped<IPackageInfoService, PackageInfoService>();
 
 builder.Services.AddScoped(typeof(IViewRepository<>),typeof(ViewRepository<>));
 

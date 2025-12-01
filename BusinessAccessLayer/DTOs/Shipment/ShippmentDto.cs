@@ -38,6 +38,8 @@ namespace BusinessAccessLayer.DTOs.Shipment
 
         public byte StatusShipmentId { get; set;}
 
+        public Guid PackageInfoId { get; set; }
+
     
       
 

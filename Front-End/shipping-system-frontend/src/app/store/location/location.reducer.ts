@@ -9,30 +9,17 @@ export const locationReducer = createReducer(
     loading: true,
     error: null
   })),
+  
   on(locationActions.loadCountriesSuccess, (state, { countries }): LocationState => ({
     ...state,
     loading: false,
     countries
   })),
+
   on(locationActions.loadCountriesFailure, (state, { error }): LocationState => ({
     ...state,
     loading: false,
     error
   })),
-  on(locationActions.loadCities, (state): LocationState => ({
-    ...state,
-    loading: true,
-    error: null
-  })),
-  on(locationActions.loadCitiesSuccess, (state, { countryId, cities }): LocationState => ({
-    ...state,
-    loading: false,
-    currentCountryId: countryId,
-    cities
-  })),
-  on(locationActions.loadCitiesFailure, (state, { error }): LocationState => ({
-    ...state,
-    loading: false,
-    error
-  }))
+
 );

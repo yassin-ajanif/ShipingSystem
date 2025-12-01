@@ -9,6 +9,7 @@ public partial class TbShippment : Base
     public Guid SenderId { get; set; }
     public virtual TbUserSebder Sender { get; set; } = null!;
 
+    public Guid PackageInfoId { get; set; }
 
     public Guid ReceiverId { get; set; }
     public virtual TbUserReceiver Receiver { get; set; } = null!;

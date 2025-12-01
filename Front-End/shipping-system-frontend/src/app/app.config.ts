@@ -12,9 +12,10 @@ import { LoginEffects } from './pages/authentication-authorization/login/store/l
 import { loadingReducer } from './store/ui/loading.reducer';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { locationReducer } from './store/location/location.reducer';
-import { senderInfoReducer } from './pages/shipment/create/senderInfo/store/sender-info.reducer';
 import { LocationEffects } from './store/location/location.effects';
 import { createShipmentReducer } from './pages/shipment/create/store/create.reducer';
+import { SenderInfoEffects } from './pages/shipment/create/senderInfo/store/sender-info.effects';
+import { RecipientInfoEffects } from './pages/shipment/create/recipientInfo/store/recipient-info.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,10 +35,9 @@ export const appConfig: ApplicationConfig = {
       login: loginReducer,
       ui: loadingReducer,
       location: locationReducer,
-      senderInfo: senderInfoReducer,
-      create: createShipmentReducer
+      create: createShipmentReducer,
     }),
-    provideEffects([LoginEffects, LocationEffects]),
+    provideEffects([LoginEffects, LocationEffects, SenderInfoEffects, RecipientInfoEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: false })
   ]
 };

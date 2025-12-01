@@ -47,6 +47,7 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
     public virtual DbSet<TbShippment> TbShippments { get; set; }
 
     public virtual DbSet<TbStatusShipment> TbStatusShipments { get; set; }
+    public virtual DbSet<TbPackageInfo> TbPackageInfos { get; set; }
 
     public virtual DbSet<TbSubscriptionPackage> TbSubscriptionPackages { get; set; }
 
@@ -156,6 +157,8 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
         });
 
+      
+
         modelBuilder.Entity<TbShippment>(entity =>
         {
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
@@ -167,6 +170,11 @@ public partial class ShipingContext : IdentityDbContext<applicationUser>
             entity.HasOne(d => d.PaymentMethod).WithMany(p => p.TbShippments)
                 .HasForeignKey(d => d.PaymentMethodId)
                 .HasConstraintName("FK_TbShippments_TbPaymentMethods");
+            entity.HasOne<TbPackageInfo>()
+                .WithMany()
+                .HasForeignKey(d => d.PackageInfoId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TbShippments_TbPackageInfos");
 
             entity.HasOne(d => d.Receiver).WithMany(p => p.TbShippments)
                 .HasForeignKey(d => d.ReceiverId)

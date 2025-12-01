@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BusinessAccessLayer.DTOs.Shipment;
 using Domains.Views;
 using Domains.Enums;
+using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
@@ -24,6 +25,7 @@ namespace BusinessAccessLayer.Services
         private readonly IShippingTypeService _shippingTypeService;
         private readonly ISubscriptionPackageService _subscriptionPackageService;
         private readonly IPaymentMethodService _paymentMethodService;
+        private readonly IPackageInfoService _packageInfoService;
 
         private readonly IViewRepository<VwShipmentSummary> _vwRepository;
         private readonly IGenericRepository<TbSetting> _settingsRepository;
@@ -40,6 +42,7 @@ namespace BusinessAccessLayer.Services
             IShippingTypeService shippingTypeService,
             ISubscriptionPackageService subscriptionPackageService,
             IPaymentMethodService paymentMethodService,
+            IPackageInfoService packageInfoService,
             IGenericRepository<TbSetting> settingsRepository
         )
             : base(genericUnitOfWork, mapper, userService)
@@ -54,6 +57,7 @@ namespace BusinessAccessLayer.Services
             _shippingTypeService = shippingTypeService;
             _subscriptionPackageService = subscriptionPackageService;
             _paymentMethodService = paymentMethodService;
+            _packageInfoService = packageInfoService;
             _settingsRepository = settingsRepository;
 
             _vwRepository = viewRepository;
@@ -77,6 +81,8 @@ namespace BusinessAccessLayer.Services
              mappedShipmenDto.SubscriptionPackageID = mappedShipmenDto.SubscriptionPackageID;
 
              mappedShipmenDto.PaymentMethodId = mappedShipmenDto.PaymentMethodId;
+
+             mappedShipmenDto.PackageInfoId = await AddPackageInfoAsync(shippmentDto.PackageInfo);
 
              mappedShipmenDto.StatusShipmentId = (byte)enShipmentStatus.Ongoing;
 
@@ -122,6 +128,17 @@ namespace BusinessAccessLayer.Services
             }
 
             return receiverId.Value;
+        }
+
+        private async Task<Guid> AddPackageInfoAsync(PackageInfoDto? packageInfoDto)
+        {
+            if (packageInfoDto == null)
+            {
+                throw new ArgumentException("Package information is required.");
+            }
+
+            var packageInfo = await _packageInfoService.AddAsync(packageInfoDto);
+            return packageInfo.Id;
         }
 
      

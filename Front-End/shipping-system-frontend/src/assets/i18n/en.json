@@ -272,8 +272,7 @@
       "title": "Payment Method",
       "methods": {
         "creditCard": "Credit Card",
-        "digitalWallet": "Digital Wallet",
-        "existingBalance": "Existing Balance"
+        "paypal": "PayPal"
       },
       "cardNumber": {
         "label": "Card Number",
@@ -292,8 +291,7 @@
         "placeholder": "Enter cardholder name"
       },
       "messages": {
-        "digitalWalletInfo": "Digital Wallet payment processing will be available soon.",
-        "existingBalanceInfo": "Your existing balance will be used for this shipment."
+        "paypalInfo": "You will be redirected to PayPal to complete your payment."
       },
       "errors": {
         "cardNumberRequired": "Card Number is required",

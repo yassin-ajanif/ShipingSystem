@@ -15,6 +15,7 @@ namespace BusinessAccessLayer.DTOs.Shipment
         public Guid? PaymentMethodId { get; set; }
         public Guid SubscriptionPackageID { get; set; }
         public byte StatusShipmentId { get; set;}
+        public Guid PackageInfoId { get; set; }
 
     }
 }
