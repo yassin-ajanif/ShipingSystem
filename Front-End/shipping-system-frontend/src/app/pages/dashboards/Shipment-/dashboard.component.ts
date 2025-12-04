@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 export interface StatCard {
   title: string;
@@ -95,15 +96,14 @@ export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['trackingNumber', 'status', 'destination', 'estimatedDelivery', 'actions'];
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private router: Router) {}
 
   ngOnInit(): void {
     // Initialize component
   }
 
   onCreateShipment(): void {
-    console.log('Create Shipment clicked');
-    // TODO: Navigate to create shipment page
+    this.router.navigate(['/shipment/create']);
   }
 
   onViewAllShipments(): void {

@@ -18,3 +18,18 @@ export const IsLoggedOut = createSelector(
   selectLoginState,
   (state: LoginState) => !state.isAuthenticated
 );
+
+export const selectSubscriptionDetails = createSelector(
+  selectLoginState,
+  (state: LoginState) => state.subscriptionDetails
+);
+
+export const selectSubscriptionLoading = createSelector(
+  selectLoginState,
+  (state: LoginState) => state.subscriptionLoading
+);
+
+export const selectSubscriptionError = createSelector(
+  selectLoginState,
+  (state: LoginState) => state.subscriptionError
+);

@@ -8,6 +8,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { AppState } from '../../../store/app.state';
 import { select, Store } from '@ngrx/store';
 import * as createShipmentSelectors from './store/create.selectors';
+import { createShipment } from './store/create.actions';
+import { CreateShippingRequestDto, mapCreateStateToRequest } from './dtos/create-shipping-request.dto';
 
 interface Step {
   label: string;
@@ -34,13 +36,13 @@ export class CreateComponent implements OnInit {
   progressValue: number = 0;
   store = inject(Store<AppState>);
   isNextBtnEnabled: Signal<boolean> = this.store.selectSignal(createShipmentSelectors.selectIsNextEnabled); ;
+  createState = this.store.selectSignal(createShipmentSelectors.selectCreateState);
 
   steps: Step[] = [
     { label: 'shipmentCreate.steps.senderInformation', route: 'senderInfo', completed: false },
     { label: 'shipmentCreate.steps.recipientInformation', route: 'recipientInfo', completed: false },
     { label: 'shipmentCreate.steps.packageDetails', route: 'packageDetails', completed: false },
-    { label: 'shipmentCreate.steps.paymentMethod', route: 'paymentMethod', completed: false },
-    { label: 'shipmentCreate.steps.confirmation', route: 'confirmation', completed: false }
+    { label: 'shipmentCreate.steps.paymentMethod', route: 'paymentMethod', completed: false }
   ];
 
   constructor(
@@ -50,7 +52,6 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
     // Get current route and set active step
     this.activatedRoute.firstChild?.url.subscribe(urlSegments => {
       if (urlSegments && urlSegments.length > 0) {
@@ -75,6 +76,8 @@ export class CreateComponent implements OnInit {
     if (this.currentStep < this.steps.length - 1) {
       this.currentStep++;
       this.navigateToStep(this.currentStep);
+    } else {
+      this.whenUserIsAtTheLastStep();
     }
   }
 
@@ -111,6 +114,16 @@ export class CreateComponent implements OnInit {
 
   get stepIndicator(): string {
     return `Step ${this.currentStep + 1} of ${this.steps.length}`;
+  }
+
+  private whenUserIsAtTheLastStep(): void {
+    const state = this.createState();
+    if (!state) {
+      return;
+    }
+
+    const request: CreateShippingRequestDto = mapCreateStateToRequest(state);
+    this.store.dispatch(createShipment({ request }));
   }
 
   // Event handlers for child components

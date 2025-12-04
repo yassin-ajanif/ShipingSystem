@@ -24,8 +24,8 @@
     <router-outlet></router-outlet>
   </div>
 
-  <!-- Navigation Buttons (hidden on last step/confirmation) -->
-  <div class="navigation-buttons" *ngIf="!isLastStep()">
+  <!-- Navigation Buttons -->
+  <div class="navigation-buttons">
     <button 
       mat-stroked-button 
       class="back-button"
@@ -40,12 +40,7 @@
       class="next-button"
       [disabled]="!isNextBtnEnabled()"
       (click)="onNext()">
-      {{ currentStep === steps.length - 2 ? ('shipmentCreate.buttons.submit' | translate) : ('shipmentCreate.buttons.next' | translate) }}
+      {{ isLastStep() ? ('shipmentCreate.buttons.submit' | translate) : ('shipmentCreate.buttons.next' | translate) }}
     </button>
-  </div>
-
-  <!-- Last Step Component Event Handling -->
-  <div *ngIf="isLastStep()" class="feedback-wrapper">
-    <!-- The last-feedback component will be rendered via router-outlet -->
   </div>
 </div>

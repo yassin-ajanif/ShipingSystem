@@ -12,3 +12,18 @@ export const selectPackageInfoValid = createSelector(
   selectPackageInfoState,
   (state) => state.isValid
 );
+
+export const selectShippingTypes = createSelector(
+  selectPackageInfoState,
+  state => state.shippingTypes
+);
+
+export const selectShippingTypesLoading = createSelector(
+  selectPackageInfoState,
+  state => state.shippingTypesLoading
+);
+
+export const selectShippingTypesError = createSelector(
+  selectPackageInfoState,
+  state => state.shippingTypesError
+);

@@ -7,6 +7,9 @@ export const loginReducer = createReducer(
   
   on(LoginActions.login, (state): LoginState => ({
     ...state,
+    subscriptionDetails: null,
+    subscriptionLoading: false,
+    subscriptionError: null,
     error: null
   })),
   
@@ -14,6 +17,9 @@ export const loginReducer = createReducer(
     ...state,
     isAuthenticated: true,
     user,
+    subscriptionDetails: null,
+    subscriptionLoading: false,
+    subscriptionError: null,
     error: null
   })),
   
@@ -21,7 +27,10 @@ export const loginReducer = createReducer(
     ...state,
     error,
     isAuthenticated: false,
-    user: null
+    user: null,
+    subscriptionDetails: null,
+    subscriptionLoading: false,
+    subscriptionError: null
   })),
   
   on(LoginActions.logout, (state): LoginState => ({
@@ -33,6 +42,29 @@ export const loginReducer = createReducer(
     ...state,
     isAuthenticated: false,
     user: null,
+    subscriptionDetails: null,
+    subscriptionLoading: false,
+    subscriptionError: null,
     error: null
+  })),
+
+  on(LoginActions.loadUserSubscription, (state): LoginState => ({
+    ...state,
+    subscriptionLoading: true,
+    subscriptionError: null
+  })),
+
+  on(LoginActions.loadUserSubscriptionSuccess, (state, { subscription }): LoginState => ({
+    ...state,
+    subscriptionDetails: subscription,
+    subscriptionLoading: false,
+    subscriptionError: null
+  })),
+
+  on(LoginActions.loadUserSubscriptionFailure, (state, { error }): LoginState => ({
+    ...state,
+    subscriptionDetails: null,
+    subscriptionLoading: false,
+    subscriptionError: error
   }))
 );

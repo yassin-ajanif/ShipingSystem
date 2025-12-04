@@ -1,4 +1,5 @@
 <div class="package-details-container">
+
   <form [formGroup]="packageForm" class="package-form">
     <!-- Package Name -->
     <mat-form-field appearance="outline" class="form-field full-width">
@@ -13,15 +14,16 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Package Type -->
+    <!-- Shipping Type -->
     <mat-form-field appearance="outline" class="form-field full-width">
       <mat-label>{{ 'shipmentCreate.packageDetails.packageType.label' | translate }}</mat-label>
-      <input 
-        matInput 
-        [placeholder]="'shipmentCreate.packageDetails.packageType.placeholder' | translate"
-        formControlName="packageType"
-        type="text">
-      <mat-error *ngIf="packageForm.get('packageType')?.invalid && packageForm.get('packageType')?.touched">
+      <mat-select formControlName="shippingTypeId" [disabled]="shippingTypesLoading()">
+        <mat-option value="">{{ 'shipmentCreate.packageDetails.packageType.placeholder' | translate }}</mat-option>
+        <mat-option *ngFor="let type of shippingTypes()" [value]="type.shippingTypeId">
+          {{ type.shippingEName || type.shippingAName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="packageForm.get('shippingTypeId')?.invalid && packageForm.get('shippingTypeId')?.touched">
         {{ 'shipmentCreate.packageDetails.errors.packageTypeRequired' | translate }}
       </mat-error>
     </mat-form-field>

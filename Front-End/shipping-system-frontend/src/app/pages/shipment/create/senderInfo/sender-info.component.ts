@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Signal, effect, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Signal, effect, inject, signal, untracked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -41,10 +41,8 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
   readonly countries: Signal<countryDto[]> = this.store.selectSignal(locationSelectors.selectCountries);
   readonly citiesOfSelectedCountry: Signal<cityDto[]> = this.store.selectSignal(senderSelectors.selectCitiesBySelectedCountry);
   readonly senderInfoFromStore: Signal<SenderInfoState> = this.store.selectSignal(senderSelectors.selectSenderInfo);
-  // this value is true when we go back to this step or page component
-  // isHydrating is false when the user land the first time to the page which means the 
-  // store is empty of senderInfo data
-  private isHydrating = !this.senderInfoStoreIsEmpty();
+ 
+  private isHydrating = false;
 
 
   countryId!: Signal<string>;
@@ -78,6 +76,10 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
 
   ngOnInit(): void {
 
+     // this value is true when we go back to this step or page component
+  // isHydrating is false when the user land the first time to the page which means the 
+  // store is empty of senderInfo data
+    this.isHydrating = !this.senderInfoStoreIsEmpty();
   
     if(this.isHydrating) { this.loadSenderInfoFromStoreToForm(); }
     else {
@@ -86,7 +88,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
   }
 
   
-  loadSenderInfoFromStoreToForm(){
+private  loadSenderInfoFromStoreToForm(){
 
     const senderInfo = this.senderInfoFromStore();
     if (senderInfo) {
@@ -103,7 +105,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
 
   // the senderinfo store is empty when the user land the first time to the page
   // while is false when he go back to this step or page component
-  senderInfoStoreIsEmpty(): boolean {
+ private senderInfoStoreIsEmpty(): boolean {
     const senderInfo = this.senderInfoFromStore();
     if (!senderInfo) {
       return true;
@@ -120,7 +122,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
     ].every(value => !value || `${value}`.trim() === '');
   }
 
-  whenUserPickDifferentCountryGetItsId(){
+  private whenUserPickDifferentCountryGetItsId(){
     this.countryId = toSignal(
       this.senderForm.get('countryId')!.valueChanges.pipe(
         startWith(this.senderForm.get('countryId')!.value)
@@ -129,7 +131,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
     );
   }
 
-  checkTheValidityOfSenderInfo(){
+ private checkTheValidityOfSenderInfo(){
     this.senderInfoValid = toSignal(
       this.senderForm.statusChanges.pipe(
         startWith(this.senderForm.status),
@@ -144,7 +146,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
   }
 
   // this method makes the state of senderINfo in sync with the form values
-  whenAnyValueOfSenderFormInfoChangesGetItsValue(){
+  private whenAnyValueOfSenderFormInfoChangesGetItsValue(){
 
      this.senderInfoValue = toSignal(
       this.senderForm.valueChanges.pipe(startWith(this.senderForm.value)),
@@ -152,7 +154,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
     );
   }
 
-  whenTheCountryIdIsChangedLoadCities(){
+  private whenTheCountryIdIsChangedLoadCities(){
  effect(() => {
       
       const countryId = this.countryId();
@@ -161,19 +163,20 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
       if (this.isHydrating) {
         return; 
       }
+
+      untracked(() => {
       // Reset city selection on country change
      this.senderForm.patchValue({ cityId: '' }, { emitEvent: true });
       if (this.countryId()) {
         this.store.dispatch(senderInfoActions.loadCitiesBySelectedCountryId({ countryId }));
       }  });
-
+    });
       
   }
 
-  whenTheSenderInfoValidityChangesDispatchItToStore(){
+  private whenTheSenderInfoValidityChangesDispatchItToStore(){
  effect(() => {
-      
-
+     
       const isValid = this.senderInfoValid();
       const senderInfo = this.senderInfoValue();
       this.store.dispatch(senderInfoActions.setSenderInfoValidity({ isValid }));
@@ -184,7 +187,7 @@ export class SenderInfoComponent implements OnInit , AfterViewInit{
 
  
 
-  getErrorMessage(fieldName: string): string {
+  private getErrorMessage(fieldName: string): string {
     const field = this.senderForm.get(fieldName);
     
     if (field?.hasError('required')) {

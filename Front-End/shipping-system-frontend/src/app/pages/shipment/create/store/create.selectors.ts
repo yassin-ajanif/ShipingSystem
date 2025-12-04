@@ -37,3 +37,13 @@ export const selectPaymentMethodId = createSelector(
   selectPaymentMethodState,
   state => state.paymentMethodId
 );
+
+export const selectCreateShipmentLoading = createSelector(
+  selectCreateState,
+  state => state.createShipmentLoading
+);
+
+export const selectCreateShipmentError = createSelector(
+  selectCreateState,
+  state => state.createShipmentError
+);

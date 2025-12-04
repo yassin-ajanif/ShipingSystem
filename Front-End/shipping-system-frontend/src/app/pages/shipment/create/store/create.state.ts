@@ -9,6 +9,10 @@ export interface CreateState {
   recipientInfo: RecipientInfoState;
   packageInfo: PackageInfoState;
   paymentMethod: PaymentMethodState;
+  subscriptionPackageId : string | null,
+  shippingTypeId : string | null,
+  createShipmentLoading: boolean;
+  createShipmentError: string | null;
 }
 
 export const initialCreateState: CreateState = {
@@ -16,5 +20,9 @@ export const initialCreateState: CreateState = {
   recipientInfo: initialRecipientInfoState,
   packageInfo: initialPackageInfoState,
   paymentMethod: initialPaymentMethodState,
-  isNextBtnEnabled: false
+  subscriptionPackageId : null,
+  shippingTypeId : null,
+  isNextBtnEnabled: false,
+  createShipmentLoading: false,
+  createShipmentError: null
 };

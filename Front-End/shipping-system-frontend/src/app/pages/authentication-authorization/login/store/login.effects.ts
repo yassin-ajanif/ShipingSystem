@@ -32,6 +32,31 @@ export class LoginEffects {
     )
   );
 
+  loadSubscriptionOnLoginSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoginActions.loginSuccess),
+      map(({ user }) => LoginActions.loadUserSubscription({ userId: user.userId }))
+    )
+  );
+
+  loadUserSubscription$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoginActions.loadUserSubscription),
+      switchMap(({ userId }) =>
+        this.authService.getUserSubscription(userId).pipe(
+          map(subscription => LoginActions.loadUserSubscriptionSuccess({ subscription })),
+          catchError(error =>
+            of(
+              LoginActions.loadUserSubscriptionFailure({
+                error: error?.error?.message ?? error?.message ?? 'Failed to load subscription'
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoginActions.logout),

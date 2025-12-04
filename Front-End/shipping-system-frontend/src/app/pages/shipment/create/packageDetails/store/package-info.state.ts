@@ -1,21 +1,29 @@
+import { shippingTypeDto } from '../../../../../models/shippingTypeDto';
+
 export interface PackageInfoState {
   packageName: string;
-  packageType: string;
+  shippingTypeId: string;
   length: string;
   width: string;
   height: string;
   weight: string;
   contentsDescription: string;
   isValid: boolean;
+  shippingTypes: shippingTypeDto[];
+  shippingTypesLoading: boolean;
+  shippingTypesError: string | null;
 }
 
 export const initialPackageInfoState: PackageInfoState = {
   packageName: '',
-  packageType: '',
+  shippingTypeId: '',
   length: '',
   width: '',
   height: '',
   weight: '',
   contentsDescription: '',
-  isValid: false
+  isValid: false,
+  shippingTypes: [],
+  shippingTypesLoading: false,
+  shippingTypesError: null
 };

@@ -10,5 +10,6 @@ namespace BusinessAccessLayer.Interfaces
 {
     public interface IShippingTypeService : IGenericService<TbShippingType,ShippingTypeDto>
     {
+        Task<IEnumerable<ShippingTypeLookupDto>> GetLookupAsync();
     }
 }

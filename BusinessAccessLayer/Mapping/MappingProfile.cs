@@ -23,6 +23,14 @@ namespace BusinessAccessLayer.Mapping
             CreateMap<TbCity, CityDto>().ReverseMap();
             CreateMap<TbPaymentMethod, PaymentMethodDto>().ReverseMap();
             CreateMap<TbShippingType, ShippingTypeDto>().ReverseMap();
+            CreateMap<TbShippingType, ShippingTypeLookupDto>()
+                .ForMember(d => d.ShippingTypeId, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.ShippingEName, o => o.MapFrom(s => s.ShippingTypeEname ?? string.Empty))
+                .ForMember(d => d.ShippingAName, o => o.MapFrom(s => s.ShippingTypeAname ?? string.Empty));
+            CreateMap<ShippingTypeDto, ShippingTypeLookupDto>()
+                .ForMember(d => d.ShippingTypeId, o => o.MapFrom(s => s.Id))
+                .ForMember(d => d.ShippingEName, o => o.MapFrom(s => s.ShippingTypeEName ?? string.Empty))
+                .ForMember(d => d.ShippingAName, o => o.MapFrom(s => s.ShippingTypeAName ?? string.Empty));
             CreateMap<TbUserReceiver, UserReceiverDto>().ReverseMap();
             CreateMap<TbUserSebder, UserSenderDto>().ReverseMap();
             CreateMap<TbSubscriptionPackage, SubscriptionPackageDto>().ReverseMap();

@@ -13,12 +13,20 @@ namespace BusinessAccessLayer.Services
 {
     public class ShippingTypeService : GenericService<TbShippingType, ShippingTypeDto>,IShippingTypeService
     {
+        private readonly IMapper _mapper;
       
 
         public ShippingTypeService(IGenericUnitOfWork genericUnitOfWork,
             IMapper mapper, IUserService userService) :
             base(genericUnitOfWork, mapper, userService)
         {
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ShippingTypeLookupDto>> GetLookupAsync()
+        {
+            var shippingTypes = await GetAllAsync();
+            return _mapper.Map<IEnumerable<ShippingTypeLookupDto>>(shippingTypes);
         }
     }
 }

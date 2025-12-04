@@ -16,6 +16,8 @@ import { LocationEffects } from './store/location/location.effects';
 import { createShipmentReducer } from './pages/shipment/create/store/create.reducer';
 import { SenderInfoEffects } from './pages/shipment/create/senderInfo/store/sender-info.effects';
 import { RecipientInfoEffects } from './pages/shipment/create/recipientInfo/store/recipient-info.effects';
+import { PackageInfoEffects } from './pages/shipment/create/packageDetails/store/package-info.effects';
+import { CreateEffects } from './pages/shipment/create/store/create.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,7 +39,7 @@ export const appConfig: ApplicationConfig = {
       location: locationReducer,
       create: createShipmentReducer,
     }),
-    provideEffects([LoginEffects, LocationEffects, SenderInfoEffects, RecipientInfoEffects]),
+    provideEffects([LoginEffects, LocationEffects, SenderInfoEffects, RecipientInfoEffects, PackageInfoEffects, CreateEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: false })
   ]
 };

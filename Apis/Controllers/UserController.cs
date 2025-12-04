@@ -52,5 +52,28 @@ namespace Apis.Controllers
                     "Something went wrong"));
             }
         }
+
+        [HttpGet("{userId:guid}/subscription")]
+        public async Task<ActionResult<ApiResponse<UserSubscriptionDetailsDto>>> GetSubscriptionByUserId(Guid userId)
+        {
+            try
+            {
+                var result = await _userSubscriptionService.GetSubscriptionByUserIdAsync(userId);
+                if (result == null)
+                {
+                    return NotFound(ApiResponse<UserSubscriptionDetailsDto>.FailResponse(
+                        "Subscription not found"));
+                }
+
+                return Ok(ApiResponse<UserSubscriptionDetailsDto>.SuccessResponse(
+                    result,
+                    "Subscription retrieved successfully"));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, ApiResponse<UserSubscriptionDetailsDto>.FailResponse(
+                    "Something went wrong"));
+            }
+        }
     }
 }

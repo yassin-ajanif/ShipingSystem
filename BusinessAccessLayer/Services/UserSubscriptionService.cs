@@ -86,5 +86,25 @@ namespace BusinessAccessLayer.Services
 
             return package;
         }
+
+        public async Task<UserSubscriptionDetailsDto?> GetSubscriptionByUserIdAsync(Guid userId)
+        {
+            var subscription = await _userSubscriptionRepository.GetFirstOrDefault(s => s.UserId == userId);
+            if (subscription == null)
+            {
+                return null;
+            }
+
+            var package = await _subscriptionPackageRepository.GetByIdAsync(subscription.PackageId);
+
+            return new UserSubscriptionDetailsDto
+            {
+                SubscriptionId = subscription.Id,
+                UserId = subscription.UserId,
+                PackageId = subscription.PackageId,
+                PackageName = package?.PackageName ?? string.Empty,
+                SubscriptionDate = subscription.SubscriptionDate
+            };
+        }
     }
 }
